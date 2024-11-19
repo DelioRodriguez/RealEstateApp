@@ -26,7 +26,7 @@ public class Property
     public decimal Price { get; set; }
 
     [Required]
-    public double Size { get; set; } // En metros
+    public double Size { get; set; } 
 
     [Required]
     public int Rooms { get; set; }

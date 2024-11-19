@@ -39,6 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+await app.Services.RunIdentitySeeds();
+
 app.UseRouting();
 
 app.UseHttpsRedirection();

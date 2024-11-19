@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Infrastructure.Identity.Context;
 using RealEstateApp.Infrastructure.Identity.Entities;
+using RealEstateApp.Infrastructure.Identity.Seeds;
 
 namespace RealEstateApp.Infrastructure.Identity;
 
@@ -52,5 +53,25 @@ public static class ServiceRegistration
             opt.LoginPath = "/User";
             opt.AccessDeniedPath = "/User/AccessDenied";
         });
+    }
+    
+    public static async Task RunIdentitySeeds(this IServiceProvider serviceProvider)
+    {
+        using (var scope = serviceProvider.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+
+            try
+            {
+                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                await IdentitySeeder.SeedAsync(userManager, roleManager);
+            }
+            catch (Exception ex)
+            {
+                // ignored
+            }
+        }
     }
 }

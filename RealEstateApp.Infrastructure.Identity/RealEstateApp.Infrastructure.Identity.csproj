@@ -25,10 +25,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Seeds\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\RealEstateApp.Application\RealEstateApp.Application.csproj" />
 		<ProjectReference Include="..\RealEstateApp.Domain\RealEstateApp.Domain.csproj" />
 	</ItemGroup>

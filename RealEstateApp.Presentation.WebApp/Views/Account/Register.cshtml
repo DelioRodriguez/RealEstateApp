@@ -1,0 +1,130 @@
+﻿<div class="container my-5">
+    <div class="bg-primary p-4 rounded shadow-lg text-white">
+        <h2 class="text-center mb-4">Únete a la App</h2>
+
+        <form id="registrationForm" action="/register" method="POST" enctype="multipart/form-data" class="shadow-lg p-4 rounded bg-light">
+            <!-- Nombre y Apellido -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="Ingresa tu nombre">
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Ingresa tu apellido">
+                </div>
+            </div>
+
+            <!-- Teléfono y Foto -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required placeholder="Ingresa tu número de teléfono">
+                </div>
+                <div class="col-md-6">
+                    <label for="photo" class="form-label">Foto de Usuario</label>
+                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required>
+                </div>
+            </div>
+
+            <!-- Nombre de Usuario y Correo -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="username" class="form-label">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required placeholder="Elige tu nombre de usuario">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" required placeholder="Ingresa tu correo electrónico">
+                </div>
+            </div>
+
+            <!-- Contraseña y Confirmar Contraseña -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required placeholder="Confirma tu contraseña">
+                </div>
+            </div>
+
+            <!-- Tipo de Usuario -->
+            <div class="mb-3">
+                <label for="userType" class="form-label">Tipo de Usuario</label>
+                <select class="form-select" id="userType" name="userType" required>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Agente">Agente</option>
+                </select>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
+                <a href="/Account/Login" class="btn btn-link">¿Ya tienes cuenta? Iniciar sesión</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Estilos personalizados -->
+<style>
+    .container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+        border-radius: 15px;
+    }
+
+    h2 {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #0056b3;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #0056b3;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #003d7e;
+    }
+
+    .btn-link {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+</style>

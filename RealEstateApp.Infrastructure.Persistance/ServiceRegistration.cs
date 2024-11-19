@@ -2,8 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
+using RealEstateApp.Application.Interfaces.Repositories.Properties;
+using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Infrastructure.Persistance.Context;
 using RealEstateApp.Infrastructure.Persistance.Repositories;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Users;
 
 namespace RealEstateApp.Infrastructure.Persistance
 {
@@ -12,6 +16,8 @@ namespace RealEstateApp.Infrastructure.Persistance
         public static void AddContextInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {

@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using RealEstateApp.Application.Dtos.Users;
+using RealEstateApp.Application.ViewModels.Properties;
+using RealEstateApp.Application.ViewModels.Users;
+using RealEstateApp.Domain.Entities;
 
 namespace RealEstateApp.Application.Mapping;
 
@@ -6,6 +10,17 @@ public class GeneralProfile : Profile
 {
     public GeneralProfile()
     {
-        // CreateMap<Source, Destination>();
+        CreateMap<UserInfo, AgentViewModel>().ReverseMap();
+        
+        CreateMap<Property, PropertyListViewModel>()
+            .ForMember(dest => dest.PropertyTypeName, opt => opt.MapFrom(src => src.PropertyType.Name))
+            .ForMember(dest => dest.SaleTypeName, opt => opt.MapFrom(src => src.SaleType.Name))
+            .ForMember(dest => dest.MainImageUrl, opt => opt.MapFrom(src => src.Images.FirstOrDefault()!.ImageUrl));
+
+        CreateMap<Property, PropertyDetailViewModel>()
+            .ForMember(dest => dest.PropertyTypeName, opt => opt.MapFrom(src => src.PropertyType.Name))
+            .ForMember(dest => dest.SaleTypeName, opt => opt.MapFrom(src => src.SaleType.Name))
+            .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.Images.Select(img => img.ImageUrl)))
+            .ForMember(dest => dest.Improvements, opt => opt.MapFrom(src => src.Improvements.Select(imp => imp.Name)));
     }
 }

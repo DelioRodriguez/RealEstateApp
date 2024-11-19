@@ -1,0 +1,110 @@
+﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
+@{
+    ViewData["Title"] = "Listado de Propiedades";
+}
+
+<title>Listado de Propiedades</title>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Listado de Propiedades</h1>
+
+    <!-- Muestra los errores de validación globales -->
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Formulario de Búsqueda -->
+    <div class="card p-3 mb-4">
+        <form method="post" action="@Url.Action("Index", "Properties")">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="codigo" class="form-label">Código</label>
+                    <input type="text" id="codigo" name="Code" class="form-control" placeholder="Buscar por código" value="@Model.FirstOrDefault()?.Filter?.Code" />
+                </div>
+                <div class="col-md-4">
+                    <label for="tipo" class="form-label">Tipo de Propiedad</label>
+                    <select id="tipo" name="PropertyTypeId" class="form-select">
+                        <option value="">Seleccione...</option>
+                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 1)
+                        {
+                            <option value="1" selected>Casa</option>
+                        }
+                        else
+                        {
+                            <option value="1">Casa</option>
+                        }
+                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 2)
+                        {
+                            <option value="2" selected>Apartamento</option>
+                        }
+                        else
+                        {
+                            <option value="2">Apartamento</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Rango de Precio</label>
+                    <div class="input-group">
+                        <input type="number" name="MinPrice" class="form-control" placeholder="Mínimo" value="@Model.FirstOrDefault()?.Filter?.MinPrice" />
+                        <span class="input-group-text">-</span>
+                        <input type="number" name="MaxPrice" class="form-control" placeholder="Máximo" value="@Model.FirstOrDefault()?.Filter?.MaxPrice" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label for="habitaciones" class="form-label">Habitaciones</label>
+                    <input type="number" id="habitaciones" name="MinRooms" class="form-control" value="@Model.FirstOrDefault()?.Filter?.MinRooms" />
+                </div>
+                <div class="col-md-2">
+                    <label for="banos" class="form-label">Baños</label>
+                    <input type="number" id="banos" name="MinBathrooms" class="form-control" value="@Model.FirstOrDefault()?.Filter?.MinBathrooms" />
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Verifica si no hay resultados -->
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>No se encontraron resultados con los filtros aplicados.</strong>
+        </div>
+    }
+    else
+    {
+        <!-- Listado de Propiedades -->
+        <div class="row">
+            @foreach (var property in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                        <div class="card-body">
+                            <h5 class="card-title">@property.PropertyTypeName</h5>
+                            <p class="card-text">
+                                <strong>Código:</strong> @property.Code<br>
+                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                                <strong>Precio:</strong> @property.Price.ToString()<br>
+                                <strong>Habitaciones:</strong> @property.Rooms<br>
+                                <strong>Baños:</strong> @property.Bathrooms<br>
+                                <strong>Tamaño:</strong> @property.Size m²
+                            </p>
+                            <a href="/Properties/Details/@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

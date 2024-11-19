@@ -21,6 +21,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+await app.Services.RunIdentitySeeds();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -30,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Properties}/{action=Index}/{id?}");
 
 app.Run();

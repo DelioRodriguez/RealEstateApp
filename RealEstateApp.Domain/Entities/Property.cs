@@ -8,9 +8,8 @@ public class Property
     [Key]
     public int Id { get; set; }
 
-    [Required]
     [MaxLength(6)]
-    public string Code { get; set; }
+    public string? Code { get; set; }
 
     [Required]
     public int PropertyTypeId { get; set; }

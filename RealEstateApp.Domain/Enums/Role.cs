@@ -1,4 +1,4 @@
-﻿namespace RealEstateApp.Application.Enums;
+﻿namespace RealEstateApp.Domain.Enums;
 
 public enum Role
 {

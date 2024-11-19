@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RealEstateApp.Domain.Enums;
 
 namespace RealEstateApp.Domain.Entities;
 
@@ -16,8 +17,7 @@ public class Offer
     public DateTime Date { get; set; }
 
     [Required]
-    [MaxLength(50)]
-    public string Status { get; set; } // Pendiente, Aceptada, Rechazada
+    public Status Status { get; set; } 
 
     public int PropertyId { get; set; }
     [ForeignKey("PropertyId")]

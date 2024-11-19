@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RealEstateApp.Application.Enums;
+using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
 
 namespace RealEstateApp.Infrastructure.Identity.Seeds;
@@ -25,6 +25,7 @@ public class IdentitySeeder
         {
             adminUser = new ApplicationUser
             {
+                ImagenPath = "https://www.shutterstock.com/image-vector/special-secret-agent-tuxedo-armed-600nw-2319552755.jpg",
                 FirstName = "admin",
                 LastName = "admin",
                 UserName = "admin",
@@ -44,8 +45,9 @@ public class IdentitySeeder
             agentUser = new ApplicationUser
             {
                 ImagenPath = "https://www.shutterstock.com/image-vector/special-secret-agent-tuxedo-armed-600nw-2319552755.jpg",
-                FirstName = "admin",
-                LastName = "admin",
+                FirstName = "Ivo",
+                LastName = "Rodriguez",
+                PhoneNumber = "8293630460",
                 UserName = "agent",
                 Email = agentEmail,
                 EmailConfirmed = true,

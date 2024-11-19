@@ -4,7 +4,9 @@ using RealEstateApp.Application.Interfaces.Repositories.Properties;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Services.Generic;
+using RealEstateApp.Application.ViewModels.Agents;
 using RealEstateApp.Application.ViewModels.Properties;
+using RealEstateApp.Application.ViewModels.Users;
 using RealEstateApp.Domain.Entities;
 
 namespace RealEstateApp.Application.Services.Properties;
@@ -40,6 +42,7 @@ public class PropertyService : Service<Property>, IPropertyService
         mapperProperty.AgentName = user.AgentName;
         mapperProperty.AgentPhone = user.AgentPhone;
         mapperProperty.AgentImageUrl = user.AgentImageUrl;
+        mapperProperty.AgentId = user.AgentId;
 
         return mapperProperty;
     }
@@ -50,5 +53,19 @@ public class PropertyService : Service<Property>, IPropertyService
         
         
         return _mapper.Map<IEnumerable<PropertyListViewModel>>(properties);
+    }
+
+    public async Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId)
+    {
+        var user = await _repository.GetUserByIdAsync(userId);
+
+        var propityByUser = new PropertyByAgentViewModel()
+        {
+            Agent = _mapper.Map<AgentViewModel>(user),
+            Properties =
+                _mapper.Map<List<PropertyListViewModel>>(await _propertyRepository.GetPropertyByUserIdAsync(userId))!
+        };
+        
+        return propityByUser; 
     }
 }

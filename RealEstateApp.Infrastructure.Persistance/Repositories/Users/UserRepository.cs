@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using RealEstateApp.Application.Dtos.Users;
-using RealEstateApp.Application.Enums;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
+using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
 
 namespace RealEstateApp.Infrastructure.Persistance.Repositories.Users;
@@ -53,7 +53,6 @@ public class UserRepository : IUserRepository
     {
         var agents = await _userManager.GetUsersInRoleAsync(Role.Agent.ToString());
         
-        // Filtro por nombre completo, username, primer y segundo nombre
         var filteredAgents = agents.Where(a => 
                 a.UserName != null && ((a.UserName.Contains(name, StringComparison.OrdinalIgnoreCase)) ||
                                        (a.FirstName.Contains(name, StringComparison.OrdinalIgnoreCase)) ||

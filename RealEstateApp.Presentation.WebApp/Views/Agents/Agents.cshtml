@@ -18,6 +18,7 @@
         </div>
     </div>
 
+    
     @if (!Model.Any())
     {
         <div class="alert alert-warning" role="alert">
@@ -36,7 +37,7 @@
                         <h5 class="card-title text-center mb-2">@agente.AgentName</h5>
                         <p class="card-text text-center text-muted">@agente.AgentEmail</p>
                         <div class="mt-auto text-center">
-                            <button class="btn btn-primary btn-sm">Ver más</button>
+                            <a asp-action="PropertiesByAgent" asp-route-id="@agente.AgentId" class="btn btn-primary btn-sm">Ver más</a>
                         </div>
                     </div>
                 </div>

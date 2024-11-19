@@ -1,4 +1,5 @@
 ﻿using RealEstateApp.Application.Interfaces.Services.Generic;
+using RealEstateApp.Application.ViewModels.Agents;
 using RealEstateApp.Application.ViewModels.Properties;
 using RealEstateApp.Domain.Entities;
 
@@ -9,4 +10,5 @@ public interface IPropertyService : IService<Property>
     Task<IEnumerable<PropertyListViewModel>> GetAvailablePropertiesAsync();
     Task<PropertyDetailViewModel> GetPropertyDetailsAsync(int id);
     Task<IEnumerable<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel filter);
+    Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId);
 }

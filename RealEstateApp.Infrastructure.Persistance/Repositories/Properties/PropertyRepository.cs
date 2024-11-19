@@ -85,4 +85,15 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
 
         return await query.ToListAsync();
     }
+
+    public async Task<IEnumerable<Property?>> GetPropertyByUserIdAsync(string userId)
+    {
+        return await _context.Properties
+            .Where(i => i.AgentId == userId && i.IsAvailable)
+            .Include(p => p.PropertyType)
+            .Include(p => p.SaleType)
+            .Include(p => p.Images)
+            .Include(p => p.Improvements)
+            .ToListAsync();
+    }
 }

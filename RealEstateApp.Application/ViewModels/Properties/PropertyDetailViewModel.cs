@@ -1,4 +1,6 @@
-﻿namespace RealEstateApp.Application.ViewModels.Properties;
+﻿using RealEstateApp.Application.ViewModels.Users;
+
+namespace RealEstateApp.Application.ViewModels.Properties;
 
 public class PropertyDetailViewModel
 {
@@ -12,7 +14,7 @@ public class PropertyDetailViewModel
     public string Description { get; set; }
     public List<string> ImageUrls { get; set; }
     public List<string> Improvements { get; set; }
-    public Guid AgentId { get; set; }
+    public string? AgentId { get; set; }
     public string? AgentName { get; set; }
     public string? AgentPhone { get; set; }
     public string? AgentEmail { get; set; }

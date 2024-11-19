@@ -40,5 +40,4 @@ public class PropertiesController : Controller
 
         return View(property); 
     }
-    
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RealEstateApp.Application.Enums;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.ViewModels.Users;
+using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
 

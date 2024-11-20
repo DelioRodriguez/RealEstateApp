@@ -1,6 +1,8 @@
 using RealEstateApp.Application;
+using RealEstateApp.Application.Settings;
 using RealEstateApp.Infrastructure.Identity;
 using RealEstateApp.Infrastructure.Persistance;
+using RealEstateApp.Infrastructure.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,16 +10,20 @@ builder.Services.AddIdentityInfrastructure(builder.Configuration);
 builder.Services.AddContextInfrastructure(builder.Configuration);
 builder.Services.AddApplicationService();
 
-// Add services to the container.
+
+
+builder.Services.Configure<SmtpSettings>(
+    builder.Configuration.GetSection("SmtpSettings"));
+
+builder.Services.AddSharedService();
+builder.Services.AddIdentityService();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -25,9 +31,9 @@ await app.Services.RunIdentitySeeds();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllerRoute(

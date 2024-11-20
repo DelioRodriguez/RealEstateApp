@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RealEstateApp.Application.Enums;
+using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
 
 namespace RealEstateApp.Infrastructure.Identity.Seeds;

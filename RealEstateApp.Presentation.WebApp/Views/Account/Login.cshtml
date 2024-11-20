@@ -1,97 +1,40 @@
-﻿<div class="container my-5">
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RealEstateApp.Application.Dtos.Auth.UserLoginDTO
+
+<div class="container my-5">
     <div class="bg-primary p-4 rounded shadow-lg text-white">
         <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-        <form id="loginForm" action="/login" method="POST" class="shadow-lg p-4 rounded bg-light">
-            <!-- Correo o Nombre de Usuario -->
+        @if (TempData["ErrorMessage"] != null)
+        {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+        }
+
+        <form asp-action="Login" method="post" class="shadow-lg p-4 rounded bg-light">
+            @Html.AntiForgeryToken()
+
             <div class="mb-3">
-                <label for="usernameOrEmail" class="form-label">Correo o Nombre de Usuario</label>
-                <input type="text" class="form-control" id="usernameOrEmail" name="usernameOrEmail" required placeholder="Ingresa tu correo o nombre de usuario">
+                <label for="Username" class="form-label">Correo o Nombre de Usuario</label>
+                <input asp-for="Username" class="form-control" placeholder="Ingresa tu correo o nombre de usuario" />
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
 
-            <!-- Contraseña -->
             <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" required placeholder="Ingresa tu contraseña">
+                <label for="Password" class="form-label">Contraseña</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Ingresa tu contraseña" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-            <!-- Mensaje de Error -->
-            <div id="errorMessage" class="alert alert-danger d-none" role="alert">
-                Credenciales incorrectas. Por favor, intenta de nuevo.
-            </div>
-
-            <!-- Botón de Iniciar Sesión -->
             <div class="d-flex justify-content-between align-items-center">
                 <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
-                <a href="/Account/Register" class="btn btn-link">¿No tienes cuenta? Regístrate</a>
+                <a asp-action="Register" asp-controller="Account" class="btn btn-link">¿No tienes cuenta? Regístrate</a>
             </div>
         </form>
     </div>
 </div>
 
-<!-- Estilos personalizados -->
-<style>
-    .container {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .bg-primary {
-        background-color: #007bff !important;
-        border-radius: 15px;
-    }
-
-    h2 {
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .form-label {
-        font-weight: bold;
-        color: #0056b3;
-    }
-
-    .form-control {
-        border-radius: 10px;
-        background-color: #f8f9fa;
-        border: 1px solid #ced4da;
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
-    .btn-primary {
-        background-color: #0056b3;
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-size: 1.1rem;
-    }
-
-    .btn-primary:hover {
-        background-color: #003d7e;
-    }
-
-    .btn-link {
-        color: #0056b3;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .alert {
-        margin-top: 10px;
-        font-size: 0.9rem;
-    }
-
-    .d-none {
-        display: none !important;
-    }
-</style>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

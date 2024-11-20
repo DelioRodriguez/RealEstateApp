@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Services.Account;
+using RealEstateApp.Application.Mapping;
+using RealEstateApp.Infrastructure.Identity.Account;
 using RealEstateApp.Infrastructure.Identity.Context;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Identity.Seeds;
@@ -12,8 +16,10 @@ public static class ServiceRegistration
 {
     public static void AddIdentityInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+       
+        services.AddSingleton(TimeProvider.System);
 
-
+       
         if (configuration.GetValue<bool>("UseInMemoryDatabase"))
         {
             services.AddDbContext<IdentityContext>(options =>
@@ -31,30 +37,42 @@ public static class ServiceRegistration
             });
         }
 
-        services.AddIdentityCore<ApplicationUser>()
-            .AddRoles<IdentityRole>()
-            .AddSignInManager()
+     
+        services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+              
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            })
             .AddEntityFrameworkStores<IdentityContext>()
-            .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+            .AddSignInManager<SignInManager<ApplicationUser>>()
+            .AddDefaultTokenProviders(); 
 
+
+     
         services.Configure<DataProtectionTokenProviderOptions>(opt =>
         {
             opt.TokenLifespan = TimeSpan.FromSeconds(300);
         });
 
-        services.AddAuthentication(opt =>
-        {
-            opt.DefaultScheme = IdentityConstants.ApplicationScheme;
-            opt.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
-            opt.DefaultSignInScheme = IdentityConstants.ApplicationScheme;
-        }).AddCookie(IdentityConstants.ApplicationScheme, opt =>
+        services.ConfigureApplicationCookie(opt =>
         {
             opt.ExpireTimeSpan = TimeSpan.FromHours(24);
             opt.LoginPath = "/User";
             opt.AccessDeniedPath = "/User/AccessDenied";
         });
+       
     }
-    
+
+    public static void AddIdentityService(this IServiceCollection services)
+    {
+        services.AddScoped<IAccountService, AccountService>();
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(typeof(GeneralProfile));
+    }
     public static async Task RunIdentitySeeds(this IServiceProvider serviceProvider)
     {
         using (var scope = serviceProvider.CreateScope())
@@ -70,7 +88,7 @@ public static class ServiceRegistration
             }
             catch (Exception ex)
             {
-                // ignored
+                throw new Exception("An error occurred while seeding the database.", ex);
             }
         }
     }

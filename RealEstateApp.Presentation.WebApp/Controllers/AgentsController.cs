@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.ViewModels.Users;
 using RealEstateApp.Domain.Enums;
@@ -9,12 +8,10 @@ namespace WebApplication1.Controllers;
 public class AgentsController : Controller
 {
     private readonly IUserService _userService;
-    private readonly IPropertyService _propertyService;
 
-    public AgentsController(IUserService userService, IPropertyService propertyService)
+    public AgentsController(IUserService userService)
     {
         _userService = userService;
-        _propertyService = propertyService;
     }
 
     public async Task<IActionResult> Agents(string searchName)
@@ -30,19 +27,5 @@ public class AgentsController : Controller
         }
 
         return View(users);
-    }
-    
-    public async Task<IActionResult> PropertiesByAgent(string id)
-    {
-        var list = await _propertyService.GetPropertyByUserIdAsync(id);
-
-        return View(list);
-    }
-    
-    public async Task<IActionResult> Details(int id)
-    {
-        var property = await _propertyService.GetPropertyDetailsAsync(id);
-
-        return View(property); 
     }
 }

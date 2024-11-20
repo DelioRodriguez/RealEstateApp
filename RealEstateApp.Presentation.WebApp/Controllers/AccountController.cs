@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstateApp.Application.Dtos.Auth;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Interfaces.Services.Account;
 
 namespace WebApplication1.Controllers;

@@ -3,7 +3,7 @@ using System.Text.Encodings.Web;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using RealEstateApp.Application.Dtos.Auth;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Domain.Enums;

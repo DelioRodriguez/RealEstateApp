@@ -1,4 +1,4 @@
-﻿namespace RealEstateApp.Application.Dtos.Auth;
+﻿namespace RealEstateApp.Application.Dtos.Account;
 
 public class UserLoginDTO
 {

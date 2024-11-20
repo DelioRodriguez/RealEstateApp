@@ -1,7 +1,7 @@
-﻿using RealEstateApp.Domain.Enums;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using RealEstateApp.Domain.Enums;
 
-namespace RealEstateApp.Application.Dtos.Auth;
+namespace RealEstateApp.Application.Dtos.Account;
 
 public class UserRegisterDTO
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using RealEstateApp.Application.Dtos.Auth;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.Users;
 using RealEstateApp.Infrastructure.Identity.Entities;
 

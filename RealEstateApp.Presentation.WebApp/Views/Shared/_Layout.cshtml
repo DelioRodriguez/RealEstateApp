@@ -68,11 +68,11 @@
 <body>
 <header>
     
-    @if (User.Identity!.IsAuthenticated)
+    @if (User.Identity!.IsAuthenticated && User.IsInRole("Client"))
     {
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Properties" asp-action="Index">KeyNest</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Properties" asp-action="HomeClient">KeyNest</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -80,10 +80,41 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Properties" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Client" asp-action="HomeClient">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Agents" asp-action="Agents">Agentes</a>
+                            <a class="nav-link" asp-area="" asp-controller="Client" asp-action="AgentsByClient">Agentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else if (User.Identity!.IsAuthenticated && User.IsInRole("Agent"))
+    {
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Properties" asp-action="HomeClient">KeyNest</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Properties" asp-action="HomeClient">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="" asp-action="">Propiedades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="" asp-action="">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesion</a>
                         </li>
                     </ul>
                 </div>

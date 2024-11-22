@@ -18,6 +18,7 @@ public class AppDbContext : DbContext
     public DbSet<PropertyImage> PropertyImages { get; set; }
     public DbSet<Chat> Chats { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<Favorite> Favorites { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -50,6 +51,12 @@ public class AppDbContext : DbContext
             .HasOne<ApplicationUser>()
             .WithMany()
             .HasForeignKey(p => p.ClientId)
+            .OnDelete(DeleteBehavior.NoAction);
+        
+        modelBuilder.Entity<Favorite>()
+            .HasOne<ApplicationUser>()
+            .WithMany()
+            .HasForeignKey(p => p.UserId)
             .OnDelete(DeleteBehavior.NoAction);
     }
 }

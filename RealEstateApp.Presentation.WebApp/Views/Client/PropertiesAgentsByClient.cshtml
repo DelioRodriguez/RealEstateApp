@@ -1,0 +1,66 @@
+﻿@model RealEstateApp.Application.ViewModels.Agents.PropertyByAgentViewModel
+@{
+    ViewData["Title"] = $"Propiedades de {Model.Agent?.AgentName}";
+}
+
+<title>Propiedades de @Model.Agent?.AgentName</title>
+
+<div class="container my-5">
+    <!-- Información del agente -->
+    <div class="card mb-4 shadow-sm">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@Model.Agent?.AgentImageUrl" class="img-fluid rounded-start" alt="Foto de @Model.Agent?.AgentName">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Agent?.AgentName</h3>
+                    <p class="card-text">
+                        <strong>Teléfono:</strong> @(Model.Agent?.AgentPhone)<br>
+                        <strong>Email:</strong> @Model.Agent?.AgentEmail <br>
+                        <strong>Total de Propiedades:</strong>  @(Model.Properties?.Count ?? 0)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listado de propiedades -->
+    <h4 class="mb-4">Propiedades disponibles</h4>
+    @if (Model.Properties != null && !Model.Properties.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>No hay propiedades disponibles para este agente.</strong>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @if (Model.Properties != null)
+            {
+                foreach (var property in Model.Properties)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="@property?.MainImageUrl" class="card-img-top" alt="Imagen de la propiedad">
+                            <div class="card-body">
+                                <h5 class="card-title">@property?.PropertyTypeName</h5>
+                                <p class="card-text">
+                                    <strong>Código:</strong> @property?.Code<br>
+                                    <strong>Tipo de Venta:</strong> @property?.SaleTypeName<br>
+                                    <strong>Precio:</strong> @property?.Price.ToString()<br>
+                                    <strong>Habitaciones:</strong> @property!.Rooms<br>
+                                    <strong>Baños:</strong> @property.Bathrooms<br>
+                                    <strong>Tamaño:</strong> @property.Size m²
+                                </p>
+                                <a asp-action="DetailsWithChat" asp-controller="Client" asp-route-id="@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

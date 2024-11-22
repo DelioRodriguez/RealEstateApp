@@ -12,5 +12,6 @@ public class PropertyListViewModel
     public int? Bathrooms { get; set; }
     public string? MainImageUrl { get; set; }
     public bool? IsAvailable { get; set; }
+    public bool IsFavorite { get; set; } = false;
     public PropertyFilterViewModel? Filter { get; set; }
 }

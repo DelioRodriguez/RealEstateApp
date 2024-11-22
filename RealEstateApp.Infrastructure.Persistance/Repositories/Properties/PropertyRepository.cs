@@ -35,7 +35,7 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    public async Task<IEnumerable<Property?>> SearchPropertiesAsync(PropertyFilterViewModel filter)
+    public async Task<IEnumerable<Property?>> SearchPropertiesAsync(PropertyFilterViewModel? filter)
     {
         var query = _context.Properties
             .Include(p => p.PropertyType)

@@ -41,4 +41,5 @@ public class AgentsController : Controller
     {
         return View(await _propertyService.GetPropertyDetailsAsync(id));
     }
+    
 }

@@ -25,11 +25,11 @@ public class PropertyService : Service<Property>, IPropertyService
     }
     
     
-    public async Task<IEnumerable<PropertyListViewModel>> GetAvailablePropertiesAsync()
+    public async Task<List<PropertyListViewModel>> GetAvailablePropertiesAsync()
     {
         var properties = await _propertyRepository.GetAvailablePropertiesAsync();
         
-        return _mapper.Map<IEnumerable<PropertyListViewModel>>(properties);
+        return _mapper.Map<List<PropertyListViewModel>>(properties);
     }
 
     public async Task<PropertyDetailViewModel> GetPropertyDetailsAsync(int id)
@@ -47,12 +47,12 @@ public class PropertyService : Service<Property>, IPropertyService
         return mapperProperty;
     }
 
-    public async Task<IEnumerable<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel filter)
+    public async Task<List<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel? filter)
     {
         var properties = await _propertyRepository.SearchPropertiesAsync(filter);
         
         
-        return _mapper.Map<IEnumerable<PropertyListViewModel>>(properties);
+        return _mapper.Map<List<PropertyListViewModel>>(properties);
     }
 
     public async Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId)

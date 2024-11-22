@@ -5,10 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Mapping;
-using RealEstateApp.Infrastructure.Identity.Account;
 using RealEstateApp.Infrastructure.Identity.Context;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Identity.Seeds;
+using RealEstateApp.Infrastructure.Identity.Services;
 
 namespace RealEstateApp.Infrastructure.Identity;
 

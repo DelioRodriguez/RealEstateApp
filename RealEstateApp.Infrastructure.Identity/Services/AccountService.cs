@@ -1,17 +1,14 @@
-﻿using System.Net.Mail;
-using System.Text.Encodings.Web;
+﻿using System.Text.Encodings.Web;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Interfaces.Services.Account;
-using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Shared.IService;
-using RealEstateApp.Infrastructure.Shared.Service;
 
-namespace RealEstateApp.Infrastructure.Identity.Account;
+namespace RealEstateApp.Infrastructure.Identity.Services;
 
 public class AccountService : IAccountService
 {
@@ -31,6 +28,8 @@ public class AccountService : IAccountService
         _httpContextAccessor = httpContextAccessor;
         _emailService = emailService;
     }
+    
+    
     public async Task<string> RegisterUserAsync(UserRegisterDTO userDto)
     {
         if (userDto.Password != userDto.ConfirmPassword)
@@ -55,6 +54,7 @@ public class AccountService : IAccountService
 
         return "Registration successful. Please login.";
     }
+    
 
     private string GenerateActivationLink(string email, string token)
     {
@@ -70,8 +70,9 @@ public class AccountService : IAccountService
         string subject = "Activa tu cuenta";
         string body = $"<h1>{subject}</h1><p>Click <a href='{activationLink}'>here</a> to activate your account.</p>";
         await _emailService.SendEmailAsync(email, subject, body);
-
     }
+    
+    
     public async Task<string> LoginUserAsync(UserLoginDTO userDTO)
     {
         var user = await _userManager.FindByEmailAsync(userDTO.Username) 
@@ -90,7 +91,8 @@ public class AccountService : IAccountService
         
         return "Login successful.";
     }
-
+    
+    
     public async Task<bool> ActivateUserAsync(string email, string token)
     {
     
@@ -101,6 +103,12 @@ public class AccountService : IAccountService
         var result = await _userManager.UpdateAsync(user);
 
         return result.Succeeded;
+    }
+    
+    
+    public async Task LogoutAsync()
+    {
+        await _signInManager.SignOutAsync();
     }
 
 }

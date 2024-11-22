@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Repositories.Favory;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Repositories.Properties;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Infrastructure.Persistance.Context;
 using RealEstateApp.Infrastructure.Persistance.Repositories;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Users;
 
@@ -18,6 +20,7 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {

@@ -7,8 +7,8 @@ namespace RealEstateApp.Application.Interfaces.Services.Properties;
 
 public interface IPropertyService : IService<Property>
 {
-    Task<IEnumerable<PropertyListViewModel>> GetAvailablePropertiesAsync();
+    Task<List<PropertyListViewModel>> GetAvailablePropertiesAsync();
     Task<PropertyDetailViewModel> GetPropertyDetailsAsync(int id);
-    Task<IEnumerable<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel filter);
+    Task<List<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel? filter);
     Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId);
 }

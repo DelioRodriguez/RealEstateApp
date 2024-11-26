@@ -3,12 +3,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Repositories.Favory;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
+using RealEstateApp.Application.Interfaces.Repositories.Improvements;
 using RealEstateApp.Application.Interfaces.Repositories.Properties;
+using RealEstateApp.Application.Interfaces.Repositories.PropertiesType;
+using RealEstateApp.Application.Interfaces.Repositories.SalesType;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Infrastructure.Persistance.Context;
 using RealEstateApp.Infrastructure.Persistance.Repositories;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Improvements;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
+using RealEstateApp.Infrastructure.Persistance.Repositories.PropertiesType;
+using RealEstateApp.Infrastructure.Persistance.Repositories.SalesType;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Users;
 
 namespace RealEstateApp.Infrastructure.Persistance
@@ -21,6 +27,9 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            services.AddScoped<ISaleTypeRepository, SaleTypeRepository>();
+            services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
+            services.AddScoped<IImprovementRepository, ImprovementRepository>();
 
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {

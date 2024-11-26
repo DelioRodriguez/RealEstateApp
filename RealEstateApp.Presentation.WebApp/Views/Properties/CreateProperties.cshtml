@@ -1,0 +1,70 @@
+﻿@model RealEstateApp.Application.ViewModels.Properties.PropertyCreateViewModel
+
+@{
+    ViewData["Title"] = "Crear Nueva Propiedad";
+}
+
+<title>Crear Nueva Propiedad</title>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Crear Nueva Propiedad</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Mensaje de error si faltan datos clave -->
+            <div class="alert alert-danger">
+                <strong>No es posible crear propiedades.</strong> Asegúrate de que existan tipos de propiedades, tipos de ventas y mejoras configuradas en el sistema.
+            </div>
+            <a href="#" class="btn btn-primary mb-4">Volver</a>
+
+            <form asp-action="CreateProperties" asp-controller="Properties" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="PropertyTypeId">Tipo de Propiedad</label>
+                    <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes" class="form-control"></select>
+                    <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="SaleTypeId">Tipo de Venta</label>
+                    <select asp-for="SaleTypeId" asp-items="Model.SaleTypes" class="form-control"></select>
+                    <span asp-validation-for="SaleTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Price">Precio</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Size">Tamaño</label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Rooms">Habitaciones</label>
+                    <input asp-for="Rooms" class="form-control" />
+                    <span asp-validation-for="Rooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Bathrooms">Baños</label>
+                    <input asp-for="Bathrooms" class="form-control" />
+                    <span asp-validation-for="Bathrooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Description">Descripción</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ImprovementIds">Mejoras</label>
+                    <select asp-for="ImprovementIds" asp-items="Model.Improvements" class="form-control" multiple></select>
+                    <span asp-validation-for="ImprovementIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Images">Imágenes</label>
+                    <input asp-for="Images" type="file" class="form-control" multiple />
+                    <span asp-validation-for="Images" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

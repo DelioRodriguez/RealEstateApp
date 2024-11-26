@@ -25,6 +25,16 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
             .ToListAsync())!;
     }
 
+    public async Task<List<Property?>> GetAllPropertiesByUserAsync(string userId)
+    {
+        return (await _context.Properties
+            .Include(p => p.PropertyType)
+            .Include(p => p.SaleType)
+            .Include(p => p.Images)
+            .Where(p => p.AgentId == userId)
+            .ToListAsync())!;
+    }
+
     public async Task<Property?> GetPropertyDetailsAsync(int id)
     {
         return await _context.Properties

@@ -30,7 +30,6 @@
 
     <ItemGroup>
       <Folder Include="Pages\" />
-      <Folder Include="Views\Agent\" />
       <Folder Include="wwwroot\uploads\" />
     </ItemGroup>
 

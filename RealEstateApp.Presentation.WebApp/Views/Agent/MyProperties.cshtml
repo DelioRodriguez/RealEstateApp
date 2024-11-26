@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
+
+@{
+    ViewData["Title"] = "Tus Propiedades";
+}
+
+<title>Tus Propiedades</title>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Tus Propiedades</h1>
+    
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>No tienes propiedades registradas.</strong>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var property in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @property.PropertyTypeName
+                            </h5>
+                            <p class="card-text">
+                                <strong>Código:</strong> @property.Code<br>
+                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                                <strong>Precio:</strong> @property.Price.ToString()<br>
+                                <strong>Habitaciones:</strong> @property.Rooms<br>
+                                <strong>Baños:</strong> @property.Bathrooms<br>
+                                <strong>Tamaño:</strong> @property.Size m²<br>
+                                <strong>Estado:</strong> 
+                                                         @if ((bool)!property.IsAvailable)
+                                                         {
+                                                             <span class="badge bg-danger ms-2">Vendida</span>
+                                                         }
+                                                         @if ((bool)property.IsAvailable)
+                                                         {
+                                                            <span class="badge bg-primary ms-2">Disponible</span> 
+                                                         }                           
+                            </p>
+                            <a asp-action="DetailsWithChat" asp-controller="Client" asp-route-id="@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

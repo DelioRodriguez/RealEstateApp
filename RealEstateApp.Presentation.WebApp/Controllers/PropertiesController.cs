@@ -18,9 +18,13 @@ public class PropertiesController : Controller
 
     public async Task<IActionResult> Index()
     {
-        if (User.Identity!.IsAuthenticated)
+        if (User.Identity!.IsAuthenticated && User.IsInRole("Client"))
         {
             return RedirectToAction("HomeClient", "Client");
+        }
+        else if (User.Identity.IsAuthenticated && User.IsInRole("Agent"))
+        {
+            return RedirectToAction("MyProperties", "Agent");
         }
         else
         {
@@ -81,5 +85,34 @@ public class PropertiesController : Controller
         await _favoriteService.GetFavoritePropertiesAsync(userId);
 
         return RedirectToAction("HomeClient", "Client");
+    }
+    
+    
+    public async Task<IActionResult> CreateProperties()
+    {
+        var viewModel = await _propertyService.GetCreatePropertyViewModelAsync();
+        return View(viewModel);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateProperties(PropertyCreateViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            model = await _propertyService.GetCreatePropertyViewModelAsync();
+            return View(model);
+        }
+
+        try
+        {
+            await _propertyService.AddPropertyAsync(model);
+            TempData["SuccessMessage"] = "Propiedad creada exitosamente.";
+            return RedirectToAction("MantenimientoPropiedades", "Agent");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, "Ocurrió un error al guardar la propiedad.");
+            return View(model);
+        }
     }
 }

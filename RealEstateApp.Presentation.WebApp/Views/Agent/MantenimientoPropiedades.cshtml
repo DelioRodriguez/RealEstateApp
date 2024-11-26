@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
+
+@{
+    ViewData["Title"] = "Mantenimiento de Propiedades";
+}
+
+<title>Mantenimiento de Propiedades</title>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Mantenimiento de Propiedades</h1>
+    
+    <!-- Botón para crear nueva propiedad -->
+    <div class="text-end mb-3">
+        <a asp-action="CreateProperties" asp-controller="Properties" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Crear Nueva Propiedad
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>No tienes propiedades registradas.</strong>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var property in Model.Where(p => p.IsAvailable))
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                        <div class="card-body">
+                            <h5 class="card-title">@property.PropertyTypeName</h5>
+                            <p class="card-text">
+                                <strong>Código:</strong> @property.Code<br>
+                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                                <strong>Precio:</strong> @property.Price.ToString()<br>
+                                <strong>Habitaciones:</strong> @property.Rooms<br>
+                                <strong>Baños:</strong> @property.Bathrooms<br>
+                                <strong>Tamaño:</strong> @property.Size m²<br>
+                                <strong>Estado:</strong>
+                                <span class="badge bg-primary">Disponible</span>
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <!-- Botón para editar -->
+                                <a asp-action="Edit" asp-controller="Properties" asp-route-id="@property.Id" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </a>
+                                <!-- Botón para eliminar -->
+                                <form asp-action="Delete" asp-controller="Properties" asp-route-id="@property.Id" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta propiedad?');">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+}
+</div>

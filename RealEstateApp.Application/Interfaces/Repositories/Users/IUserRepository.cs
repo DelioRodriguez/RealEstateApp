@@ -7,4 +7,10 @@ public interface IUserRepository
     Task<UserInfo> GetUserByIdAsync(string id);
     Task<IList<UserInfo>> GetUsersByRoleAsync(string roleName);
     Task<IEnumerable<UserInfo>> GetAgentsByNameAsync(string name);
+
+
+
+    #region Api
+    Task<bool> UpdateEmailConfirmedStatusAsync(string agentId, bool status);
+    #endregion
 }

@@ -12,7 +12,7 @@ namespace RealEstateApp.Presentation.Api5.Extensions
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
                     var url = $"/swagger/{description.GroupName}/swagger.json";
-                    var name = $"Restaurant Api - {description.GroupName.ToUpperInvariant()}";
+                    var name = $"ReaklEstateApp Api - {description.GroupName.ToUpperInvariant()}";
                     options.SwaggerEndpoint(url, name);
                 }
             });

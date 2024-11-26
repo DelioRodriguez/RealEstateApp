@@ -1,14 +1,20 @@
 ﻿using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Mapping;
+using RealEstateApp.Application.Settings;
 using RealEstateApp.Infrastructure.Identity.Account;
 using RealEstateApp.Infrastructure.Identity.Context;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Identity.Seeds;
+using RealEstateApp.Infrastructure.Shared.IService;
+using RealEstateApp.Infrastructure.Shared.Service;
 
 namespace RealEstateApp.Infrastructure.Identity;
 
@@ -49,10 +55,8 @@ public static class ServiceRegistration
             })
             .AddEntityFrameworkStores<IdentityContext>()
             .AddSignInManager<SignInManager<ApplicationUser>>()
-            .AddDefaultTokenProviders(); 
+            .AddDefaultTokenProviders();
 
-
-     
         services.Configure<DataProtectionTokenProviderOptions>(opt =>
         {
             opt.TokenLifespan = TimeSpan.FromSeconds(300);
@@ -64,15 +68,42 @@ public static class ServiceRegistration
             opt.LoginPath = "/User";
             opt.AccessDeniedPath = "/User/AccessDenied";
         });
-       
+
+        services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
+
+        var jwtSettings = configuration.GetSection("JWTSettings").Get<JWTSettings>();
+        var key = Encoding.UTF8.GetBytes(jwtSettings.Key);
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtSettings.Issuer,
+                ValidAudience = jwtSettings.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(key)
+            };
+        });
     }
 
     public static void AddIdentityService(this IServiceCollection services)
     {
+        services.AddScoped<IEmailService, EmailService>(); //
         services.AddScoped<IAccountService, AccountService>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddAutoMapper(typeof(GeneralProfile));
     }
+
     public static async Task RunIdentitySeeds(this IServiceProvider serviceProvider)
     {
         using (var scope = serviceProvider.CreateScope())

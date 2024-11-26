@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Infrastructure.Persistance.Context;
+using System.Linq.Expressions;
 
 namespace RealEstateApp.Infrastructure.Persistance.Repositories;
 
@@ -53,5 +54,10 @@ public class Repository<T> : IRepository<T> where T : class
     public IQueryable<T> Query()
     {
         return _dbSet.AsQueryable();
+    }
+
+    public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _dbSet.FirstOrDefaultAsync(predicate);
     }
 }

@@ -51,5 +51,11 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(p => p.ClientId)
             .OnDelete(DeleteBehavior.NoAction);
+
+
+        #region Property
+
+
+        #endregion
     }
 }

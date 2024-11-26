@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 
@@ -16,26 +17,12 @@ namespace RealEstateApp.Presentation.Api5.Extensions
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1.0",
-                    Title = "Restaurant API",
-                    Description = "Restaurant API",
+                    Title = "ReaklEstateApp API",
+                    Description = "ReaklEstateApp API",
                     Contact = new OpenApiContact
                     {
-                        Name = "Ivo Luis Rodriguez",
-                        Email = "20231197@itla.edu.do",
-                        Url = new Uri("https://www.itla.edu.do")
-                    }
-                });
-
-                // Ejemplo de la version 2
-                options.SwaggerDoc("v2", new OpenApiInfo
-                {
-                    Version = "v1.0",
-                    Title = "Restaurant API",
-                    Description = "Restaurant API",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Ivo Luis Rodriguez",
-                        Email = "20231197@itla.edu.do",
+                        Name = "ReaklEstateApp",
+                        Email = "trabajofinalp3@gmail.com",
                         Url = new Uri("https://www.itla.edu.do")
                     }
                 });
@@ -80,14 +67,14 @@ namespace RealEstateApp.Presentation.Api5.Extensions
                 config.ReportApiVersions = false;
                 config.ApiVersionReader = ApiVersionReader.Combine(
                     new QueryStringApiVersionReader("api-version"),
-                    new HeaderApiVersionReader("x-api-version") 
+                    new HeaderApiVersionReader("x-api-version")
                 );
             });
-            
+
             services.AddVersionedApiExplorer(options =>
             {
-                options.GroupNameFormat = "'v'VVV";  
-                options.SubstituteApiVersionInUrl = true; 
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
         }
     }

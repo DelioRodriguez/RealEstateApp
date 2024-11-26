@@ -70,4 +70,20 @@ public class UserRepository : IUserRepository
             AgentPhone = a.PhoneNumber
         }).ToList();
     }
+
+    public async Task<bool> UpdateEmailConfirmedStatusAsync(string agentId, bool status)
+    {
+        var user = await _userManager.FindByIdAsync(agentId);
+        if (user == null)
+        {
+            return false;
+        }
+
+        user.EmailConfirmed = status;
+
+        var result = await _userManager.UpdateAsync(user);
+
+        return result.Succeeded;
+    }
+
 }

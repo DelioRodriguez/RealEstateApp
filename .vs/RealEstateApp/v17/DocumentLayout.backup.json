@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\ReaklEstateApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05AAFFAD-017F-4535-BA63-C3CB6E0E11CA}|RealEstateApp.Presentation.Api\\RealEstateApp.Presentation.Api.csproj|c:\\reaklestateapp\\realestateapp.presentation.api\\controllers\\v1\\propertytypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05AAFFAD-017F-4535-BA63-C3CB6E0E11CA}|RealEstateApp.Presentation.Api\\RealEstateApp.Presentation.Api.csproj|solutionrelative:realestateapp.presentation.api\\controllers\\v1\\propertytypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|c:\\reaklestateapp\\realestateapp.application\\services\\api\\propertytypesapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|solutionrelative:realestateapp.application\\services\\api\\propertytypesapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|c:\\reaklestateapp\\realestateapp.application\\interfaces\\services\\api\\ipropertytypesapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|solutionrelative:realestateapp.application\\interfaces\\services\\api\\ipropertytypesapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2596BF3E-7DAB-4E43-916C-B36B1EDD9A0A}|RealEstateApp.Infrastructure.Persistance\\RealEstateApp.Infrastructure.Persistance.csproj|c:\\reaklestateapp\\realestateapp.infrastructure.persistance\\repositories\\api\\propertytypesapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2596BF3E-7DAB-4E43-916C-B36B1EDD9A0A}|RealEstateApp.Infrastructure.Persistance\\RealEstateApp.Infrastructure.Persistance.csproj|solutionrelative:realestateapp.infrastructure.persistance\\repositories\\api\\propertytypesapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|c:\\reaklestateapp\\realestateapp.application\\interfaces\\repositories\\api\\ipropertytypesapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|solutionrelative:realestateapp.application\\interfaces\\repositories\\api\\ipropertytypesapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IPropertyTypesApiRepository.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Interfaces\\Repositories\\Api\\IPropertyTypesApiRepository.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Application\\Interfaces\\Repositories\\Api\\IPropertyTypesApiRepository.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Interfaces\\Repositories\\Api\\IPropertyTypesApiRepository.cs",
+              "RelativeToolTip": "RealEstateApp.Application\\Interfaces\\Repositories\\Api\\IPropertyTypesApiRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T00:11:46.526Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PropertyTypesApiRepository.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Persistance\\Repositories\\Api\\PropertyTypesApiRepository.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Persistance\\Repositories\\Api\\PropertyTypesApiRepository.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Persistance\\Repositories\\Api\\PropertyTypesApiRepository.cs",
+              "RelativeToolTip": "RealEstateApp.Infrastructure.Persistance\\Repositories\\Api\\PropertyTypesApiRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T00:11:28.933Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPropertyTypesApiService.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Interfaces\\Services\\Api\\IPropertyTypesApiService.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Application\\Interfaces\\Services\\Api\\IPropertyTypesApiService.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Interfaces\\Services\\Api\\IPropertyTypesApiService.cs",
+              "RelativeToolTip": "RealEstateApp.Application\\Interfaces\\Services\\Api\\IPropertyTypesApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T00:12:08.657Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PropertyTypesApiService.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Services\\Api\\PropertyTypesApiService.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Application\\Services\\Api\\PropertyTypesApiService.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Services\\Api\\PropertyTypesApiService.cs",
+              "RelativeToolTip": "RealEstateApp.Application\\Services\\Api\\PropertyTypesApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T00:13:57.764Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PropertyTypesController.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.Api\\Controllers\\v1\\PropertyTypesController.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.Api\\Controllers\\v1\\PropertyTypesController.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.Api\\Controllers\\v1\\PropertyTypesController.cs",
+              "RelativeToolTip": "RealEstateApp.Presentation.Api\\Controllers\\v1\\PropertyTypesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T01:26:21.486Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

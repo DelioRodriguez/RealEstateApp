@@ -1,5 +1,6 @@
 ﻿using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Services.Generic;
+using System.Linq.Expressions;
 
 namespace RealEstateApp.Application.Services.Generic;
 
@@ -35,5 +36,10 @@ public class Service<T> : IService<T> where T : class
     public async Task<int> DeleteAsync(int id)
     {
         return await _repository.DeleteAsync(id);
+    }
+
+    public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _repository.FindAsync(predicate);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using RealEstateApp.Application.Dtos.Agents;
+using RealEstateApp.Application.Dtos.Improvements;
 using RealEstateApp.Application.Dtos.Properties;
+using RealEstateApp.Application.Dtos.PropertyTypes;
+using RealEstateApp.Application.Dtos.SaleType;
 using RealEstateApp.Application.Dtos.Users;
 using RealEstateApp.Application.ViewModels.Properties;
 using RealEstateApp.Application.ViewModels.Users;
@@ -57,6 +60,29 @@ public class GeneralProfile : Profile
 
         #endregion
 
+        #region PopertyType
+
+        CreateMap<PropertyType, PropertyTypeDto>().ReverseMap();
+        CreateMap<PropertyType, PropertyTypeCreateDto>().ReverseMap();
+        CreateMap<PropertyType, PropertyTypeUpdateDto>().ReverseMap();
+
+        #endregion
+
+        #region SaleType
+
+        CreateMap<SaleType, SaleTypeDto>().ReverseMap();
+        CreateMap<SaleType, SaleTypeCreateDto>().ReverseMap();
+        CreateMap<SaleType, SaleTypeUpdateDto>().ReverseMap();
+
+        #endregion
+
+        #region Improvements
+
+        CreateMap<Improvement, ImprovementDto>().ReverseMap();
+        CreateMap<Improvement, ImprovementCreateDto>().ReverseMap();
+        CreateMap<Improvement, ImprovementUpdateDto>().ReverseMap();
+
+        #endregion
         #endregion
     }
 }

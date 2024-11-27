@@ -26,6 +26,8 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<IPropertiesApiRepository, PropertiesApiRepository>();
             services.AddScoped<IAgentApiRepository, AgentApiRepository>();
             services.AddScoped<IPropertyTypesApiRepository, PropertyTypesApiRepository>();
+            services.AddScoped<ISaleTypeApiRepository, SaleTypeApiRepository>();
+            services.AddScoped<IImprovementsApiRepository, ImprovementsApiRepository>();
 
             #endregion
 

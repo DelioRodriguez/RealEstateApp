@@ -25,6 +25,8 @@ namespace RealEstateApp.Application
             services.AddScoped<IPropertiesApiService, PropertiesApiService>();
             services.AddScoped<IAgentApiService, AgentService>();
             services.AddScoped<IPropertyTypesApiService, PropertyTypesApiService>();
+            services.AddScoped<ISaleTypeApiService, SaleTypeApiService>();
+            services.AddScoped<IImprovementsApiService, ImprovementsApiService>();
 
             #endregion
 

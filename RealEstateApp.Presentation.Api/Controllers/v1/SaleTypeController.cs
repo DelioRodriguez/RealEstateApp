@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstateApp.Application.Dtos.PropertyTypes;
+using RealEstateApp.Application.Dtos.SaleType;
 using RealEstateApp.Application.Interfaces.Services.Api;
 using RealEstateApp.Domain.Entities;
 
@@ -10,33 +10,33 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    public class PropertyTypesController : ControllerBase
+    public class SaleTypeController : ControllerBase
     {
-        private readonly IPropertyTypesApiService _service;
+        private readonly ISaleTypeApiService _service;
         private readonly IMapper _mapper;
 
-        public PropertyTypesController(IPropertyTypesApiService service, IMapper mapper)
+        public SaleTypeController(ISaleTypeApiService saleTypeService, IMapper mapper)
         {
-            _service = service;
+            _service = saleTypeService;
             _mapper = mapper;
         }
 
         [HttpPost("Create")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([FromBody] PropertyTypeCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] SaleTypeCreateDto dto)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var entity = _mapper.Map<PropertyType>(dto);
+                var entity = _mapper.Map<SaleType>(dto);
                 var result = await _service.AddAsync(entity);
 
                 if (result > 0)
                     return StatusCode(201);
 
-                return StatusCode(500, "Error interno del servidor.");
+                return StatusCode(500, $"Error interno del servidor.");
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpPut("Update/{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(int id, [FromBody] PropertyTypeUpdateDto dto)
+        public async Task<IActionResult> Update(int id, [FromBody] SaleTypeUpdateDto dto)
         {
             try
             {
@@ -54,8 +54,9 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
                     return BadRequest(ModelState);
 
                 var entity = await _service.GetByIdAsync(id);
+
                 if (entity == null)
-                    return NotFound($"El tipo de propiedad con Id: {id}, no existe.");
+                    return NotFound($"El tipo de venta con ese id: {id}, no existe");
 
                 entity.Name = dto.Name;
                 entity.Description = dto.Description;
@@ -65,7 +66,7 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
                 if (result > 0)
                     return Ok(dto);
 
-                return StatusCode(500, "Error interno del servidor.");
+                return StatusCode(500, "Error interno.");
             }
             catch (Exception ex)
             {
@@ -84,14 +85,14 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
                 if (!entities.Any())
                     return NoContent();
 
-                var dtos = _mapper.Map<IEnumerable<PropertyTypeDto>>(entities);
+                var dtos = _mapper.Map<IEnumerable<SaleTypeDto>>(entities);
+
                 return Ok(dtos);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
-
         }
 
         [HttpGet("{id}")]
@@ -105,19 +106,20 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
                 if (entity == null)
                     return NoContent();
 
-                var dto = _mapper.Map<PropertyTypeDto>(entity);
+                var dto = _mapper.Map<SaleTypeDto>(entity);
+
                 return Ok(dto);
+
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error: {ex.Message}");
             }
-
         }
 
         [HttpDelete("Delete/{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteById(int id)
         {
             try
             {
@@ -126,7 +128,8 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
                 if (result > 0)
                     return NoContent();
 
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, $"Error interno del servidor.");
+
             }
             catch (Exception ex)
             {

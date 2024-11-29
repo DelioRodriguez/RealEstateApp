@@ -51,9 +51,10 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
             .Include(p => p.PropertyType)
             .Include(p => p.SaleType)
             .Include(p => p.Images)
+            .Where(p => p.IsAvailable)
             .AsQueryable();
 
-        if (!string.IsNullOrEmpty(filter.Code))
+        if (!string.IsNullOrEmpty(filter!.Code))
         {
             query = query.Where(p => p.Code == filter.Code);
         }

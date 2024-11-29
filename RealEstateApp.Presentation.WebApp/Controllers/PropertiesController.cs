@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RealEstateApp.Application.Exceptions;
 using RealEstateApp.Application.Interfaces.Services.Favory;
+using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.ViewModels.Properties;
 
@@ -9,11 +11,13 @@ public class PropertiesController : Controller
 {
     private readonly IPropertyService  _propertyService;
     private readonly IFavoriteService  _favoriteService;
+    private readonly IImprovementService _improvementService;
 
-    public PropertiesController(IPropertyService propertyService, IFavoriteService favoriteService)
+    public PropertiesController(IPropertyService propertyService, IFavoriteService favoriteService, IImprovementService improvementService)
     {
         this._propertyService = propertyService;
         _favoriteService = favoriteService;
+        _improvementService = improvementService;
     }
 
     public async Task<IActionResult> Index()
@@ -51,6 +55,8 @@ public class PropertiesController : Controller
     public async Task<IActionResult> Details(int id)
     {
         var property = await _propertyService.GetPropertyDetailsAsync(id);
+
+        property.Improvements = await _improvementService.GetImprovementsByPropertyIdAsync(id);
 
         return View(property); 
     }
@@ -97,22 +103,51 @@ public class PropertiesController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateProperties(PropertyCreateViewModel model)
     {
-        if (!ModelState.IsValid)
-        {
-            model = await _propertyService.GetCreatePropertyViewModelAsync();
-            return View(model);
-        }
-
+        model.AgentId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        
         try
         {
             await _propertyService.AddPropertyAsync(model);
             TempData["SuccessMessage"] = "Propiedad creada exitosamente.";
             return RedirectToAction("MantenimientoPropiedades", "Agent");
         }
+        catch (ValidationException ex)
+        {
+            TempData["ErrorMessage"] = ex.Message;
+            return RedirectToAction("CreateProperties");
+        }
+        catch (DuplicateException ex)
+        {
+            TempData["ErrorMessage"] = ex.Message;
+            return RedirectToAction("CreateProperties");
+        }
         catch (Exception ex)
         {
-            ModelState.AddModelError(string.Empty, "Ocurrió un error al guardar la propiedad.");
-            return View(model);
+            TempData["ErrorMessage"] = ex.Message;
+            return RedirectToAction("CreateProperties");
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var result = await _propertyService.DeletePropertyAsync(id);
+        
+        if (result == 0)
+        {
+            TempData["ErrorMessage"] = "No se pudo eliminar el propuesto.";
+            return View("CreateProperties");
+        }
+        
+        TempData["SuccessMessage"] = "Propuesto eliminado exitosamente.";
+        return RedirectToAction("MantenimientoPropiedades", "Agent");
+    }
+    
+    
+    public IActionResult Edit(int id)
+    {
+        var property = _propertyService.GetByIdAsync(id); 
+    
+        return View();
     }
 }

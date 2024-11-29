@@ -1,6 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Exceptions;
+using RealEstateApp.Application.Helpers;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Repositories.Improvements;
 using RealEstateApp.Application.Interfaces.Repositories.Properties;
@@ -34,7 +38,6 @@ public class PropertyService : Service<Property>, IPropertyService
         _improvementRepository = improvementRepository;
         _saleTypeRepository = saleTypeRepository;
     }
-    
     
     public async Task<List<PropertyListViewModel>> GetAvailablePropertiesAsync()
     {
@@ -113,49 +116,73 @@ public class PropertyService : Service<Property>, IPropertyService
 
     public async Task AddPropertyAsync(PropertyCreateViewModel model)
     {
-        var property = new Property
+        try
         {
-            PropertyTypeId = model.PropertyTypeId,
-            SaleTypeId = model.SaleTypeId,
-            Price = model.Price,
-            Size = model.Size,
-            Rooms = model.Rooms,
-            Bathrooms = model.Bathrooms,
-            Description = model.Description,
-            Improvements = model.ImprovementIds.Select(id => new Improvement { Id = id }).ToList(),
-            Images = await SaveImagesAsync(model.Images)
-        };
+            if (model == null)
+                throw new ValidationException("El modelo proporcionado es nulo.");
 
-        await AddAsync(property);
-    }
+            if (model.ImprovementIds == null || !model.ImprovementIds.Any())
+                throw new ValidationException("Debe proporcionar al menos una mejora asociada.");
 
-    private async Task<List<PropertyImage>> SaveImagesAsync(IEnumerable<IFormFile> images)
-    {
-        var propertyImages = new List<PropertyImage>();
-        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/properties");
-        
-        if (!Directory.Exists(uploadPath))
-        {
-            Directory.CreateDirectory(uploadPath);
-        }
-
-        foreach (var image in images)
-        {
-            var fileName = $"{Guid.NewGuid()}_{image.FileName}";
-            var filePath = Path.Combine(uploadPath, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await image.CopyToAsync(stream);
-            }
+            if (model.AgentId == null)
+                throw new ValidationException("El ID del agente es obligatorio.");
             
-            propertyImages.Add(new PropertyImage
+            
+            ICollection<Improvement> improvements = new List<Improvement>();
+            foreach (var id in model.ImprovementIds)
             {
-                ImageUrl = $"/images/properties/{fileName}"
-            });
-        }
+                var improvement = await _improvementRepository.GetByIdAsync(id);
+                if (improvement != null)
+                {
+                    improvements.Add(improvement);
+                }
+                else
+                {
+                    throw new ValidationException($"La mejora con ID {id} no existe.");
+                }
+            }
 
-        return propertyImages;
+            var property = new Property
+            {
+                PropertyTypeId = model.PropertyTypeId,
+                AgentId = model.AgentId!,
+                Code = Guid.NewGuid().ToString("N").Substring(0, 6).ToUpper(),
+                SaleTypeId = model.SaleTypeId,
+                Price = model.Price,
+                Size = model.Size,
+                Rooms = model.Rooms,
+                Bathrooms = model.Bathrooms,
+                Description = model.Description,
+                Improvements = improvements,
+                Images = await FileHelper.SaveImagesAsync(model.Images, "images/properties"),
+            };
+
+            await AddAsync(property);
+        }
+        catch (ValidationException)
+        {
+            throw;
+        }
+        catch (DuplicateException)
+        {
+            throw;
+        }
+        catch (Exception e)
+        {
+            throw new DatabaseOperationException($"Se produjo un error al agregar una nueva propiedad: {e.Message}");
+        }
+    }
+    
+    
+    public Task<bool> UpdatePropertyAsync(int id, PropertyUpdateViewModel updateDto)
+    {
+        return null;
     }
 
+
+
+    public async Task<int> DeletePropertyAsync(int id)
+    {
+        return await DeleteAsync(id);
+    }
 }

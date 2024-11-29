@@ -35,6 +35,21 @@
                 <li><strong>Baños:</strong> @Model.Bathrooms</li>
                 <li><strong>Tamaño:</strong> @Model.Size m²</li>
                 <li><strong>Descripción:</strong> @Model.Description</li>
+                <li><strong>Mejoras:</strong>
+                    @if (Model.Improvements.Any())
+                    {
+                        <ul>
+                            @foreach (var improvement in Model.Improvements)
+                            {
+                                <li>@improvement.Name</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No se han registrado mejoras.</span>
+                    }
+                </li>
             </ul>
 
             <!-- Agente Inmobiliario -->

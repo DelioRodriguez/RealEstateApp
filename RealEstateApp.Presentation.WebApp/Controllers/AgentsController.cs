@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.ViewModels.Users;
@@ -10,11 +11,13 @@ public class AgentsController : Controller
 {
     private readonly IUserService _userService;
     private readonly IPropertyService _propertyService;
+    private readonly IImprovementService _improvementService;
 
-    public AgentsController(IUserService userService, IPropertyService propertyService)
+    public AgentsController(IUserService userService, IPropertyService propertyService, IImprovementService improvementService)
     {
         _userService = userService;
         _propertyService = propertyService;
+        _improvementService = improvementService;
     }
 
     public async Task<IActionResult> Agents(string searchName)
@@ -39,7 +42,10 @@ public class AgentsController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        return View(await _propertyService.GetPropertyDetailsAsync(id));
+        var property = await _propertyService.GetPropertyDetailsAsync(id);
+        property.Improvements = await _improvementService.GetImprovementsByPropertyIdAsync(id);
+        
+        return View(property);
     }
     
 }

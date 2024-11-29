@@ -26,7 +26,7 @@ public class Property
     public decimal Price { get; set; }
 
     [Required]
-    public double Size { get; set; } 
+    public double Size { get; set; }
 
     [Required]
     public int Rooms { get; set; }
@@ -42,9 +42,9 @@ public class Property
     [Required]
     public string AgentId { get; set; }
 
-    public ICollection<Improvement> Improvements { get; set; }
+    public ICollection<Improvement>? Improvements { get; set; }
 
-    public ICollection<Offer> Offers { get; set; }
+    public ICollection<Offer>? Offers { get; set; }
 
-    public ICollection<PropertyImage> Images { get; set; }
+    public ICollection<PropertyImage>? Images { get; set; }
 }

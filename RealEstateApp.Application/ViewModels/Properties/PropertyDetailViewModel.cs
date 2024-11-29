@@ -1,4 +1,5 @@
-﻿using RealEstateApp.Application.ViewModels.Users;
+﻿using RealEstateApp.Application.ViewModels.Improvements;
+using RealEstateApp.Application.ViewModels.Users;
 
 namespace RealEstateApp.Application.ViewModels.Properties;
 
@@ -13,7 +14,7 @@ public class PropertyDetailViewModel
     public int Bathrooms { get; set; }
     public string Description { get; set; }
     public List<string> ImageUrls { get; set; }
-    public List<string> Improvements { get; set; }
+    public List<ImprovementViewModel> Improvements { get; set; }
     public string? AgentId { get; set; }
     public string? AgentName { get; set; }
     public string? AgentPhone { get; set; }

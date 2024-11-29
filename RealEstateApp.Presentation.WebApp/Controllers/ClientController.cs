@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.Favory;
+using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.ViewModels.Properties;
@@ -13,12 +14,14 @@ public class ClientController : Controller
     private readonly IPropertyService  _propertyService;
     private readonly IFavoriteService  _favoriteService;
     private readonly IUserService  _userService;
+    private readonly IImprovementService _improvementService;
 
-    public ClientController(IPropertyService propertyService, IFavoriteService favoriteService, IUserService userService)
+    public ClientController(IPropertyService propertyService, IFavoriteService favoriteService, IUserService userService, IImprovementService improvementService)
     {
         _propertyService = propertyService;
         _favoriteService = favoriteService;
         _userService = userService;
+        _improvementService = improvementService;
     }
     
     public async Task<IActionResult> AgentsByClient(string searchName)
@@ -43,7 +46,10 @@ public class ClientController : Controller
 
     public async Task<IActionResult> DetailsWithChat(int id)
     {
-        return View(await _propertyService.GetPropertyDetailsAsync(id));
+        var property = await _propertyService.GetPropertyDetailsAsync(id);
+        property.Improvements = await _improvementService.GetImprovementsByPropertyIdAsync(id);
+        
+        return View(property);
     }
     
     public async Task<IActionResult> HomeClient()

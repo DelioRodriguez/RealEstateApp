@@ -75,6 +75,7 @@ public class AccountController : Controller
             TempData["SuccessMessage"] = result;
             return RedirectToAction("Index", "Properties");
         }
+        
         TempData["ErrorMessage"] = result;
         return View(userDto);
     }

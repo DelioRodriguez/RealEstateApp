@@ -1,0 +1,36 @@
+﻿using Microsoft.AspNetCore.Http;
+using RealEstateApp.Domain.Entities;
+
+namespace RealEstateApp.Application.Helpers;
+
+public static class FileHelper
+{
+    public static async Task<List<PropertyImage>> SaveImagesAsync(IEnumerable<IFormFile> images, string folderPath)
+    {
+        var propertyImages = new List<PropertyImage>();
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderPath);
+        
+        if (!Directory.Exists(uploadPath))
+        {
+            Directory.CreateDirectory(uploadPath);
+        }
+
+        foreach (var image in images)
+        {
+            var fileName = $"{Guid.NewGuid()}_{image.FileName}";
+            var filePath = Path.Combine(uploadPath, fileName);
+            
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await image.CopyToAsync(stream);
+            }
+            
+            propertyImages.Add(new PropertyImage
+            {
+                ImageUrl = $"/{folderPath}/{fileName}"
+            });
+        }
+
+        return propertyImages;
+    }
+}

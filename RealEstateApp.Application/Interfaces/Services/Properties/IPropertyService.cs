@@ -14,4 +14,5 @@ public interface IPropertyService : IService<Property>
     Task<List<PropertyListViewModel>> SearchPropertiesAsync(PropertyFilterViewModel? filter);
     Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId);
     Task AddPropertyAsync(PropertyCreateViewModel property);
+    Task<int> DeletePropertyAsync(int id);
 }

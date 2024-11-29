@@ -1,4 +1,6 @@
-﻿namespace RealEstateApp.Application.ViewModels.Properties;
+﻿using RealEstateApp.Application.ViewModels.Improvements;
+
+namespace RealEstateApp.Application.ViewModels.Properties;
 
 public class PropertyListViewModel
 {
@@ -14,4 +16,5 @@ public class PropertyListViewModel
     public bool IsAvailable { get; set; }
     public bool IsFavorite { get; set; } = false;
     public PropertyFilterViewModel? Filter { get; set; }
+    public IEnumerable<ImprovementViewModel>? Improvements { get; set; }
 }

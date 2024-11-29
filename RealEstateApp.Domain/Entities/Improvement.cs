@@ -14,5 +14,5 @@ public class Improvement
     [MaxLength(200)]
     public string Description { get; set; }
     
-    ICollection<Property> Properties { get; set; }
+    public ICollection<Property> Properties { get; set; }
 }

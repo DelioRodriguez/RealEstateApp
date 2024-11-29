@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Repositories.Api;
+using RealEstateApp.Application.Interfaces.Repositories.Favory;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Repositories.Improvements;
 using RealEstateApp.Application.Interfaces.Repositories.Properties;
@@ -10,6 +12,8 @@ using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Infrastructure.Persistance.Context;
 using RealEstateApp.Infrastructure.Persistance.Repositories;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Api;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Improvements;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
 using RealEstateApp.Infrastructure.Persistance.Repositories.PropertiesType;
 using RealEstateApp.Infrastructure.Persistance.Repositories.SalesType;

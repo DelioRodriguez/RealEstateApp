@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Services.Api;
+using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Generic;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;

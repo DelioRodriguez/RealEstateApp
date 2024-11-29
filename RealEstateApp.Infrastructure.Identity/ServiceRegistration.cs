@@ -9,10 +9,12 @@ using Microsoft.IdentityModel.Tokens;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Mapping;
 using RealEstateApp.Application.Settings;
-using RealEstateApp.Infrastructure.Identity.Account;
 using RealEstateApp.Infrastructure.Identity.Context;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Identity.Seeds;
+using RealEstateApp.Infrastructure.Identity.Services;
+using RealEstateApp.Infrastructure.Shared.IService;
+using RealEstateApp.Infrastructure.Shared.Service;
 
 namespace RealEstateApp.Infrastructure.Identity;
 

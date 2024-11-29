@@ -1,4 +1,7 @@
-﻿using System.Net.Mail;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Text;
 using System.Text.Encodings.Web;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +12,7 @@ using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.ApiAccount;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Interfaces.Services.Users;
+using RealEstateApp.Application.Settings;
 using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
 using RealEstateApp.Infrastructure.Shared.IService;

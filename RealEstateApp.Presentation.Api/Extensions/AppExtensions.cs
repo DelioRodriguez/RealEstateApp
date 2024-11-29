@@ -1,19 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-
+﻿
 namespace RealEstateApp.Presentation.Api5.Extensions
 {
     public static class AppExtensions
     {
-        public static void UseSwaggerExtension(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
+        public static void UseSwaggerExtension(this IApplicationBuilder app, IEndpointRouteBuilder routeBuilder)
         {
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                foreach (var description in provider.ApiVersionDescriptions)
+                var versionDescriptions = routeBuilder.DescribeApiVersions();
+
+                if (versionDescriptions != null && versionDescriptions.Any())
                 {
-                    var url = $"/swagger/{description.GroupName}/swagger.json";
-                    var name = $"Restaurant Api - {description.GroupName.ToUpperInvariant()}";
-                    options.SwaggerEndpoint(url, name);
+                    foreach (var apiVersion in versionDescriptions)
+                    {
+                        var url = $"/swagger/{apiVersion.GroupName}/swagger.json";
+                        var name = $"ReaklEstateApp Api - {apiVersion.GroupName.ToUpperInvariant()}";
+                        options.SwaggerEndpoint(url, name);
+                    }
                 }
             });
         }

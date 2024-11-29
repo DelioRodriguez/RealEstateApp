@@ -1,30 +1,26 @@
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using RealEstateApp.Application;
+using Asp.Versioning.ApiExplorer;
 using RealEstateApp.Infrastructure.Identity;
-using RealEstateApp.Infrastructure.Persistance;
 using RealEstateApp.Presentation.Api5.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddIdentityInfrastructure(builder.Configuration);
-builder.Services.AddContextInfrastructure(builder.Configuration);
-builder.Services.AddApplicationService();
+// Registrar servicios de infraes y app
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", corsPolicyBuilder =>
-        corsPolicyBuilder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-});
+// Conf de JWT
+builder.Services.AddAuthenticationExtension(builder.Configuration);
 
-// Add services to the container.
-builder.Services.AddIdentityInfrastructure(builder.Configuration);
+// Conf de CORS
+builder.Services.AddCorsExtension();
 
-builder.Services.AddControllers();
-
+// Servicios de Swagger
 builder.Services.AddSwaggerExtension();
-builder.Services.AddApiVersionExtension();
+
+// Conf de versión de la API
+builder.Services.AddApiVersioningExtension();
+
+// Otros servicios
+builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDistributedMemoryCache();
@@ -32,29 +28,47 @@ builder.Services.AddSession();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Iniciar usuarios
 await app.Services.RunIdentitySeeds();
 
 app.UseRouting();
-
 app.UseHttpsRedirection();
 
+// Conf de CORS
 app.UseCors("AllowAll");
 
-var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-app.UseSwaggerExtension(provider);
-
-app.UseHealthChecks("/health");
+// Autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHttpsRedirection();
 
+// Manejo de errores
+app.UseStatusCodePages(context =>
+{
+    if (context.HttpContext.Response.StatusCode == StatusCodes.Status401Unauthorized)
+    {
+        return context.HttpContext.Response.WriteAsync("No estas autorizado para acceder a este recurso.");
+    }
+
+    if (context.HttpContext.Response.StatusCode == StatusCodes.Status403Forbidden)
+    {
+        return context.HttpContext.Response.WriteAsync("Acceso denegado.");
+    }
+
+    return Task.CompletedTask;
+});
+
+// Confi de Swagger UI con soporte para versiones
+var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+app.UseSwaggerExtension(app);
+
+app.UseHealthChecks("/health");
 
 app.MapControllers();
 

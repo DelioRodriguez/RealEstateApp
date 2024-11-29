@@ -4,5 +4,6 @@ public enum Role
 {
     Client,
     Agent,
-    Admin
+    Admin,
+    Developer
 }

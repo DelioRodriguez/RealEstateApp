@@ -8,7 +8,7 @@ public class IdentitySeeder
 {
     public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-        var roles = new[] { Role.Admin.ToString(), Role.Client.ToString(), Role.Agent.ToString() };
+        var roles = new[] { Role.Admin.ToString(), Role.Client.ToString(), Role.Agent.ToString(), Role.Developer.ToString() };
 
         foreach (var role in roles)
         {
@@ -56,6 +56,27 @@ public class IdentitySeeder
 
             await userManager.CreateAsync(agentUser, "Agent12345!");
             await userManager.AddToRoleAsync(agentUser, Role.Agent.ToString());
+        }
+        
+        var DeveloperEmail = "Developer@email.com";
+        var DeveloperUser = await userManager.FindByEmailAsync(DeveloperEmail);
+        
+        if (DeveloperUser == null)
+        {
+            DeveloperUser = new ApplicationUser
+            {
+                ImagenPath = "https://superlabs.co/assets/img/innerimg/frontend-developer.jpg",
+                FirstName = "Developer",
+                LastName = "BackEnd",
+                PhoneNumber = "8290000000",
+                UserName = "Developer",
+                Email = DeveloperEmail,
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true
+            };
+
+            await userManager.CreateAsync(DeveloperUser, "Developer123.@");
+            await userManager.AddToRoleAsync(DeveloperUser, Role.Developer.ToString());
         }
     }
 }

@@ -52,11 +52,5 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(p => p.ClientId)
             .OnDelete(DeleteBehavior.NoAction);
-        
-        modelBuilder.Entity<Favorite>()
-            .HasOne<ApplicationUser>()
-            .WithMany()
-            .HasForeignKey(p => p.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

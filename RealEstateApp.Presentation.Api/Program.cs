@@ -1,63 +1,26 @@
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.IdentityModel.Tokens;
-using RealEstateApp.Application;
+using Asp.Versioning.ApiExplorer;
 using RealEstateApp.Infrastructure.Identity;
-using RealEstateApp.Infrastructure.Persistance;
 using RealEstateApp.Presentation.Api5.Extensions;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Conf JWT
-var jwtSettings = builder.Configuration.GetSection("JWTSettings");
-var secretKey = jwtSettings.GetValue<string>("Key");
+// Registrar servicios de infraes y app
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
-// Conf de aut JWT
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = "JwtBearer";
-    options.DefaultChallengeScheme = "JwtBearer";
-})
-.AddJwtBearer("JwtBearer", options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings.GetValue<string>("Issuer"),
-        ValidAudience = jwtSettings.GetValue<string>("Audience"),
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
-        ClockSkew = TimeSpan.Zero
-    };
-});
-
-// Registrar servicios de infraestructura y app
-builder.Services.AddIdentityService();
-builder.Services.AddIdentityInfrastructure(builder.Configuration);
-builder.Services.AddContextInfrastructure(builder.Configuration);
-builder.Services.AddApplicationService();
+// Conf de JWT
+builder.Services.AddAuthenticationExtension(builder.Configuration);
 
 // Conf de CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", corsPolicyBuilder =>
-        corsPolicyBuilder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-});
+builder.Services.AddCorsExtension();
 
-// Servicios
-builder.Services.AddControllers();
-
-// Confi de Swagger
+// Servicios de Swagger
 builder.Services.AddSwaggerExtension();
 
-// Conf de ver de API en Swagger
-builder.Services.AddApiVersionExtension();
+// Conf de versión de la API
+builder.Services.AddApiVersioningExtension();
 
-// Agregar otros servicios como health checks, etc.
+// Otros servicios
+builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDistributedMemoryCache();
@@ -65,23 +28,23 @@ builder.Services.AddSession();
 
 var app = builder.Build();
 
-// Conf del middleware
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Iniciar Usuarios
+// Iniciar usuarios
 await app.Services.RunIdentitySeeds();
 
 app.UseRouting();
 app.UseHttpsRedirection();
 
-// Confi de CORS
+// Conf de CORS
 app.UseCors("AllowAll");
 
-// Confi de aut y auto
+// Autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -90,7 +53,7 @@ app.UseStatusCodePages(context =>
 {
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status401Unauthorized)
     {
-        return context.HttpContext.Response.WriteAsync("No estás autorizado para acceder a este recurso.");
+        return context.HttpContext.Response.WriteAsync("No estas autorizado para acceder a este recurso.");
     }
 
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status403Forbidden)
@@ -103,7 +66,7 @@ app.UseStatusCodePages(context =>
 
 // Confi de Swagger UI con soporte para versiones
 var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-app.UseSwaggerExtension(provider);
+app.UseSwaggerExtension(app);
 
 app.UseHealthChecks("/health");
 

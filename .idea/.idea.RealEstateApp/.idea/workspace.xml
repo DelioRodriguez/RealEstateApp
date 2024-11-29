@@ -12,25 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Improvements/ImprovementCreateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Improvements/ImprovementDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Improvements/ImprovementUpdateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/PropertyTypes/PropertyTypeCreateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/PropertyTypes/PropertyTypeDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/PropertyTypes/PropertyTypeUpdateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/SaleType/SaleTypeCreateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/SaleType/SaleTypeDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/SaleType/SaleTypeUpdateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/Api/IImprovementsApiRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/Api/ISaleTypeApiRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/Api/IImprovementsApiService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/Api/ISaleTypeApiService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Api/ImprovementsApiService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Api/SaleTypeApiService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Api/ImprovementsApiRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Api/SaleTypeApiRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/ImprovementsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/SaleTypeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/3c71c538-c060-4513-87d8-6dc7446c4fe8.vsidx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" afterDir="false" />
@@ -40,13 +22,19 @@
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.backup.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/ApiAccount/LoginRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/ApiAccount/LoginRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/RealEstateApp.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/RealEstateApp.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/AgentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/AgentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/ImprovementsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/ImprovementsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/PropertiesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/PropertiesController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/PropertyTypesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/PropertyTypesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/SaleTypeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Controllers/v1/SaleTypeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Extensions/AppExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Extensions/AppExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Extensions/ServiceExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Extensions/ServiceExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +88,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.RealEstateApp.Presentation.Api: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.RealEstateApp.Presentation.WebApp: http">
     <configuration name="RealEstateApp.Presentation.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -192,7 +180,11 @@
       <workItem from="1732562515851" duration="90000" />
       <workItem from="1732575255056" duration="1411000" />
       <workItem from="1732584337264" duration="1069000" />
-      <workItem from="1732686918171" duration="762000" />
+      <workItem from="1732686918171" duration="1794000" />
+      <workItem from="1732849002762" duration="216000" />
+      <workItem from="1732853472571" duration="273000" />
+      <workItem from="1732854165836" duration="120000" />
+      <workItem from="1732863880626" duration="116000" />
     </task>
     <task id="LOCAL-00001" summary="Login y register, Controlador de propiedades, controlador de agentes Listos.">
       <option name="closed" value="true" />
@@ -202,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732585180496</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mantenimiendo de tipo de propiedades, tipos de ventas, Mant de mejoras Listos.">
+      <option name="closed" value="true" />
+      <created>1732687890350</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732687890350</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +214,7 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Login y register, Controlador de propiedades, controlador de agentes Listos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Login y register, Controlador de propiedades, controlador de agentes Listos." />
+    <MESSAGE value="Mantenimiendo de tipo de propiedades, tipos de ventas, Mant de mejoras Listos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mantenimiendo de tipo de propiedades, tipos de ventas, Mant de mejoras Listos." />
   </component>
 </project>

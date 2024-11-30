@@ -5,7 +5,7 @@ using RealEstateApp.Presentation.Api5.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Registrar servicios de infraes y app
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddIdentityInfrastructureApi(builder.Configuration);
 
 // Conf de JWT
 builder.Services.AddAuthenticationExtension(builder.Configuration);
@@ -36,7 +36,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Iniciar usuarios
-await app.Services.RunIdentitySeeds();
+await app.Services.RunIdentitySeedsApi();
 
 app.UseRouting();
 app.UseHttpsRedirection();

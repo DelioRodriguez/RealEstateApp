@@ -1,0 +1,34 @@
+@model RealEstateApp.Application.Dtos.Dashboard.DashboardDTO
+
+<div class="container mt-5">
+    <h1 class="text-center">Dashboard del Administrador</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Indicadores</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Propiedades Disponibles: @Model.AvailableProperties</li>
+                <li class="list-group-item">Propiedades Vendidas: @Model.SoldProperties</li>
+                <li class="list-group-item">Agentes Activos: @Model.ActiveAgents</li>
+                <li class="list-group-item">Agentes Inactivos: @Model.InactiveAgents</li>
+                <li class="list-group-item">Clientes Activos: @Model.ActiveClients</li>
+                <li class="list-group-item">Clientes Inactivos: @Model.InactiveClients</li>
+                <li class="list-group-item">Desarrolladores Activos: @Model.ActiveDevelopers</li>
+                <li class="list-group-item">Desarrolladores Inactivos: @Model.InactiveDevelopers</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Menú</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/Dashboard">Home del Administrador</a></li>
+                <li class="list-group-item"><a href="/Agent/List">Listado de Agentes</a></li>
+                <li class="list-group-item"><a href="/Admin/Maintenance">Mantenimiento de Administradores</a></li>
+                <li class="list-group-item"><a href="/Developer/Maintenance">Mantenimiento de Desarrolladores</a></li>
+                <li class="list-group-item"><a href="/PropertyType/Maintenance">Mantenimiento de Tipos de Propiedades</a></li>
+                <li class="list-group-item"><a href="/SaleType/Maintenance">Mantenimiento de Tipos de Ventas</a></li>
+                <li class="list-group-item"><a href="/Improvements/Maintenance">Mantenimiento de Mejoras</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

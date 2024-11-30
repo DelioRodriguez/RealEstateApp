@@ -22,6 +22,21 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ImprovementProperty", b =>
+                {
+                    b.Property<int>("ImprovementsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PropertiesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImprovementsId", "PropertiesId");
+
+                    b.HasIndex("PropertiesId");
+
+                    b.ToTable("ImprovementProperty");
+                });
+
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Chat", b =>
                 {
                     b.Property<int>("Id")
@@ -47,6 +62,31 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                     b.ToTable("Chats");
                 });
 
+            modelBuilder.Entity("RealEstateApp.Domain.Entities.Favorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Improvement", b =>
                 {
                     b.Property<int>("Id")
@@ -65,12 +105,7 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("PropertyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PropertyId");
 
                     b.ToTable("Improvements");
                 });
@@ -324,6 +359,21 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ImprovementProperty", b =>
+                {
+                    b.HasOne("RealEstateApp.Domain.Entities.Improvement", null)
+                        .WithMany()
+                        .HasForeignKey("ImprovementsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RealEstateApp.Domain.Entities.Property", null)
+                        .WithMany()
+                        .HasForeignKey("PropertiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Chat", b =>
                 {
                     b.HasOne("RealEstateApp.Infrastructure.Identity.Entities.ApplicationUser", null)
@@ -339,11 +389,15 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.Improvement", b =>
+            modelBuilder.Entity("RealEstateApp.Domain.Entities.Favorite", b =>
                 {
-                    b.HasOne("RealEstateApp.Domain.Entities.Property", null)
-                        .WithMany("Improvements")
-                        .HasForeignKey("PropertyId");
+                    b.HasOne("RealEstateApp.Domain.Entities.Property", "Property")
+                        .WithMany()
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Message", b =>
@@ -418,8 +472,6 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Property", b =>
                 {
                     b.Navigation("Images");
-
-                    b.Navigation("Improvements");
 
                     b.Navigation("Offers");
                 });

@@ -102,10 +102,10 @@ public class AccountController : Controller
     }
 
 
-     // [Authorize]
-     // public async Task<IActionResult> Logout()
-     // {
-     //     await _accountService.LogoutAsync();
-     //     return RedirectToAction("index", "Properties");
-     // }
+      [Authorize]
+      public async Task<IActionResult> Logout()
+     {
+          await _accountService.LogoutAsync();
+          return RedirectToAction("index", "Properties");
+      }
 }

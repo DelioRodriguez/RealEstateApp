@@ -14,7 +14,7 @@ builder.Services.AddControllers(options =>
     options.SuppressMapClientErrors = true;
 });
 
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddInfrastructureServicesApi(builder.Configuration);
 builder.Services.AddAuthenticationExtension(builder.Configuration);
 builder.Services.AddCorsExtension();
 builder.Services.AddSwaggerExtension(); 
@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // init identity
-await app.Services.RunIdentitySeeds();
+await app.Services.RunIdentitySeedsApi();
 
 app.UseHttpsRedirection();
 
@@ -42,7 +42,7 @@ app.UseStatusCodePages(context =>
 {
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status401Unauthorized)
     {
-        return context.HttpContext.Response.WriteAsync("No estás autorizado para acceder a este recurso.");
+        return context.HttpContext.Response.WriteAsync("No estï¿½s autorizado para acceder a este recurso.");
     }
 
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status403Forbidden)

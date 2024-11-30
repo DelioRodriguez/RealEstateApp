@@ -132,10 +132,10 @@ namespace RealEstateApp.Presentation.Api5.Extensions
             });
         }
 
-        public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddInfrastructureServicesApi(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentityService();
-            services.AddIdentityInfrastructure(configuration);
+            services.AddIdentityServiceApi();
+            services.AddIdentityInfrastructureApi(configuration);
             services.AddContextInfrastructure(configuration);
             services.AddApplicationService();
         }

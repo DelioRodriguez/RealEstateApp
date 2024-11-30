@@ -10,8 +10,6 @@ public interface IAccountService
     Task<bool> ActivateUserAsync(string email, string token);
     Task LogoutAsync();
 
-
-
     #region Api
     Task<LoginResponseDto> LoginAsync(LoginRequestDto request);
     Task<RegisterResponseDto> RegisterAsync(RegisterRequestDto request, string role);

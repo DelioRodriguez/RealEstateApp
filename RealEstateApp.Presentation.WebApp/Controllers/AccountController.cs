@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Interfaces.Services.Account;
-using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
 
@@ -60,6 +58,7 @@ public class AccountController : Controller
     {
         return View();
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(UserLoginDTO userDto)
@@ -73,18 +72,13 @@ public class AccountController : Controller
 
         if (result.Contains("successful"))
         {
+            TempData["SuccessMessage"] = result;
             return RedirectToAction("Index", "Properties");
         }
-        
         
         TempData["ErrorMessage"] = result;
         return View(userDto);
     }
-
-
-
-
-
 
     [AllowAnonymous]
     public async Task<IActionResult> Activate(string email, string token)
@@ -108,10 +102,10 @@ public class AccountController : Controller
     }
 
 
-    [Authorize]
-    public async Task<IActionResult> Logout()
-    {
-        await _accountService.LogoutAsync();
-        return RedirectToAction("index", "Properties");
-    }
+      [Authorize]
+      public async Task<IActionResult> Logout()
+     {
+          await _accountService.LogoutAsync();
+          return RedirectToAction("index", "Properties");
+      }
 }

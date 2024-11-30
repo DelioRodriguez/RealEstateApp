@@ -12,7 +12,6 @@
       <ProjectReference Include="..\RealEstateApp.Infrastructure.Identity\RealEstateApp.Infrastructure.Identity.csproj" />
       <ProjectReference Include="..\RealEstateApp.Infrastructure.Persistance\RealEstateApp.Infrastructure.Persistance.csproj" />
       <ProjectReference Include="..\RealEstateApp.Infrastructure.Shared\RealEstateApp.Infrastructure.Shared.csproj" />
-      <ProjectReference Include="..\RealEstateApp.Presentation.Api\RealEstateApp.Presentation.Api.csproj" />
     </ItemGroup>
 
     <ItemGroup>

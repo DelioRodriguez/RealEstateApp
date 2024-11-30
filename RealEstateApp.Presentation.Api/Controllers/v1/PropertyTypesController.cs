@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.PropertyTypes;
 using RealEstateApp.Application.Interfaces.Services.Api;
 using RealEstateApp.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RealEstateApp.Presentation.Api5.Controllers.v1
 {
-    [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    public class PropertyTypesController : ControllerBase
+    [SwaggerTag("Mantenimiento de Tipo de propiedades")]
+    public class PropertyTypesController : BaseApiController
     {
         private readonly IPropertyTypesApiService _service;
         private readonly IMapper _mapper;
@@ -24,6 +24,11 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpPost("Create")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Crear un tipo de propiedad", Description = "Agrega un nuevo tipo de propiedad al sistema.")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Create([FromBody] PropertyTypeCreateDto dto)
         {
             try
@@ -47,6 +52,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpPut("Update/{id}")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Actualizar un tipo de propiedad", Description = "Actualiza los datos de un tipo de propiedad existente.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Update(int id, [FromBody] PropertyTypeUpdateDto dto)
         {
             try
@@ -76,6 +87,11 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("List")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Listar tipos de propiedades", Description = "Obtiene una lista de todos los tipos de propiedades registrados.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> List()
         {
             try
@@ -97,6 +113,11 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Obtener un tipo de propiedad por ID", Description = "Obtiene los detalles de un tipo de propiedad especificado por su ID.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -118,6 +139,11 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpDelete("Delete/{id}")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Eliminar un tipo de propiedad", Description = "Elimina un tipo de propiedad especificado por su Id y todas sus propiedades asociadas.")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Delete(int id)
         {
             try

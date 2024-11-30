@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Api;
 using RealEstateApp.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RealEstateApp.Presentation.Api5.Controllers.v1
 {
-    [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    public class ImprovementsController : ControllerBase
+    [SwaggerTag("Mantenimiento de Mejoras")]
+    public class ImprovementsController : BaseApiController
     {
         private readonly IImprovementsApiService _service;
         private readonly IMapper _mapper;
@@ -24,6 +24,13 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpPost("Create")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Crear una mejora", Description = "Permite crear una nueva mejora en el sistema.")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Create([FromBody] ImprovementCreateDto dto)
         {
             try
@@ -48,6 +55,14 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpPut("Update/{id}")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Actualizar una mejora", Description = "Actualiza los datos de una mejora existente.")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Update(int id, [FromBody] ImprovementUpdateDto dto)
         {
             try
@@ -78,6 +93,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("List")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Listar mejoras", Description = "Obtiene una lista de todas las mejoras registradas en el sistema.")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task <IActionResult> List()
         {
             try
@@ -98,6 +119,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Obtener mejora por ID", Description = "Obtiene la información de una mejora específica a partir de su ID.")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -119,6 +146,11 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpDelete("Delete/{id}")]
         [Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Eliminar una mejora", Description = "Elimina una mejora existente por su ID.")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task <IActionResult> Delete(int id)
         {
             try

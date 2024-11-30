@@ -1,26 +1,24 @@
-using Asp.Versioning.ApiExplorer;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Infrastructure.Identity;
 using RealEstateApp.Presentation.Api5.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registrar servicios de infraes y app
+// Conf Controladores para devolver Json
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ProducesAttribute("application/json"));
+}).ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressInferBindingSourcesForParameters = true;
+    options.SuppressMapClientErrors = true;
+});
+
 builder.Services.AddInfrastructureServices(builder.Configuration);
-
-// Conf de JWT
 builder.Services.AddAuthenticationExtension(builder.Configuration);
-
-// Conf de CORS
 builder.Services.AddCorsExtension();
-
-// Servicios de Swagger
-builder.Services.AddSwaggerExtension();
-
-// Conf de versión de la API
+builder.Services.AddSwaggerExtension(); 
 builder.Services.AddApiVersioningExtension();
-
-// Otros servicios
-builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDistributedMemoryCache();
@@ -28,32 +26,23 @@ builder.Services.AddSession();
 
 var app = builder.Build();
 
-// Middleware
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerExtension(app);
 }
 
-// Iniciar usuarios
+// init identity
 await app.Services.RunIdentitySeeds();
 
-app.UseRouting();
 app.UseHttpsRedirection();
 
-// Conf de CORS
 app.UseCors("AllowAll");
 
-// Autenticación y autorización
-app.UseAuthentication();
-app.UseAuthorization();
-
-// Manejo de errores
 app.UseStatusCodePages(context =>
 {
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status401Unauthorized)
     {
-        return context.HttpContext.Response.WriteAsync("No estas autorizado para acceder a este recurso.");
+        return context.HttpContext.Response.WriteAsync("No estás autorizado para acceder a este recurso.");
     }
 
     if (context.HttpContext.Response.StatusCode == StatusCodes.Status403Forbidden)
@@ -64,12 +53,16 @@ app.UseStatusCodePages(context =>
     return Task.CompletedTask;
 });
 
-// Confi de Swagger UI con soporte para versiones
-var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-app.UseSwaggerExtension(app);
+app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseHealthChecks("/health");
+app.UseSession();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

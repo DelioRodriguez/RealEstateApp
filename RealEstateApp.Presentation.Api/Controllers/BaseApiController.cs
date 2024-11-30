@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstateApp.Presentation.Api5.Controllers.v2
+namespace RealEstateApp.Presentation.Api5.Controllers
 {
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class BaseApiController : ControllerBase
+    public abstract class BaseApiController : ControllerBase
     {
 
     }

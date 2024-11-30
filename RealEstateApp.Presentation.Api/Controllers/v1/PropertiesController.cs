@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.Properties;
 using RealEstateApp.Application.Interfaces.Services.Api;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RealEstateApp.Presentation.Api5.Controllers.v1
 {
-    [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    public class PropertiesController : ControllerBase
+    [SwaggerTag("Mantenimiento de propiedades")]
+    public class PropertiesController : BaseApiController
     {
         private readonly IPropertiesApiService _propertiesService;
         private readonly IMapper _mapper;
@@ -23,6 +23,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("list")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Listar propiedades", Description = "Obtiene una lista de todas las propiedades registradas en el sistema.")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> List()
         {
             try
@@ -42,6 +48,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("{id:int}")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Obtener propiedad por ID", Description = "Obtiene los detalles de una propiedad específica a partir de su ID.")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetById(int Id)
         {
             try
@@ -62,6 +74,12 @@ namespace RealEstateApp.Presentation.Api5.Controllers.v1
 
         [HttpGet("code/{code}")]
         [Authorize(Roles = "Admin,Developer")]
+        [SwaggerOperation(Summary = "Obtener propiedad por código", Description = "Obtiene los detalles de una propiedad a partir de su código.")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetByCode(string code)
         {
             try

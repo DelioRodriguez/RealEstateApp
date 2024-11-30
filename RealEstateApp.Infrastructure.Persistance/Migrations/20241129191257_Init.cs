@@ -38,6 +38,20 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Improvements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Improvements", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PropertyTypes",
                 columns: table => new
                 {
@@ -128,23 +142,48 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Improvements",
+                name: "Favorites",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PropertyId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
+                    AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Improvements", x => x.Id);
+                    table.PrimaryKey("PK_Favorites", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Improvements_Properties_PropertyId",
+                        name: "FK_Favorites_Properties_PropertyId",
                         column: x => x.PropertyId,
                         principalTable: "Properties",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImprovementProperty",
+                columns: table => new
+                {
+                    ImprovementsId = table.Column<int>(type: "int", nullable: false),
+                    PropertiesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImprovementProperty", x => new { x.ImprovementsId, x.PropertiesId });
+                    table.ForeignKey(
+                        name: "FK_ImprovementProperty_Improvements_ImprovementsId",
+                        column: x => x.ImprovementsId,
+                        principalTable: "Improvements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ImprovementProperty_Properties_PropertiesId",
+                        column: x => x.PropertiesId,
+                        principalTable: "Properties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,9 +246,14 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Improvements_PropertyId",
-                table: "Improvements",
+                name: "IX_Favorites_PropertyId",
+                table: "Favorites",
                 column: "PropertyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ImprovementProperty_PropertiesId",
+                table: "ImprovementProperty",
+                column: "PropertiesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_ChatId",
@@ -251,7 +295,10 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Improvements");
+                name: "Favorites");
+
+            migrationBuilder.DropTable(
+                name: "ImprovementProperty");
 
             migrationBuilder.DropTable(
                 name: "Messages");
@@ -261,6 +308,9 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
 
             migrationBuilder.DropTable(
                 name: "PropertyImages");
+
+            migrationBuilder.DropTable(
+                name: "Improvements");
 
             migrationBuilder.DropTable(
                 name: "Chats");

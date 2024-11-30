@@ -1,5 +1,4 @@
-﻿
-namespace RealEstateApp.Presentation.Api5.Extensions
+﻿namespace RealEstateApp.Presentation.Api5.Extensions
 {
     public static class AppExtensions
     {
@@ -14,9 +13,9 @@ namespace RealEstateApp.Presentation.Api5.Extensions
                 {
                     foreach (var apiVersion in versionDescriptions)
                     {
-                        var url = $"/swagger/{apiVersion.GroupName}/swagger.json";
-                        var name = $"ReaklEstateApp Api - {apiVersion.GroupName.ToUpperInvariant()}";
-                        options.SwaggerEndpoint(url, name);
+                    var url = $"/swagger/{apiVersion.GroupName}/swagger.json";
+                    var name = $"Restaurant Api - {apiVersion.GroupName.ToUpperInvariant()}";
+                    options.SwaggerEndpoint(url, name);
                     }
                 }
             });

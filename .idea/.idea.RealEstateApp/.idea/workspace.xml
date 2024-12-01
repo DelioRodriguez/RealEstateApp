@@ -14,37 +14,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="Agent List Finish.">
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Admin/AdminDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Developer/DeveloperDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/Admin/IAdminRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/Developer/IDeveloperRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/Admin/IAdminService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/Developer/iDeveloperService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Admin/AdminService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Developer/DeveloperService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Admin/AdminRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Developer/DeveloperRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/DeveloperController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Admins.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/CreateAdmin.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/EditAdmin.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/_AdminForm.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Create.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Edit.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Index.cshtml" afterDir="false" />
+    <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="PArte mia terminada">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.backup.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Services/AccountService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AdminController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/DeveloperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/DeveloperController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Admins.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Admins.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Agents.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Agents.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/CreateAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/CreateAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/EditAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/EditAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/_AdminForm.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/_AdminForm.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Developer/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +233,7 @@
       <workItem from="1733010925664" duration="98000" />
       <workItem from="1733011754655" duration="1723000" />
       <workItem from="1733023090548" duration="905000" />
-      <workItem from="1733057106824" duration="7045000" />
+      <workItem from="1733057106824" duration="14591000" />
     </task>
     <task id="LOCAL-00001" summary="Login y register, Controlador de propiedades, controlador de agentes Listos.">
       <option name="closed" value="true" />
@@ -297,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733057245472</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="PArte mia terminada">
+      <option name="closed" value="true" />
+      <created>1733068400650</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733068400650</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +317,7 @@
     <MESSAGE value="Mantenimiendo de tipo de propiedades, tipos de ventas, Mant de mejoras Listos." />
     <MESSAGE value="." />
     <MESSAGE value="Agent List Finish." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agent List Finish." />
+    <MESSAGE value="PArte mia terminada" />
+    <option name="LAST_COMMIT_MESSAGE" value="PArte mia terminada" />
   </component>
 </project>

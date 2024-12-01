@@ -1,36 +1,43 @@
 @using RealEstateApp.Application.Dtos.Developer
 @model DeveloperDto
 
-<h2>Editar Desarrollador</h2>
+<h2 class="mb-4 text-center text-primary"><i class="fas fa-user-edit"></i> Editar Desarrollador</h2>
 
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
-    
-    <div class="form-group">
-        <label for="FirstName">Nombre</label>
+
+    <div class="form-group mb-3">
+        <label for="FirstName"><i class="fas fa-user"></i> Nombre</label>
         <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
     </div>
-    <div class="form-group">
-        <label for="LastName">Apellido</label>
+
+    <div class="form-group mb-3">
+        <label for="LastName"><i class="fas fa-user-tag"></i> Apellido</label>
         <input type="text" class="form-control" id="LastName" name="LastName" asp-for="LastName" required />
     </div>
-    <div class="form-group">
-        <label for="Email">Correo</label>
+
+    <div class="form-group mb-3">
+        <label for="Email"><i class="fas fa-envelope"></i> Correo</label>
         <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
     </div>
-    <div class="form-group">
-        <label for="UserName">Nombre de Usuario</label>
+
+    <div class="form-group mb-3">
+        <label for="UserName"><i class="fas fa-user-lock"></i> Nombre de Usuario</label>
         <input type="text" class="form-control" id="UserName" name="UserName" asp-for="UserName" required />
     </div>
-    <div class="form-group">
-        <label for="Password">Contraseña (Dejar vacía para no cambiar)</label>
+
+    <div class="form-group mb-3">
+        <label for="Password"><i class="fas fa-key"></i> Contraseña (Dejar vacía para no cambiar)</label>
         <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" />
     </div>
-    <div class="form-group">
-        <label for="ConfirmPassword">Confirmar Contraseña</label>
+
+    <div class="form-group mb-3">
+        <label for="ConfirmPassword"><i class="fas fa-check-circle"></i> Confirmar Contraseña</label>
         <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" />
     </div>
-    
-    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    <a asp-action="Index" class="btn btn-secondary">Volver al Listado</a>
+
+    <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Cambios</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver al Listado</a>
+    </div>
 </form>

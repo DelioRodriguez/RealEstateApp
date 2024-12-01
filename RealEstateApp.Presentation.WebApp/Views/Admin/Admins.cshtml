@@ -1,54 +1,110 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model IEnumerable<RealEstateApp.Application.Dtos.Admin.AdminDto>
 
-<h2>Lista de Administradores</h2>
+<h2 class="text-center text-primary mb-4">
+    <i class="fas fa-users"></i>
+    <span>Lista de Administradores</span>
+</h2>
 
-<a asp-action="CreateAdmin" class="btn btn-primary mb-3">Crear Administrador</a>
+<a asp-action="CreateAdmin" class="btn btn-primary mb-3">
+    <i class="fas fa-plus-circle"></i>
+    <span>Crear Administrador</span>
+</a>
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Correo</th>
-        <th>Usuario</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var admin in Model)
-    {
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="bg-primary text-white">
         <tr>
-            <td>@admin.FirstName</td>
-            <td>@admin.LastName</td>
-            <td>@admin.Email</td>
-            <td>@admin.UserName</td>
-            <td>@(admin.IsActive ? "Activo" : "Inactivo")</td>
+            <th><i class="fas fa-user"></i> <span>Nombre</span></th>
+            <th><i class="fas fa-user-tag"></i> <span>Apellido</span></th>
+            <th><i class="fas fa-envelope"></i> <span>Correo</span></th>
+            <th><i class="fas fa-user-cog"></i> <span>Usuario</span></th>
+            <th><i class="fas fa-circle"></i> <span>Estado</span></th>
+            <th><i class="fas fa-cogs"></i> <span>Acciones</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var admin in Model)
+        {
+        <tr>
             <td>
-                <a asp-action="EditAdmin" asp-route-id="@admin.Id" class="btn btn-warning btn-sm">Editar</a>
+                <i class="fas fa-user"></i>
+                <span>@admin.FirstName</span>
+            </td>
+            <td>
+                <i class="fas fa-user-tag"></i>
+                <span>@admin.LastName</span>
+            </td>
+            <td>
+                <i class="fas fa-envelope"></i>
+                <span>@admin.Email</span>
+            </td>
+            <td>
+                <i class="fas fa-user-cog"></i>
+                <span>@admin.UserName</span>
+            </td>
+            <td>
                 @if (admin.IsActive)
                 {
-                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="false"
-                       class="btn btn-danger btn-sm">Inactivar</a>
+                <span class="badge bg-success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Activo</span>
+                </span>
                 }
                 else
                 {
-                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="true"
-                       class="btn btn-success btn-sm">Activar</a>
+                <span class="badge bg-danger">
+                    <i class="fas fa-times-circle"></i>
+                    <span>Inactivo</span>
+                </span>
                 }
             </td>
-        </tr>
-    }
-    </tbody>
-</table>
+            <td>
+                <div class="d-flex">
+                    <!-- Botón Editar -->
+                    <a asp-action="EditAdmin" asp-route-id="@admin.Id" class="btn btn-warning btn-sm me-2">
+                        <i class="fas fa-edit"></i>
+                        <span>Editar</span>
+                    </a>
 
+                    <!-- Botón Activar/Inactivar -->
+                    @if (admin.IsActive)
+                    {
+                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="false"
+                       class="btn btn-danger btn-sm">
+                        <i class="fas fa-ban"></i>
+                        <span>Inactivar</span>
+                    </a>
+                    }
+                    else
+                    {
+                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="true"
+                       class="btn btn-success btn-sm">
+                        <i class="fas fa-check"></i>
+                        <span>Activar</span>
+                    </a>
+                    }
+                </div>
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<!-- Mensajes de éxito y error -->
 @if (TempData["Success"] != null)
 {
-    <div class="alert alert-success">@TempData["Success"]</div>
+<div class="alert alert-success mt-3">
+    <i class="fas fa-check-circle"></i>
+    <span>@TempData["Success"]</span>
+</div>
 }
 
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger">@TempData["Error"]</div>
+<div class="alert alert-danger mt-3">
+    <i class="fas fa-exclamation-circle"></i>
+    <span>@TempData["Error"]</span>
+</div>
 }

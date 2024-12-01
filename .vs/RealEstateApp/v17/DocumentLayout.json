@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\ReaklEstateApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\controllers\\developercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\controllers\\developercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\views\\developer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\views\\developer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -70,11 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AdminRepository.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Persistance\\Repositories\\Admin\\AdminRepository.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Persistance\\Repositories\\Admin\\AdminRepository.cs",
@@ -83,8 +91,7 @@
               "ViewState": "AgIAAFUAAAAAAAAAAAAuwGwAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T13:40:07.286Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -100,7 +107,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Developer\\Index.cshtml",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Developer\\Index.cshtml",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Developer\\Index.cshtml",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Developer\\Index.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T17:09:44.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeveloperController.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\DeveloperController.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\DeveloperController.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\DeveloperController.cs",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Controllers\\DeveloperController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAiwEwAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T17:07:01.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "UserRegisterDTO.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Dtos\\Account\\UserRegisterDTO.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Dtos\\Account\\UserRegisterDTO.cs",
@@ -112,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AccountService.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Identity\\Services\\AccountService.cs",
@@ -124,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\AccountController.cs",
@@ -137,20 +170,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\AdminController.cs",
               "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAMwG8AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAIAywG8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T03:40:44.904Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AdminService.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Services\\Admin\\AdminService.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Services\\Admin\\AdminService.cs",
@@ -158,12 +191,11 @@
               "RelativeToolTip": "RealEstateApp.Application\\Services\\Admin\\AdminService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAowCAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T13:39:50.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T13:39:50.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "IDashboardRepository.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Interfaces\\Repositories\\Dashboard\\IDashboardRepository.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Interfaces\\Repositories\\Dashboard\\IDashboardRepository.cs",
@@ -175,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "AdminDto.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Dtos\\Admin\\AdminDto.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Dtos\\Admin\\AdminDto.cs",
@@ -183,12 +215,11 @@
               "RelativeToolTip": "RealEstateApp.Application\\Dtos\\Admin\\AdminDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T13:32:28.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T13:32:28.039Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "EditAdmin.cshtml",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Admin\\EditAdmin.cshtml",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Admin\\EditAdmin.cshtml",
@@ -196,12 +227,11 @@
               "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Admin\\EditAdmin.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T13:39:10.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T13:39:10.625Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Dtos\\Users\\UserDTO.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Dtos\\Users\\UserDTO.cs",
@@ -213,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Account\\Register.cshtml",
@@ -225,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\Entities\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Identity\\Entities\\ApplicationUser.cs",
@@ -233,12 +263,11 @@
               "RelativeToolTip": "RealEstateApp.Infrastructure.Identity\\Entities\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T04:48:57.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T04:48:57.595Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "UserInfo.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Dtos\\Users\\UserInfo.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Dtos\\Users\\UserInfo.cs",
@@ -250,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "AgentRepository.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Persistance\\Repositories\\Agent\\AgentRepository.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Persistance\\Repositories\\Agent\\AgentRepository.cs",
@@ -262,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "AgentService.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Services\\Agent\\AgentService.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Application\\Services\\Agent\\AgentService.cs",

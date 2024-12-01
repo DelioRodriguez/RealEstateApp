@@ -75,9 +75,10 @@ public class DeveloperController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> ToggleStatus(string id, bool isActive)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> ToggleStatus(string id, bool status)
     {
-        var result = await _developerService.ToggleDeveloperStatusAsync(id, isActive);
-        return Json(new { success = result });
+        var result = await _developerService.ToggleDeveloperStatusAsync(id, status);
+      return RedirectToAction(nameof(Index));
     }
 }

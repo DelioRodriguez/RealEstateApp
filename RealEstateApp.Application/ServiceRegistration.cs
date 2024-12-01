@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Services.Agent;
 using RealEstateApp.Application.Interfaces.Services.Api;
 using RealEstateApp.Application.Interfaces.Services.Dashboard;
 using RealEstateApp.Application.Interfaces.Services.Favory;
@@ -17,6 +18,7 @@ using RealEstateApp.Application.Services.Improvements;
 using RealEstateApp.Application.Services.Properties;
 using RealEstateApp.Application.Services.PropertiesType;
 using RealEstateApp.Application.Services.Users;
+using RealEstateApp.Application.Services.Agent;
 
 namespace RealEstateApp.Application
 {
@@ -31,13 +33,13 @@ namespace RealEstateApp.Application
             services.AddScoped<IImprovementService, ImprovementService>();
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<IPropertiesTypeServices, PropertiesTypeServices>();
+            services.AddScoped<IAgentService, AgentService>();
 
-            
 
             #region Api
 
             services.AddScoped<IPropertiesApiService, PropertiesApiService>();
-            services.AddScoped<IAgentApiService, AgentService>();
+            services.AddScoped<IAgentApiService, AgentApiService>();
             services.AddScoped<IPropertyTypesApiService, PropertyTypesApiService>();
             services.AddScoped<ISaleTypeApiService, SaleTypeApiService>();
             services.AddScoped<IImprovementsApiService, ImprovementsApiService>();

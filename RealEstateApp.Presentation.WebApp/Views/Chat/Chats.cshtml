@@ -1,0 +1,14 @@
+@model IEnumerable<RealEstateApp.Application.ViewModels.Chats.ChatViewModel>
+
+<div class="container my-5">
+    <h2 class="mb-4">Chats con Clientes</h2>
+    <ul class="list-group">
+        @foreach (var chat in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>@chat.ClientName</span>
+                <a asp-controller="Chat" asp-action="Message" asp-route-id="@chat.ChatId" class="btn btn-primary btn-sm">Abrir Chat</a>
+            </li>
+        }
+    </ul>
+</div>

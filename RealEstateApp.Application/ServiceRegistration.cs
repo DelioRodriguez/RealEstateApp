@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Services.Api;
+using RealEstateApp.Application.Interfaces.Services.Chats;
 using RealEstateApp.Application.Interfaces.Services.Dashboard;
 using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Generic;
@@ -9,6 +10,7 @@ using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Mapping;
 using RealEstateApp.Application.Services.Api;
+using RealEstateApp.Application.Services.Chats;
 using RealEstateApp.Application.Services.Dashboard;
 using RealEstateApp.Application.Services.Favory;
 using RealEstateApp.Application.Services.Generic;
@@ -39,6 +41,7 @@ namespace RealEstateApp.Application
 
             services.AddScoped<IFavoriteService, FavoriteService>();
             services.AddScoped<IImprovementService, ImprovementService>();
+            services.AddScoped<IChatService, ChatService>();
           
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(typeof(GeneralProfile));

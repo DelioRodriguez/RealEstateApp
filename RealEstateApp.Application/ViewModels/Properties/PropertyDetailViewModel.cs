@@ -5,6 +5,7 @@ namespace RealEstateApp.Application.ViewModels.Properties;
 
 public class PropertyDetailViewModel
 {
+    public int Id { get; set; }
     public string Code { get; set; }
     public string PropertyTypeName { get; set; }
     public string SaleTypeName { get; set; }

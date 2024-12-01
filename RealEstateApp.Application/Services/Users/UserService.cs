@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.ViewModels.Users;
@@ -19,6 +20,11 @@ public class UserService : IUserService
     public async Task<AgentViewModel> GetUserByIdAsync(string id)
     {
         return _mapper.Map<AgentViewModel>(await _userRepository.GetUserByIdAsync(id));
+    }
+
+    public async Task<UserUpdateDTO> GetUserByIdDto(string id)
+    {
+        return await _userRepository.GetUserByIdDtoAsync(id);
     }
 
     public async Task<IList<AgentViewModel>> GetUsersByRoleAsync(string roleName)

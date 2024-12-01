@@ -25,7 +25,7 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
             .ToListAsync())!;
     }
 
-    public async Task<List<Property?>> GetAllPropertiesByUserAsync(string userId)
+    public async Task<List<Property?>> GetAllPropertiesByUserAsync(string? userId)
     {
         return (await _context.Properties
             .Include(p => p.PropertyType)

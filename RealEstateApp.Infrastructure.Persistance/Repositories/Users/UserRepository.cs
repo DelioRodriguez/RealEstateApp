@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.Users;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Domain.Enums;
@@ -27,6 +28,21 @@ public class UserRepository : IUserRepository
             AgentEmail = user.Email,
             AgentImageUrl = user.ImagenPath,
             AgentId = user.Id
+        };
+    }
+
+    public async Task<UserUpdateDTO> GetUserByIdDtoAsync(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+
+        return new UserUpdateDTO()
+        {
+            ImagenPath = user!.ImagenPath,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            PhoneNumber = user.PhoneNumber,
+            UserName = user.UserName!,
         };
     }
 

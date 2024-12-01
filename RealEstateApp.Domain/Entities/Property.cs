@@ -45,6 +45,7 @@ public class Property
     public ICollection<Improvement>? Improvements { get; set; }
 
     public ICollection<Offer>? Offers { get; set; }
+    public ICollection<Chat>? Chats { get; set; }
 
     public ICollection<PropertyImage>? Images { get; set; }
 }

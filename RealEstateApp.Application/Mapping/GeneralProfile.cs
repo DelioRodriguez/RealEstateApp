@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.Agents;
 using RealEstateApp.Application.Dtos.Improvements;
 using RealEstateApp.Application.Dtos.Properties;
@@ -17,6 +18,7 @@ public class GeneralProfile : Profile
     public GeneralProfile()
     {
         CreateMap<UserInfo, AgentViewModel>().ReverseMap();
+        CreateMap<UserRegisterDTO, AgentViewModel>().ReverseMap();
         CreateMap<Improvement, ImprovementViewModel>().ReverseMap();
         
         CreateMap<Property, PropertyListViewModel>()

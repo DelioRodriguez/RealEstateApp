@@ -53,11 +53,16 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("PropertyId");
 
                     b.ToTable("Chats");
                 });
@@ -387,6 +392,14 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("RealEstateApp.Domain.Entities.Property", "Property")
+                        .WithMany("Chats")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Favorite", b =>
@@ -471,6 +484,8 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Property", b =>
                 {
+                    b.Navigation("Chats");
+
                     b.Navigation("Images");
 
                     b.Navigation("Offers");

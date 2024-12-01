@@ -58,25 +58,25 @@ public class IdentitySeeder
             await userManager.AddToRoleAsync(agentUser, Role.Agent.ToString());
         }
         
-        var DeveloperEmail = "Developer@email.com";
-        var DeveloperUser = await userManager.FindByEmailAsync(DeveloperEmail);
+        var developerEmail = "Developer@email.com";
+        var developerUser = await userManager.FindByEmailAsync(developerEmail);
         
-        if (DeveloperUser == null)
+        if (developerUser == null)
         {
-            DeveloperUser = new ApplicationUser
+            developerUser = new ApplicationUser
             {
                 ImagenPath = "https://superlabs.co/assets/img/innerimg/frontend-developer.jpg",
                 FirstName = "Developer",
                 LastName = "BackEnd",
                 PhoneNumber = "8290000000",
                 UserName = "Developer",
-                Email = DeveloperEmail,
+                Email = developerEmail,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
 
-            await userManager.CreateAsync(DeveloperUser, "Developer123.@");
-            await userManager.AddToRoleAsync(DeveloperUser, Role.Developer.ToString());
+            await userManager.CreateAsync(developerUser, "Developer123.@");
+            await userManager.AddToRoleAsync(developerUser, Role.Developer.ToString());
         }
     }
 }

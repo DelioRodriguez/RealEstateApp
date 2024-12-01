@@ -33,4 +33,26 @@ public static class FileHelper
 
         return propertyImages;
     }
+    
+    public static async Task<string> SaveImageAsync(IFormFile image, string folderPath)
+    {
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderPath);
+
+        if (!Directory.Exists(uploadPath))
+        {
+            Directory.CreateDirectory(uploadPath);
+        }
+
+        var fileName = $"{Guid.NewGuid()}_{image.FileName}";
+        var filePath = Path.Combine(uploadPath, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await image.CopyToAsync(stream);
+        }
+        
+        return $"/{folderPath}/{fileName}";
+    }
+
+
 }

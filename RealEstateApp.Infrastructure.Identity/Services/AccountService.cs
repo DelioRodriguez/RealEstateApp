@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.ApiAccount;
+using RealEstateApp.Application.Dtos.Login;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Settings;
@@ -41,17 +42,17 @@ public class AccountService : IAccountService
     }
     
     
-    public async Task<string> RegisterUserAsync(UserRegisterDTO userDto)
+    public async Task RegisterUserAsync(UserRegisterDTO userDto)
     {
         if (userDto.Password != userDto.ConfirmPassword)
-            return "Passwords do not match.";
+            throw new Exception("Passwords do not match."); 
 
         var user = _mapper.Map<ApplicationUser>(userDto);
         user.EmailConfirmed = false;
 
         var result = await _userManager.CreateAsync(user, userDto.Password);
         if (!result.Succeeded)
-            return string.Join(", ", result.Errors.Select(e => e.Description));
+            throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
 
         await _userManager.AddToRoleAsync(user, userDto.Role.ToString());
 
@@ -59,12 +60,10 @@ public class AccountService : IAccountService
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var activationLink = GenerateActivationLink(user.Email, token);
-
             await SendActivationEmailAsync(user.Email, activationLink);
         }
-
-        return "Registration successful. Please login.";
     }
+
     
 
     private string GenerateActivationLink(string email, string token)
@@ -83,32 +82,27 @@ public class AccountService : IAccountService
         await _emailService.SendEmailAsync(email, subject, body);
     }
     
-    
-    public async Task<string> LoginUserAsync(UserLoginDTO userDTO)
+    public async Task<LoginResult> LoginUserAsync(UserLoginDTO userDto)
     {
-        var user = await _userManager.FindByEmailAsync(userDTO.Username)
-                   ?? await _userManager.FindByNameAsync(userDTO.Username);
+        var user = await _userManager.FindByEmailAsync(userDto.Username)
+                   ?? await _userManager.FindByNameAsync(userDto.Username);
 
-        if (user == null)
-            return "Invalid credentials.";
+        if (user == null || !user.EmailConfirmed)
+            return new LoginResult { IsSuccess = false }; // Retorno directo si hay errores.
 
-        if (!user.EmailConfirmed)
-            return "Your email has not been confirmed. Please check your inbox.";
-
-        var result = await _signInManager.PasswordSignInAsync(user.UserName, userDTO.Password, isPersistent: false, lockoutOnFailure: false);
-
+        var result = await _signInManager.PasswordSignInAsync(user.UserName, userDto.Password, isPersistent: false, lockoutOnFailure: false);
         if (!result.Succeeded)
-            return "Invalid credentials.";
+            return new LoginResult { IsSuccess = false };
 
         var roles = await _userManager.GetRolesAsync(user);
-        if (roles.Contains("Admin"))
-        {
-          
-            return "RedirectToAction: Index (Admin)";
-        }
 
-        return "Login successful.";  
+        return new LoginResult
+        {
+            IsSuccess = true,
+            IsAdmin = roles.Contains("Admin")
+        };
     }
+
 
     
     

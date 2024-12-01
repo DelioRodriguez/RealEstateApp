@@ -27,7 +27,7 @@ public class AccountController : Controller
         if (!ModelState.IsValid)
             return View(userDto);
 
-        if (userDto.Photo.Length > 0)
+        if (userDto.Photo?.Length > 0)
         {
             var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
             Directory.CreateDirectory(uploadsFolder);
@@ -41,18 +41,11 @@ public class AccountController : Controller
             }
             userDto.ImagenPath = $"/uploads/{uniqueFileName}";
         }
-        
-        var result = await _accountService.RegisterUserAsync(userDto);
 
-        if (result.Contains("succesful"))
-        {
-            TempData["SuccessMessage"] = result;
-            return RedirectToAction("Login");
-        }
-        
-        TempData["ErrorMessage"] = result;
-        return View(userDto);
+        await _accountService.RegisterUserAsync(userDto);
+        return RedirectToAction("Login");
     }
+
 
     public IActionResult Login()
     {
@@ -64,27 +57,23 @@ public class AccountController : Controller
     public async Task<IActionResult> Login(UserLoginDTO userDto)
     {
         if (!ModelState.IsValid)
+            return View(userDto);
+
+        var loginResult = await _accountService.LoginUserAsync(userDto);
+
+        if (!loginResult.IsSuccess)
         {
+            // Opcional: Podrías agregar un campo en el modelo para mostrar errores bajo el input si lo deseas.
+            ModelState.AddModelError(string.Empty, "Credenciales inválidas.");
             return View(userDto);
         }
 
-        var result = await _accountService.LoginUserAsync(userDto);
-
-  
-        if (result.Contains("RedirectToAction"))
-        {
-            return RedirectToAction("Index", "Admin");
-        }
-        
-        if (result.Contains("Login successful"))
-        {
-            TempData["SuccessMessage"] = "Login successful.";
-            return RedirectToAction("Index", "Properties");  
-        }
-
-        TempData["ErrorMessage"] = result;
-        return View(userDto);
+        // Redirección basada en el rol del usuario.
+        return loginResult.IsAdmin 
+            ? RedirectToAction("Index", "Admin") 
+            : RedirectToAction("Index", "Properties");
     }
+
 
 
     [AllowAnonymous]

@@ -49,14 +49,36 @@ ViewData["Title"] = "Listado de Agentes";
                         </button>
                     </form>
 
-                    <!-- Eliminar -->
-                    <form asp-action="Delete" asp-route-id="@agent.AgentId" method="post" style="display:inline;" onsubmit="return confirm('¿Está seguro que desea eliminar este agente y todas sus propiedades?');">
-                        <button class="btn btn-sm btn-danger ms-2" type="submit">
-                            <i class="fas fa-trash-alt"></i> Eliminar
-                        </button>
-                    </form>
+                            <form asp-action="Delete" asp-route-id="@agent.AgentId" method="post" style="display:inline;">
+                                <!-- Botón que activa el modal -->
+                                <button type="button" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal-@agent.AgentId">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
 
-                 
+                                <!-- Modal de confirmación -->
+                                <div class="modal fade" id="deleteModal-@agent.AgentId" tabindex="-1" aria-labelledby="deleteModalLabel-@agent.AgentId" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title" id="deleteModalLabel-@agent.AgentId"><i class="fas fa-exclamation-triangle"></i> Confirmar Eliminación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Está seguro que desea eliminar al agente <strong>@agent.FirstName @agent.LastName</strong> y todas sus propiedades?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i> Confirmar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
                 </div>
             </td>
         </tr>

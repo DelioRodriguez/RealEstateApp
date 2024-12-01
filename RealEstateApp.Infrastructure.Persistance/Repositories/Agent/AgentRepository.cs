@@ -24,8 +24,8 @@ public class AgentRepository : IAgentRepository
         var users = await _userManager.GetUsersInRoleAsync(Role.Agent.ToString());
         var result = new List<AgentViewDto>();
 
-        // Verificar cu·ntos usuarios son agentes
-        Console.WriteLine($"N˙mero de agentes encontrados: {users.Count}");
+        // Verificar cuÔøΩntos usuarios son agentes
+        Console.WriteLine($"NÔøΩmero de agentes encontrados: {users.Count}");
 
         foreach (var user in users)
         {
@@ -39,7 +39,7 @@ public class AgentRepository : IAgentRepository
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 Properties = propertiesCount,
-                IsActive = user.EmailConfirmed  // No filtrar aquÌ, simplemente mostrar
+                IsActive = user.EmailConfirmed  // No filtrar aquÔøΩ, simplemente mostrar
             });
 
             // Verificar el estado de email confirmado para cada usuario
@@ -62,18 +62,37 @@ public class AgentRepository : IAgentRepository
 
     public async Task DeleteAgentAsync(string agentId)
     {
+        // Encuentra al usuario (agente)
         var user = await _userManager.FindByIdAsync(agentId);
-        if(user == null) throw new Exception("Agente no encontrado");
+        if (user == null)
+        {
+            throw new Exception("Agente no encontrado");
+        }
 
-        var propeties = _context.Properties.Where(x => x.AgentId == user.Id);
-        _context.Properties.RemoveRange(propeties);
+        // Obt√©n las propiedades asociadas con el agente
+        var properties = await _context.Properties.Where(x => x.AgentId == user.Id).ToListAsync();
 
+        // Si el agente tiene propiedades asociadas, eliminarlas
+        if (properties.Any())
+        {
+            _context.Properties.RemoveRange(properties);
+
+            // Guardar los cambios en la base de datos despu√©s de eliminar las propiedades
+            await _context.SaveChangesAsync();
+        }
+
+        // Eliminar al usuario (agente)
         var result = await _userManager.DeleteAsync(user);
 
+        // Si la eliminaci√≥n del agente falla, lanzar una excepci√≥n
         if (!result.Succeeded)
         {
             throw new Exception("No se pudo eliminar el agente");
         }
+
+        // Guardar los cambios finales en la base de datos
         await _context.SaveChangesAsync();
     }
+
+
 }

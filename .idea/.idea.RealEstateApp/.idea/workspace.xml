@@ -15,43 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/PropertiesType/IPropertiesTypeServices.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/PropertiesType/PropertiesTypeServices.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/CreatePropertyTypeViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/DeletePropertyTypeViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/EditPropertyTypeViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/PropertyTypeListViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesTypeController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Create.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Delete.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Edit.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/0a9e1c79-b2ad-4b21-afba-d4acd0e1e87f_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/e5211a11-5671-40f3-be75-63dccc11c815_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Agents/AgentViewDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/Agent/IAgentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/Agent/IAgentService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Agent/AgentService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Agent/AgentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Agents.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.strings.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/96f4e18f-3436-4df7-95f8-c4c300ccd2a7.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/a19f5fd8-b42e-4a9c-b857-6370b146346e.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/b4d4319e-fcf7-461e-95ef-b04f20ab3d3c.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/c4e918ec-23be-4a1a-842d-3ee9fef7b0c1.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/c65b968b-7a40-44ec-96ca-deac21f06053.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/PropertiesType/IPropertyTypeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/PropertiesType/IPropertyTypeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Domain/Entities/PropertyType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Domain/Entities/PropertyType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Dashboard/DashboardRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Dashboard/DashboardRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/PropertiesType/PropertyTypeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/PropertiesType/PropertyTypeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Dtos/Agents/ChangeAgentStatusDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AdminController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,21 +70,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.RealEstateApp.Presentation.Api: RealEstateApp.WebApi.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.RealEstateApp.Presentation.Api: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.RealEstateApp.Presentation.WebApp: http.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.RealEstateApp.Presentation.Api: RealEstateApp.WebApi.executor": "Run",
+    ".NET Launch Settings Profile.RealEstateApp.Presentation.Api: http.executor": "Run",
+    ".NET Launch Settings Profile.RealEstateApp.Presentation.WebApp: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Admin-Delio",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.RealEstateApp.Presentation.WebApp: http">
     <configuration name="RealEstateApp.Presentation.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/RealEstateApp.Presentation.Api/RealEstateApp.Presentation.Api.csproj" />

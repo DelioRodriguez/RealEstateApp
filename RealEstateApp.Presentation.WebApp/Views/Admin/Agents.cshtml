@@ -1,0 +1,63 @@
+@model List<RealEstateApp.Application.Dtos.Agents.AgentViewDto>
+@{
+ViewData["Title"] = "Listado de Agentes";
+}
+
+<h1>Listado de Agentes</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Propiedades</th>
+        <th>Activo</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var agent in Model)
+    {
+    <tr>
+        <td>@agent.FirstName</td>
+        <td>@agent.LastName</td>
+        <td>@agent.Email</td>
+        <td>@agent.Phone</td>
+        <td>@agent.Properties</td>
+        <td>
+            @if (agent.IsActive)
+            {
+            <span class="badge bg-success">Sí</span>
+            }
+            else
+            {
+            <span class="badge bg-danger">No</span>
+            }
+        </td>
+        <td>
+            <div class="action-buttons">
+                <form asp-action="ToggleActivation" asp-route-id="@agent.AgentId" method="post" style="display:inline;">
+                    <button class="btn btn-warning btn-sm" type="submit">
+                        @if (agent.IsActive)
+                        {
+                        <span><i class="fas fa-ban"></i> Inactivar</span>
+                        }
+                        else
+                        {
+                        <span><i class="fas fa-check"></i> Activar</span>
+                        }
+                    </button>
+                </form>
+                <form asp-action="Delete" asp-route-id="@agent.AgentId" method="post" style="display:inline;" onsubmit="return confirm('¿Está seguro que desea eliminar este agente y todas sus propiedades?');">
+                    <button class="btn btn-danger btn-sm" type="submit">
+                        <span><i class="fas fa-trash"></i> Eliminar</span>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

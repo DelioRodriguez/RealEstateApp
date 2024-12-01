@@ -15,9 +15,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Services/PropertiesType/IPropertiesTypeServices.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/PropertiesType/PropertiesTypeServices.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/CreatePropertyTypeViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/DeletePropertyTypeViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/EditPropertyTypeViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Application/ViewModels/PropertiesType/PropertyTypeListViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesTypeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/PropertiesType/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/0a9e1c79-b2ad-4b21-afba-d4acd0e1e87f_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/e5211a11-5671-40f3-be75-63dccc11c815_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/ServiceRegistrationApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/ServiceRegistrationApi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.metadata.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.projects.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/realestateapp.strings.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/96f4e18f-3436-4df7-95f8-c4c300ccd2a7.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/a19f5fd8-b42e-4a9c-b857-6370b146346e.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/b4d4319e-fcf7-461e-95ef-b04f20ab3d3c.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/c4e918ec-23be-4a1a-842d-3ee9fef7b0c1.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/FileContentIndex/c65b968b-7a40-44ec-96ca-deac21f06053.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/PropertiesType/IPropertyTypeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Interfaces/Repositories/PropertiesType/IPropertyTypeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Mapping/GeneralProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/ServiceRegistration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Domain/Entities/PropertyType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Domain/Entities/PropertyType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Dashboard/DashboardRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/Dashboard/DashboardRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/PropertiesType/PropertyTypeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/Repositories/PropertiesType/PropertyTypeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Persistance/ServiceRegistration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Admin/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +82,10 @@
     &quot;accountId&quot;: &quot;8aaa89e6-dbf4-4f31-8dcd-d66782b57c12&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/ReaklEstateApp/RealEstateApp.Infrastructure.Identity/ServiceRegistrationApi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c69576b4a074ad2839225611609498e344b7e2819997af48dbb2d2f8257f3/EntityFrameworkQueryableExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -213,6 +252,8 @@
       <workItem from="1732914387749" duration="86000" />
       <workItem from="1732921744397" duration="477000" />
       <workItem from="1732928808356" duration="309000" />
+      <workItem from="1733010925664" duration="98000" />
+      <workItem from="1733011754655" duration="1723000" />
     </task>
     <task id="LOCAL-00001" summary="Login y register, Controlador de propiedades, controlador de agentes Listos.">
       <option name="closed" value="true" />
@@ -238,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732905987197</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".">
+      <option name="closed" value="true" />
+      <created>1732990103839</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732990103839</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

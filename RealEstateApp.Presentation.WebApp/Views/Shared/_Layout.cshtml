@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - RealEstateApp.Presentation.WebApp</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet" />
     <style>
         .navbar {
             background-color: #ffffff;
@@ -27,9 +30,9 @@
             transition: color 0.3s ease;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #007bff;
-        }
+            .navbar-nav .nav-link:hover {
+                color: #007bff;
+            }
 
         .hero-banner {
             background: url('https://il-abogados.pe/wp-content/uploads/2022/03/dXiSvpOdWPwevaXmhsNBR9bTSSznvbO2B3avetPp.jpg') center center/cover;
@@ -41,10 +44,10 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        .hero-banner h1 {
-            font-size: 3rem;
-            font-weight: bold;
-        }
+            .hero-banner h1 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
 
         footer {
             background-color: #f8f9fa;
@@ -54,118 +57,139 @@
             color: #555;
         }
 
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
+            footer a {
+                color: #007bff;
+                text-decoration: none;
+            }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+                footer a:hover {
+                    text-decoration: underline;
+                }
     </style>
 </head>
 <body>
-<header>
-    
-    @if (User.Identity!.IsAuthenticated && User.IsInRole("Client"))
-    {
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Client" asp-action="HomeClient">KeyNest</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Client" asp-action="HomeClient">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Client" asp-action="AgentsByClient">Agentes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesion</a>
-                        </li>
-                    </ul>
+    <header>
+        @if (User.Identity!.IsAuthenticated && User.IsInRole("Client"))
+        {
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Client" asp-action="HomeClient">KeyNest</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Client" asp-action="HomeClient"><i class="bi bi-house-door"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Client" asp-action="AgentsByClient"><i class="bi bi-person-badge"></i> Agentes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    }
-    else if (User.Identity!.IsAuthenticated && User.IsInRole("Agent"))
-    {
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Agent" asp-action="MyProperties">KeyNest</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Agent" asp-action="MyProperties">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Agent" asp-action="MantenimientoPropiedades">Propiedades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Chat" asp-action="DetailsByAgent">Mi Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesion</a>
-                        </li>
-                    </ul>
+            </nav>
+        }
+        else if (User.Identity!.IsAuthenticated && User.IsInRole("Agent"))
+        {
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Agent" asp-action="MyProperties">KeyNest</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Agent" asp-action="MyProperties"><i class="bi bi-house-door"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Agent" asp-action="MantenimientoPropiedades"><i class="bi bi-gear"></i> Propiedades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Chat" asp-action="DetailsByAgent"><i class="bi bi-person-circle"></i> Mi Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    }
-    else
-    {
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Properties" asp-action="Index">KeyNest</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Properties" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Agents" asp-action="Agents">Agentes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Únete a la app</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Iniciar sesión</a>
-                        </li>
-                    </ul>
+            </nav>
+        }
+        else if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Agent" asp-action="MyProperties">KeyNest</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index"><i class="bi bi-house-door"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="PropertiesType" asp-action="Index"><i class="bi bi-house-gear-fill"></i> PropertyType</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    }
-</header>
+            </nav>
+        }
+        else
+        {
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Properties" asp-action="Index">KeyNest</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Properties" asp-action="Index"><i class="bi bi-house-door"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Agents" asp-action="Agents"><i class="bi bi-person-circle"></i> Agentes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register"><i class="bi bi-person-plus"></i> Únete a la app</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        }
+    </header>
 
-<!-- Hero Banner -->
-<div class="hero-banner">
-    <h1>KeyNest</h1>
-</div>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <h1>KeyNest</h1>
+    </div>
 
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
-<footer class="border-top footer">
-    
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+    <footer class="border-top footer">
+        <p>&copy; 2024 KeyNest. Todos los derechos reservados.</p>
+    </footer>
 </body>
-
+</html>

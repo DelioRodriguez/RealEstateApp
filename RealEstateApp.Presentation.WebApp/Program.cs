@@ -1,7 +1,11 @@
 using RealEstateApp.Application;
+using RealEstateApp.Application.Interfaces.Repositories.DashBoard;
+using RealEstateApp.Application.Interfaces.Services.Dashboard;
+using RealEstateApp.Application.Services.Dashboard;
 using RealEstateApp.Application.Settings;
 using RealEstateApp.Infrastructure.Identity;
 using RealEstateApp.Infrastructure.Persistance;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Dashboard;
 using RealEstateApp.Infrastructure.Shared;
 
 var builder = WebApplication.CreateBuilder(args);

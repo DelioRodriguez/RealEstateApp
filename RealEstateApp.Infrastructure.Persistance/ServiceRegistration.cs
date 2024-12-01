@@ -34,6 +34,8 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<ISaleTypeRepository, SaleTypeRepository>();
             services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
             services.AddScoped<IImprovementRepository, ImprovementRepository>();
+            services.AddScoped<IDashboardRepository, DashboardRepository>();
+
 
             #region Api
 

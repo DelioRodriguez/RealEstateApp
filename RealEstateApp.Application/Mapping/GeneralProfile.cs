@@ -8,6 +8,7 @@ using RealEstateApp.Application.Dtos.Users;
 using RealEstateApp.Application.ViewModels.Improvements;
 using RealEstateApp.Application.ViewModels.Properties;
 using RealEstateApp.Application.ViewModels.PropertiesType;
+using RealEstateApp.Application.ViewModels.SaleType;
 using RealEstateApp.Application.ViewModels.Users;
 using RealEstateApp.Domain.Entities;
 
@@ -19,7 +20,7 @@ public class GeneralProfile : Profile
     {
         #region "Web App"
         CreateMap<UserInfo, AgentViewModel>().ReverseMap();
-        CreateMap<Improvement, ImprovementViewModel>().ReverseMap();
+        
         
         CreateMap<Property, PropertyListViewModel>()
             .ForMember(dest => dest.PropertyTypeName, opt => opt.MapFrom(src => src.PropertyType.Name))
@@ -32,6 +33,25 @@ public class GeneralProfile : Profile
             .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.Images.Select(img => img.ImageUrl)))
             .ForMember(dest => dest.Improvements, opt => opt.MapFrom(src => src.Improvements.Select(imp => imp.Name)));
 
+        #region "Improvements"
+
+        CreateMap<Improvement, ImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, ImprovementsListViewModel>().ReverseMap();
+        CreateMap<Improvement, CreateImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, UpdateImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, DeleteImprovementViewModel>().ReverseMap();
+
+        #endregion
+
+        #region SaleType
+
+        CreateMap<SaleType, SaleTypeListViewModel>().ForMember(dest => dest.PropertiesCount, opt => opt.Ignore());
+        CreateMap<SaleType, CreateSaleTypeViewModel>().ReverseMap();
+        CreateMap<SaleType, UpdateSaleTypeViewModel>().ReverseMap();
+        CreateMap<SaleType, DeleteSaleTypeViewModel>().ReverseMap();
+
+        #endregion
+
         #region PropertyType
 
         CreateMap<PropertyType, PropertyTypeListViewModel>().ForMember(dest => dest.PropertiesCount, opt => opt.Ignore());
@@ -40,7 +60,9 @@ public class GeneralProfile : Profile
         CreateMap<PropertyType, DeletePropertyTypeViewModel>().ReverseMap();
 
         #endregion
+
         #endregion
+
         #region Api
 
         #region Property

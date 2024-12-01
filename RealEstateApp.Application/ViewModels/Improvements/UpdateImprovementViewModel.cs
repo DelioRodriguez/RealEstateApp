@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RealEstateApp.Application.ViewModels.PropertiesType
+namespace RealEstateApp.Application.ViewModels.Improvements
 {
-    public class EditPropertyTypeViewModel
+    public class UpdateImprovementViewModel
     {
         [Required(ErrorMessage = "El nombre es requerido.")]
         [MaxLength(50, ErrorMessage = "El nombre no puede superar los 50 caracteres.")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "El descripcion a actualizar es requerida.")]
+        [Required(ErrorMessage = "El descripcion es requerida.")]
         [MaxLength(200, ErrorMessage = "La descripción no puede superar los 200 caracteres.")]
         public string? Description { get; set; }
     }

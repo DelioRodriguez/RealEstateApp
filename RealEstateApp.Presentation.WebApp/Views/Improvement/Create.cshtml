@@ -1,0 +1,20 @@
+﻿@model RealEstateApp.Application.ViewModels.Improvements.CreateImprovementViewModel
+
+<h2>Crear Nueva Mejora</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Name">Nombre</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Description">Descripción</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+        <button type="submit" class="btn btn-success">Crear</button>
+    </div>
+</form>

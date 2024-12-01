@@ -1,0 +1,13 @@
+﻿@model RealEstateApp.Application.ViewModels.Improvements.DeleteImprovementViewModel
+
+<h2>Eliminar Mejora</h2>
+
+<p>¿Está seguro que desea eliminar la mejora "<strong>@Model.Name</strong>"?</p>
+
+<form asp-action="DeleteConfi" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-danger">Aceptar</button>
+    </div>
+</form>

@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -18,14 +18,14 @@ using RealEstateApp.Infrastructure.Shared.Service;
 
 namespace RealEstateApp.Infrastructure.Identity;
 
-public static class ServiceRegistrationApi
+public static class ServiceRegistrationAPI
 {
     public static void AddIdentityInfrastructureApi(this IServiceCollection services, IConfiguration configuration)
     {
-       
+
         services.AddSingleton(TimeProvider.System);
 
-       
+
         if (configuration.GetValue<bool>("UseInMemoryDatabase"))
         {
             services.AddDbContext<IdentityContext>(options =>
@@ -43,16 +43,16 @@ public static class ServiceRegistrationApi
             });
         }
 
-     
+
         services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-            {
-              
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
-            })
+        {
+
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequiredLength = 6;
+        })
             .AddEntityFrameworkStores<IdentityContext>()
             .AddSignInManager<SignInManager<ApplicationUser>>()
             .AddDefaultTokenProviders();

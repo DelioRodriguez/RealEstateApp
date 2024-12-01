@@ -1,34 +1,216 @@
 @model RealEstateApp.Application.Dtos.Dashboard.DashboardDTO
 
-<div class="container mt-5">
-    <h1 class="text-center">Dashboard del Administrador</h1>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Indicadores</h3>
-            <ul class="list-group">
-                <li class="list-group-item">Propiedades Disponibles: @Model.AvailableProperties</li>
-                <li class="list-group-item">Propiedades Vendidas: @Model.SoldProperties</li>
-                <li class="list-group-item">Agentes Activos: @Model.ActiveAgents</li>
-                <li class="list-group-item">Agentes Inactivos: @Model.InactiveAgents</li>
-                <li class="list-group-item">Clientes Activos: @Model.ActiveClients</li>
-                <li class="list-group-item">Clientes Inactivos: @Model.InactiveClients</li>
-                <li class="list-group-item">Desarrolladores Activos: @Model.ActiveDevelopers</li>
-                <li class="list-group-item">Desarrolladores Inactivos: @Model.InactiveDevelopers</li>
-            </ul>
+    .container {
+        margin-top: 30px;
+    }
+
+    .card-equal-height {
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-equal-height:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-container {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        border-radius: 50%;
+        font-size: 30px;
+        transition: background-color 0.3s ease;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    .card-primary { background-color: #6c757d; color: white; }
+    .card-success { background-color: #28a745; color: white; }
+    .card-warning { background-color: #ffc107; color: white; }
+    .card-info { background-color: #17a2b8; color: white; }
+    .card-danger { background-color: #dc3545; color: white; }
+    .card-secondary { background-color: #6c757d; color: white; }
+
+    .card-primary:hover .icon-container { background-color: #495057; }
+    .card-success:hover .icon-container { background-color: #218838; }
+    .card-warning:hover .icon-container { background-color: #e0a800; }
+    .card-info:hover .icon-container { background-color: #117a8b; }
+    .card-danger:hover .icon-container { background-color: #c82333; }
+    .card-secondary:hover .icon-container { background-color: #5a6268; }
+
+    .coming-soon {
+        background-color: #f4f4f4;
+        color: #333;
+        border: 2px dashed #999;
+    }
+    .coming-soon .icon-container {
+        background-color: #ff8c00;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-primary shadow-lg card-equal-height">
+                <div class="card-body" id="available-properties">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-primary">
+                            <i class="fas fa-house-user"></i>
+                        </div>
+                        Propiedades Disponibles
+                    </div>
+                    <p class="card-text">@Model.AvailableProperties</p>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-6">
-            <h3>Menú</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="/Dashboard">Home del Administrador</a></li>
-                <li class="list-group-item"><a href="/Agent/List">Listado de Agentes</a></li>
-                <li class="list-group-item"><a href="/Admin/Maintenance">Mantenimiento de Administradores</a></li>
-                <li class="list-group-item"><a href="/Developer/Maintenance">Mantenimiento de Desarrolladores</a></li>
-                <li class="list-group-item"><a href="/PropertyType/Maintenance">Mantenimiento de Tipos de Propiedades</a></li>
-                <li class="list-group-item"><a href="/SaleType/Maintenance">Mantenimiento de Tipos de Ventas</a></li>
-                <li class="list-group-item"><a href="/Improvements/Maintenance">Mantenimiento de Mejoras</a></li>
-            </ul>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-success shadow-lg card-equal-height">
+                <div class="card-body" id="sold-properties">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        Propiedades Vendidas
+                    </div>
+                    <p class="card-text">@Model.SoldProperties</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-warning shadow-lg card-equal-height">
+                <div class="card-body" id="active-agents">
+                    <div class="card-title text-dark">
+                        <div class="icon-container bg-warning">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        Agentes Activos
+                    </div>
+                    <p class="card-text">@Model.ActiveAgents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-danger shadow-lg card-equal-height">
+                <div class="card-body" id="inactive-agents">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-danger">
+                            <i class="fas fa-user-slash"></i>
+                        </div>
+                        Agentes Inactivos
+                    </div>
+                    <p class="card-text">@Model.InactiveAgents</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-info shadow-lg card-equal-height">
+                <div class="card-body" id="active-clients">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-info">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        Clientes Activos
+                    </div>
+                    <p class="card-text">@Model.ActiveClients</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-secondary shadow-lg card-equal-height">
+                <div class="card-body" id="inactive-clients">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-secondary">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        Clientes Inactivos
+                    </div>
+                    <p class="card-text">@Model.InactiveClients</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-success shadow-lg card-equal-height">
+                <div class="card-body" id="active-developers">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-success">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        Desarrolladores Activos
+                    </div>
+                    <p class="card-text">@Model.ActiveDevelopers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-danger shadow-lg card-equal-height">
+                <div class="card-body" id="inactive-developers">
+                    <div class="card-title text-white">
+                        <div class="icon-container bg-danger">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        Desarrolladores Inactivos
+                    </div>
+                    <p class="card-text">@Model.InactiveDevelopers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-secondary shadow-lg card-equal-height coming-soon">
+                <div class="card-body">
+                    <div class="card-title text-secondary">
+                        <div class="icon-container bg-warning">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        Coming Soon
+                    </div>
+                    <p class="card-text">¡Pronto disponible!</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

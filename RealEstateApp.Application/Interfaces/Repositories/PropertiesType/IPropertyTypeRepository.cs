@@ -5,5 +5,5 @@ namespace RealEstateApp.Application.Interfaces.Repositories.PropertiesType;
 
 public interface IPropertyTypeRepository : IRepository<PropertyType>
 {
-    
+    Task<int> GetPropertiesCountAsync(int propertyTypeId);
 }

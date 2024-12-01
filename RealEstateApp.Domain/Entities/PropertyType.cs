@@ -2,7 +2,7 @@
 
 namespace RealEstateApp.Domain.Entities;
 
-public class PropertyType
+public class PropertyType 
 {
     [Key]
     public int Id { get; set; }

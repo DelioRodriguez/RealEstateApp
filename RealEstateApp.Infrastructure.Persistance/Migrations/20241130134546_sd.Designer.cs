@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstateApp.Infrastructure.Persistance.Context;
 
@@ -11,9 +12,11 @@ using RealEstateApp.Infrastructure.Persistance.Context;
 namespace RealEstateApp.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241130134546_sd")]
+    partial class sd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,16 +56,11 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("PropertyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("PropertyId");
 
                     b.ToTable("Chats");
                 });
@@ -392,14 +390,6 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("RealEstateApp.Domain.Entities.Property", "Property")
-                        .WithMany("Chats")
-                        .HasForeignKey("PropertyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Favorite", b =>
@@ -484,8 +474,6 @@ namespace RealEstateApp.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Property", b =>
                 {
-                    b.Navigation("Chats");
-
                     b.Navigation("Images");
 
                     b.Navigation("Offers");

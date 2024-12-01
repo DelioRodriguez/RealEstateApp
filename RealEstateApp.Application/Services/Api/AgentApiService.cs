@@ -7,13 +7,13 @@ using RealEstateApp.Domain.Enums;
 
 namespace RealEstateApp.Application.Services.Api
 {
-    public class AgentService : IAgentApiService
+    public class AgentApiService : IAgentApiService
     {
         private readonly IUserRepository _userRepository;
         private readonly IAgentApiRepository _agentApiRepository;
         private readonly IMapper _mapper;
 
-        public AgentService(IUserRepository userRepository, IAgentApiRepository agentApiRepository, IMapper mapper)
+        public AgentApiService(IUserRepository userRepository, IAgentApiRepository agentApiRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _agentApiRepository = agentApiRepository;

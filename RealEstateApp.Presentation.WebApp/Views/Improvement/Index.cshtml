@@ -1,0 +1,72 @@
+﻿@model List<RealEstateApp.Application.ViewModels.Improvements.ImprovementsListViewModel>
+
+@{
+    ViewData["Title"] = "Listado de Mejoras";
+}
+
+<h1 class="mb-4 text-center text-primary">
+    <i class="fas fa-tools"></i> Mantenimiento de Mejoras
+</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    <i class="fas fa-plus-circle"></i> Crear Nueva Mejora
+</a>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th><i class="fas fa-tag"></i> Nombre</th>
+                <th><i class="fas fa-align-left"></i> Descripción</th>
+                <th><i class="fas fa-cogs"></i> Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <div class="d-flex">
+                            <!-- Editar -->
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+
+                            <!-- Eliminar -->
+                            <button type="button" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+
+                            <!-- Modal de confirmación -->
+                            <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@item.Id" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-danger text-white">
+                                            <h5 class="modal-title" id="deleteModalLabel-@item.Id">
+                                                <i class="fas fa-exclamation-triangle"></i> Confirmar Eliminación
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Está seguro que desea eliminar la mejora <strong>@item.Name</strong>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <form asp-action="DeleteConfi" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i> Confirmar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

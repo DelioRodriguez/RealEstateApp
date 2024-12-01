@@ -1,0 +1,18 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RealEstateApp.Application.Dtos.Admin.AdminDto
+
+<h2 class="text-center text-primary mb-4">
+    <i class="fas fa-user-plus"></i> Crear Administrador
+</h2>
+
+<form asp-action="CreateAdmin" method="post">
+    @Html.Partial("_AdminForm", Model)
+
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-check-circle"></i> Crear
+    </button>
+
+    <a asp-action="Admins" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+</form>

@@ -1,0 +1,17 @@
+﻿@model RealEstateApp.Application.ViewModels.SaleType.DeleteSaleTypeViewModel
+
+@{
+    ViewData["Title"] = "Eliminar Tipo de Venta";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>¿Está seguro que desea eliminar este tipo de venta y las propiedades asociadas?</p>
+
+<p><strong>@Model.Name</strong></p>
+
+<form asp-action="DeleteConfi" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Aceptar</button>
+    <a href="@Url.Action("Index", "SaleType")" class="btn btn-secondary">Cancelar</a>
+</form>

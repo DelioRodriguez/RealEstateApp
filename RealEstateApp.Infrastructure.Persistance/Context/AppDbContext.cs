@@ -28,7 +28,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<ApplicationUser>().ToTable("Users", "Identity");
         modelBuilder.Entity<ApplicationUser>().Metadata.SetIsTableExcludedFromMigrations(true);
         
-        
         modelBuilder.Entity<Offer>()
             .HasOne<ApplicationUser>()
             .WithMany()

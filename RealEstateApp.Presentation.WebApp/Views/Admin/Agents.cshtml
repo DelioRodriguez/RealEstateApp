@@ -1,0 +1,88 @@
+@model List<RealEstateApp.Application.Dtos.Agents.AgentViewDto>
+@{
+ViewData["Title"] = "Listado de Agentes";
+}
+
+<h1 class="mb-4 text-center text-primary">
+    <i class="fas fa-users"></i> Listado de Agentes
+</h1>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="bg-primary text-white">
+        <tr>
+            <th><i class="fas fa-user"></i> Nombre</th>
+            <th><i class="fas fa-user-tag"></i> Apellido</th>
+            <th><i class="fas fa-envelope"></i> Email</th>
+            <th><i class="fas fa-phone"></i> Teléfono</th>
+            <th><i class="fas fa-building"></i> Propiedades</th>
+            <th><i class="fas fa-toggle-on"></i> Activo</th>
+            <th><i class="fas fa-cogs"></i> Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var agent in Model)
+        {
+        <tr>
+            <td><i class="fas fa-user"></i> @agent.FirstName</td>
+            <td><i class="fas fa-user-tag"></i> @agent.LastName</td>
+            <td><i class="fas fa-envelope"></i> @agent.Email</td>
+            <td><i class="fas fa-phone"></i> @agent.Phone</td>
+            <td><i class="fas fa-building"></i> @agent.Properties</td>
+            <td>
+                @if (agent.IsActive)
+                {
+                <span class="badge bg-success"><i class="fas fa-check-circle"></i> Sí</span>
+                }
+                else
+                {
+                <span class="badge bg-danger"><i class="fas fa-times-circle"></i> No</span>
+                }
+            </td>
+            <td>
+                <div class="d-flex">
+                    <!-- Activar/Inactivar -->
+                    <form asp-action="ToggleActivation" asp-route-id="@agent.AgentId" method="post" style="display:inline;">
+                        <button class="btn btn-sm @((agent.IsActive) ? "btn-warning" : "btn-success")" type="submit">
+                            <i class="fas @((agent.IsActive) ? "fa-ban" : "fa-check")"></i>
+                            @((agent.IsActive) ? "Inactivar" : "Activar")
+                        </button>
+                    </form>
+
+                            <form asp-action="Delete" asp-route-id="@agent.AgentId" method="post" style="display:inline;">
+                                <!-- Botón que activa el modal -->
+                                <button type="button" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal-@agent.AgentId">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+
+                                <!-- Modal de confirmación -->
+                                <div class="modal fade" id="deleteModal-@agent.AgentId" tabindex="-1" aria-labelledby="deleteModalLabel-@agent.AgentId" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title" id="deleteModalLabel-@agent.AgentId"><i class="fas fa-exclamation-triangle"></i> Confirmar Eliminación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Está seguro que desea eliminar al agente <strong>@agent.FirstName @agent.LastName</strong> y todas sus propiedades?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i> Confirmar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                </div>
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>

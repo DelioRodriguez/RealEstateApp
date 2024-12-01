@@ -23,10 +23,14 @@ public class AgentRepository : IAgentRepository
     {
         var users = await _userManager.GetUsersInRoleAsync(Role.Agent.ToString());
         var result = new List<AgentViewDto>();
+
+        // Verificar cuántos usuarios son agentes
+        Console.WriteLine($"Número de agentes encontrados: {users.Count}");
+
         foreach (var user in users)
         {
             var propertiesCount = await _context.Properties.CountAsync(x => x.AgentId == user.Id);
-            
+
             result.Add(new AgentViewDto
             {
                 AgentId = user.Id,
@@ -35,11 +39,16 @@ public class AgentRepository : IAgentRepository
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 Properties = propertiesCount,
-                IsActive = user.EmailConfirmed
+                IsActive = user.EmailConfirmed  // No filtrar aquí, simplemente mostrar
             });
+
+            // Verificar el estado de email confirmado para cada usuario
+            Console.WriteLine($"Agente {user.Id} tiene email confirmado: {user.EmailConfirmed}");
         }
+
         return result;
     }
+
 
     public async Task<bool> ToggleAgentActivationAsync(string agentId)
     {

@@ -5,7 +5,6 @@ using RealEstateApp.Application.Interfaces.Services.Dashboard;
 
 namespace WebApplication1.Controllers;
 
-
 public class AdminController : Controller
 {
     private readonly IDashboardService _dashboardService;
@@ -35,6 +34,7 @@ public class AdminController : Controller
         await _agentService.ToggleAgentActivationAsync(id);
         return RedirectToAction(nameof(Agents));
     }
+    
     [HttpPost]
     public async Task<IActionResult> Delete(string id)
     {

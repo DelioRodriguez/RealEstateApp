@@ -42,8 +42,8 @@ public class AdminController : Controller
     [HttpPost]
     public async Task<IActionResult> Delete(string id)
     {
-        await _agentService.DeleteAgentAsync(id);
-        return RedirectToAction(nameof(Agents));
+            await _agentService.DeleteAgentAsync(id);
+            return RedirectToAction(nameof(Agents));
     }
 
     public async Task<IActionResult> Admins()

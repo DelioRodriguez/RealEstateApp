@@ -64,10 +64,10 @@ public class AgentRepository : IAgentRepository
     {
         var user = await _userManager.FindByIdAsync(agentId);
         if(user == null) throw new Exception("Agente no encontrado");
-        
+
         var propeties = _context.Properties.Where(x => x.AgentId == user.Id);
         _context.Properties.RemoveRange(propeties);
-        
+
         var result = await _userManager.DeleteAsync(user);
 
         if (!result.Succeeded)

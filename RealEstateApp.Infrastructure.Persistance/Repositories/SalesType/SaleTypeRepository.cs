@@ -14,8 +14,8 @@ public class SaleTypeRepository : Repository<SaleType>, ISaleTypeRepository
         _context = context;
     }
 
-    public async Task<int> GetPropertiesCountAsync(int SalePropertyId)
+    public async Task<int> GetPropertiesCountAsync(int saleTypeId)
     {
-        return await _context.Properties.CountAsync(p => p.PropertyTypeId == SalePropertyId);
+        return await _context.Properties.CountAsync(p => p.SaleTypeId == saleTypeId);
     }
 }

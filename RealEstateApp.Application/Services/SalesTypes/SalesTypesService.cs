@@ -18,9 +18,9 @@ namespace RealEstateApp.Application.Services.SalesTypes
             _repository = saleTypeRepository;
         }
 
-        public async Task<int> GetPropertiesCountAsync(int propertyTypeId)
+        public async Task<int> GetPropertiesCountAsync(int saleTypeId)
         {
-            return await _repository.GetPropertiesCountAsync(propertyTypeId);
+            return await _repository.GetPropertiesCountAsync(saleTypeId);
         }
     }
 }

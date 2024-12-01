@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\ReaklEstateApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\controllers\\saletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\controllers\\saletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|c:\\reaklestateapp\\realestateapp.application\\mapping\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFB1E9E5-07BA-4417-9F52-08DF0C167EE7}|RealEstateApp.Application\\RealEstateApp.Application.csproj|solutionrelative:realestateapp.application\\mapping\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,35 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GeneralProfile.cs",
-              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Mapping\\GeneralProfile.cs",
-              "RelativeDocumentMoniker": "RealEstateApp.Application\\Mapping\\GeneralProfile.cs",
-              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Application\\Mapping\\GeneralProfile.cs",
-              "RelativeToolTip": "RealEstateApp.Application\\Mapping\\GeneralProfile.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T02:55:28.845Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SaleTypeController.cs",
-              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\SaleTypeController.cs",
-              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\SaleTypeController.cs",
-              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\SaleTypeController.cs",
-              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Controllers\\SaleTypeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T03:17:15.46Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"

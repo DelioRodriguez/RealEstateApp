@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RealEstateApp.Application.ViewModels.SaleType.SaleTypeListViewModel>
+
+@{
+    ViewData["Title"] = "Mantenimiento de Tipo de Ventas";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create", "SaleType")" class="btn btn-primary">Crear Nuevo Tipo de Venta</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad de Propiedades</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.PropertiesCount</td>
+                <td>
+                    <a href="@Url.Action("Edit", "SaleType", new { id = item.Id })" class="btn btn-warning">Editar</a>
+                    <a href="@Url.Action("Delete", "SaleType", new { id = item.Id })" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

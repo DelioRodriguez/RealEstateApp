@@ -5,6 +5,6 @@ namespace RealEstateApp.Application.Interfaces.Services.SalesType
 {
     public interface ISalesTypesService : IService<SaleType>
     {
-        Task<int> GetPropertiesCountAsync(int propertyTypeId);
+        Task<int> GetPropertiesCountAsync(int saleTypeId);
     }
 }

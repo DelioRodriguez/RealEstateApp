@@ -20,7 +20,7 @@ public class GeneralProfile : Profile
     {
         #region "Web App"
         CreateMap<UserInfo, AgentViewModel>().ReverseMap();
-        CreateMap<Improvement, ImprovementViewModel>().ReverseMap();
+        
         
         CreateMap<Property, PropertyListViewModel>()
             .ForMember(dest => dest.PropertyTypeName, opt => opt.MapFrom(src => src.PropertyType.Name))
@@ -32,6 +32,16 @@ public class GeneralProfile : Profile
             .ForMember(dest => dest.SaleTypeName, opt => opt.MapFrom(src => src.SaleType.Name))
             .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.Images.Select(img => img.ImageUrl)))
             .ForMember(dest => dest.Improvements, opt => opt.MapFrom(src => src.Improvements.Select(imp => imp.Name)));
+
+        #region "Improvements"
+
+        CreateMap<Improvement, ImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, ImprovementsListViewModel>().ReverseMap();
+        CreateMap<Improvement, CreateImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, UpdateImprovementViewModel>().ReverseMap();
+        CreateMap<Improvement, DeleteImprovementViewModel>().ReverseMap();
+
+        #endregion
 
         #region SaleType
 

@@ -39,7 +39,7 @@ namespace RealEstateApp.Application
             #region Api
 
             services.AddScoped<IPropertiesApiService, PropertiesApiService>();
-            services.AddScoped<IAgentApiService, AgentService>();
+            services.AddScoped<IAgentApiService, AgentApiService>();
             services.AddScoped<IPropertyTypesApiService, PropertyTypesApiService>();
             services.AddScoped<ISaleTypeApiService, SaleTypeApiService>();
             services.AddScoped<IImprovementsApiService, ImprovementsApiService>();

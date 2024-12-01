@@ -100,8 +100,16 @@ public class AccountService : IAccountService
         if (!result.Succeeded)
             return "Invalid credentials.";
 
-        return "Login successful.";
+        var roles = await _userManager.GetRolesAsync(user);
+        if (roles.Contains("Admin"))
+        {
+          
+            return "RedirectToAction: Index (Admin)";
+        }
+
+        return "Login successful.";  
     }
+
     
     
     public async Task<bool> ActivateUserAsync(string email, string token)

@@ -38,9 +38,8 @@ app.UseRouting();
 
 app.UseAuthentication(); 
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Properties}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=RedirectByRole}/{id?}");
 
 app.Run();

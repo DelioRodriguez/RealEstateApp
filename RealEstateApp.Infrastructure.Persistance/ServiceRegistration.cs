@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Repositories.Admin;
 using RealEstateApp.Application.Interfaces.Repositories.Agent;
 using RealEstateApp.Application.Interfaces.Repositories.Api;
 using RealEstateApp.Application.Interfaces.Repositories.DashBoard;
+using RealEstateApp.Application.Interfaces.Repositories.Developer;
 using RealEstateApp.Application.Interfaces.Repositories.Favory;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Repositories.Improvements;
@@ -14,9 +16,11 @@ using RealEstateApp.Application.Interfaces.Repositories.Users;
 using RealEstateApp.Application.Interfaces.Services.Agent;
 using RealEstateApp.Infrastructure.Persistance.Context;
 using RealEstateApp.Infrastructure.Persistance.Repositories;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Admin;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Agent;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Api;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Dashboard;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Developer;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Improvements;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
@@ -34,12 +38,13 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
-            services.AddScoped<ISaleTypeRepository, SaleTypeRepository>();
+            services.AddScoped<ISaleTypeRepository, SaleTypeRepository>(); 
             services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
             services.AddScoped<IImprovementRepository, ImprovementRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
             services.AddScoped<IAgentRepository, AgentRepository>();
-
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IDeveloperRepository,DeveloperRepository>();
 
             #region Api
 

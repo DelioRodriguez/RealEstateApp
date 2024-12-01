@@ -1,0 +1,42 @@
+@using RealEstateApp.Application.Dtos.Developer
+@model IEnumerable<DeveloperDto>
+
+<h2>Listado de Desarrolladores</h2>
+
+<a asp-action="Create" class="btn btn-primary">Crear Desarrollador</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Nombre de Usuario</th>
+        <th>Correo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var developer in Model)
+    {
+        <tr>
+            <td>@developer.FirstName</td>
+            <td>@developer.LastName</td>
+            <td>@developer.UserName</td>
+            <td>@developer.Email</td>
+            <td>@(developer.IsActive ? "Activo" : "Inactivo")</td>
+            <td>
+                @if (developer.IsActive)
+                {
+                    <button class="btn btn-warning" asp-action="ToggleStatus" asp-route-id="@developer.Id" asp-route-status="false">Inactivar</button>
+                }
+                else
+                {
+                    <button class="btn btn-success" asp-action="ToggleStatus" asp-route-id="@developer.Id" asp-route-status="true">Activar</button>
+                }
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@developer.Id">Editar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,8 +1,10 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateApp.Application.Interfaces.Services.Admin;
 using RealEstateApp.Application.Interfaces.Services.Agent;
 using RealEstateApp.Application.Interfaces.Services.Api;
 using RealEstateApp.Application.Interfaces.Services.Dashboard;
+using RealEstateApp.Application.Interfaces.Services.Developer;
 using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Generic;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
@@ -10,6 +12,7 @@ using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.PropertiesType;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Mapping;
+using RealEstateApp.Application.Services.Admin;
 using RealEstateApp.Application.Services.Api;
 using RealEstateApp.Application.Services.Dashboard;
 using RealEstateApp.Application.Services.Favory;
@@ -19,6 +22,7 @@ using RealEstateApp.Application.Services.Properties;
 using RealEstateApp.Application.Services.PropertiesType;
 using RealEstateApp.Application.Services.Users;
 using RealEstateApp.Application.Services.Agent;
+using RealEstateApp.Application.Services.Developer;
 
 namespace RealEstateApp.Application
 {
@@ -34,6 +38,8 @@ namespace RealEstateApp.Application
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<IPropertiesTypeServices, PropertiesTypeServices>();
             services.AddScoped<IAgentService, AgentService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<iDeveloperService,DeveloperService>();
 
 
             #region Api

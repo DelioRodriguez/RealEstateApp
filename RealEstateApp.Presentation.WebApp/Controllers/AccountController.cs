@@ -67,18 +67,25 @@ public class AccountController : Controller
         {
             return View(userDto);
         }
-        
+
         var result = await _accountService.LoginUserAsync(userDto);
 
-        if (result.Contains("successful"))
+  
+        if (result.Contains("RedirectToAction"))
         {
-            TempData["SuccessMessage"] = result;
-            return RedirectToAction("Index", "Properties");
+            return RedirectToAction("Index", "Admin");
         }
         
+        if (result.Contains("Login successful"))
+        {
+            TempData["SuccessMessage"] = "Login successful.";
+            return RedirectToAction("Index", "Properties");  
+        }
+
         TempData["ErrorMessage"] = result;
         return View(userDto);
     }
+
 
     [AllowAnonymous]
     public async Task<IActionResult> Activate(string email, string token)

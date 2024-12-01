@@ -1,0 +1,34 @@
+@using RealEstateApp.Application.Dtos.Developer
+@model DeveloperDto
+
+<h2>Crear Desarrollador</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="FirstName">Nombre</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
+    </div>
+    <div class="form-group">
+        <label for="LastName">Apellido</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" asp-for="LastName" required />
+    </div>
+ 
+    <div class="form-group">
+        <label for="Email">Correo</label>
+        <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
+    </div>
+    <div class="form-group">
+        <label for="UserName">Nombre de Usuario</label>
+        <input type="text" class="form-control" id="UserName" name="UserName" asp-for="UserName" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Contraseña</label>
+        <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required />
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirmar Contraseña</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Desarrollador</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver al Listado</a>
+</form>

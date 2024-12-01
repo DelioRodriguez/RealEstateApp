@@ -1,0 +1,54 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<RealEstateApp.Application.Dtos.Admin.AdminDto>
+
+<h2>Lista de Administradores</h2>
+
+<a asp-action="CreateAdmin" class="btn btn-primary mb-3">Crear Administrador</a>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Usuario</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var admin in Model)
+    {
+        <tr>
+            <td>@admin.FirstName</td>
+            <td>@admin.LastName</td>
+            <td>@admin.Email</td>
+            <td>@admin.UserName</td>
+            <td>@(admin.IsActive ? "Activo" : "Inactivo")</td>
+            <td>
+                <a asp-action="EditAdmin" asp-route-id="@admin.Id" class="btn btn-warning btn-sm">Editar</a>
+                @if (admin.IsActive)
+                {
+                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="false"
+                       class="btn btn-danger btn-sm">Inactivar</a>
+                }
+                else
+                {
+                    <a asp-action="ToggleStatusAdmin" asp-route-id="@admin.Id" asp-route-isActive="true"
+                       class="btn btn-success btn-sm">Activar</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}

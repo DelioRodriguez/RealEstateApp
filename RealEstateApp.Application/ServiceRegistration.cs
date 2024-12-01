@@ -7,6 +7,7 @@ using RealEstateApp.Application.Interfaces.Services.Generic;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.PropertiesType;
+using RealEstateApp.Application.Interfaces.Services.SalesType;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Mapping;
 using RealEstateApp.Application.Services.Api;
@@ -16,6 +17,7 @@ using RealEstateApp.Application.Services.Generic;
 using RealEstateApp.Application.Services.Improvements;
 using RealEstateApp.Application.Services.Properties;
 using RealEstateApp.Application.Services.PropertiesType;
+using RealEstateApp.Application.Services.SalesTypes;
 using RealEstateApp.Application.Services.Users;
 
 namespace RealEstateApp.Application
@@ -31,7 +33,7 @@ namespace RealEstateApp.Application
             services.AddScoped<IImprovementService, ImprovementService>();
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<IPropertiesTypeServices, PropertiesTypeServices>();
-
+            services.AddScoped<ISalesTypesService, SalesTypesService>();
             
 
             #region Api

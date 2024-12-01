@@ -1,4 +1,5 @@
-﻿using RealEstateApp.Application.Interfaces.Repositories.SalesType;
+﻿using Microsoft.EntityFrameworkCore;
+using RealEstateApp.Application.Interfaces.Repositories.SalesType;
 using RealEstateApp.Domain.Entities;
 using RealEstateApp.Infrastructure.Persistance.Context;
 
@@ -10,6 +11,11 @@ public class SaleTypeRepository : Repository<SaleType>, ISaleTypeRepository
     
     public SaleTypeRepository(AppDbContext context) : base(context)
     {
-        this._context = context;
+        _context = context;
+    }
+
+    public async Task<int> GetPropertiesCountAsync(int SalePropertyId)
+    {
+        return await _context.Properties.CountAsync(p => p.PropertyTypeId == SalePropertyId);
     }
 }

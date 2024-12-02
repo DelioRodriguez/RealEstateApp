@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.ApiAccount;
 using RealEstateApp.Application.Dtos.Login;
+using RealEstateApp.Application.Helpers;
 using RealEstateApp.Application.Interfaces.Services.Account;
 using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Settings;
@@ -233,5 +234,36 @@ public class AccountService : IAccountService
             UserName = user.UserName,
             Email = user.Email
         };
+    }
+    
+    public async Task<string> UpdateUserAsync(string userId, UserUpdateDTO userDto)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+            return "User not found.";
+        
+        user.FirstName = userDto.FirstName;
+        user.LastName = userDto.LastName;
+        user.PhoneNumber = userDto.PhoneNumber;
+        
+        if (userDto.Photo != null)
+        {
+            var photoPath = await FileHelper.SaveImageAsync(userDto.Photo!, "newPhotos");
+            user.ImagenPath = photoPath;
+        }
+        
+        if (!string.IsNullOrEmpty(userDto.Password) && userDto.Password == userDto.ConfirmPassword)
+        {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var passwordResult = await _userManager.ResetPasswordAsync(user, token, userDto.Password);
+
+            if (!passwordResult.Succeeded)
+                return string.Join(", ", passwordResult.Errors.Select(e => e.Description));
+        }
+        
+        var result = await _userManager.UpdateAsync(user);
+
+        return result.Succeeded ? "successfully" : string.Join(", ", result.Errors.Select(e => e.Description));
     }
 }

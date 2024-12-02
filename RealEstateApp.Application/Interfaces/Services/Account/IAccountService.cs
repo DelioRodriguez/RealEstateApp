@@ -6,10 +6,12 @@ namespace RealEstateApp.Application.Interfaces.Services.Account;
 
 public interface IAccountService
 {
+    Task<string> UpdateUserAsync(string userId, UserUpdateDTO userDto);
     Task RegisterUserAsync(UserRegisterDTO userDto);
     Task<LoginResult> LoginUserAsync(UserLoginDTO userDto);
     Task<bool> ActivateUserAsync(string email, string token);
     Task LogoutAsync();
+    
 
     #region Api
     Task<LoginResponseDto> LoginAsync(LoginRequestDto request);

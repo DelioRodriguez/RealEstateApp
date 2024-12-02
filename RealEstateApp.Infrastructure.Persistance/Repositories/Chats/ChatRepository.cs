@@ -19,8 +19,6 @@ public class ChatRepository : Repository<Chat>, IChatRepository
        return await _context.Chats
             .Where(c => c.PropertyId == propertyId)
             .Include(c => c.Messages) 
-            .Include(c => c.ClientId)
-            .Include(c => c.AgentId) 
             .ToListAsync();
     }
 

@@ -40,16 +40,17 @@ public class AppDbContext : DbContext
             .HasForeignKey(p => p.AgentId)
             .OnDelete(DeleteBehavior.NoAction);
         
+
         modelBuilder.Entity<Chat>()
             .HasOne<ApplicationUser>()
             .WithMany()
-            .HasForeignKey(p => p.AgentId)
+            .HasForeignKey(c => c.ClientId)
             .OnDelete(DeleteBehavior.NoAction);
-        
+
         modelBuilder.Entity<Chat>()
             .HasOne<ApplicationUser>()
             .WithMany()
-            .HasForeignKey(p => p.ClientId)
+            .HasForeignKey(c => c.AgentId)
             .OnDelete(DeleteBehavior.NoAction);
     }
 }

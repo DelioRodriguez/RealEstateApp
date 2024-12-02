@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstateApp.Application.Interfaces.Repositories.Admin;
 using RealEstateApp.Application.Interfaces.Repositories.Agent;
 using RealEstateApp.Application.Interfaces.Repositories.Api;
+using RealEstateApp.Application.Interfaces.Repositories.Chats;
 using RealEstateApp.Application.Interfaces.Repositories.DashBoard;
 using RealEstateApp.Application.Interfaces.Repositories.Developer;
 using RealEstateApp.Application.Interfaces.Repositories.Favory;
@@ -19,6 +20,7 @@ using RealEstateApp.Infrastructure.Persistance.Repositories;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Admin;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Agent;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Api;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Chats;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Dashboard;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Developer;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
@@ -45,6 +47,7 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<IAgentRepository, AgentRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IDeveloperRepository,DeveloperRepository>();
+            services.AddScoped<IChatRepository,ChatRepository>();
 
             #region Api
 

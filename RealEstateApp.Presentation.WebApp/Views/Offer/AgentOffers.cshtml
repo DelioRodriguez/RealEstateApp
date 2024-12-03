@@ -1,0 +1,18 @@
+@model IEnumerable<RealEstateApp.Application.ViewModels.Offer.ClientViewModel>
+
+@{
+    ViewBag.Title = "Client Offers";
+}
+
+<h2>Client Offers for Property</h2>
+
+<ul class="list-group">
+    @foreach (var client in Model)
+    {
+        <li class="list-group-item">
+            <a href="@Url.Action("ClientOffersForAgent", "Offer", new { propertyId = ViewBag.PropertyId, clientId = client.ClientId })">
+                @client.ClientName
+            </a>
+        </li>
+    }
+</ul>

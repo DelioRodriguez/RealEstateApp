@@ -24,7 +24,10 @@ public class PropertyRepository : Repository<Property>, IPropertyRepository
             .Where(p => p.IsAvailable)
             .ToListAsync())!;
     }
-    
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
     public async Task<List<Property?>> GetAllPropertyByUserAsync(string? userId)
     {
         return (await _context.Properties

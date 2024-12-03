@@ -148,6 +148,6 @@ public class PropertiesController : Controller
     {
         var property = _propertyService.GetByIdAsync(id); 
     
-        return View();
+        return View("EditProperties");
     }
 }

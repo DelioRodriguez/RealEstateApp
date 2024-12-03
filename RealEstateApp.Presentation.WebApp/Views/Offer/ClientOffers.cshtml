@@ -1,0 +1,35 @@
+@model IEnumerable<RealEstateApp.Domain.Entities.Offer>
+    @{
+    ViewBag.Title = "Your Offers";
+}
+
+<h2>Your Offers</h2>
+
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var offer in Model)
+{
+    <tr>
+        <td>@offer.Date.ToShortDateString()</td>
+        <td>@offer.Amount.ToString("C")</td>
+        <td>@offer.Status</td>
+        </tr>
+}
+</tbody>
+    </table>
+
+    <a href="@Url.Action("CreateOffer", "Offer", new { propertyId = ViewBag.PropertyId })" 
+class="btn btn-primary"
+    @(TempData["Error"] != null ? "disabled" : "")>Create Offer</a>
+
+    @if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}

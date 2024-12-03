@@ -10,6 +10,7 @@ using RealEstateApp.Application.Interfaces.Repositories.Developer;
 using RealEstateApp.Application.Interfaces.Repositories.Favory;
 using RealEstateApp.Application.Interfaces.Repositories.Generic;
 using RealEstateApp.Application.Interfaces.Repositories.Improvements;
+using RealEstateApp.Application.Interfaces.Repositories.Offer;
 using RealEstateApp.Application.Interfaces.Repositories.Properties;
 using RealEstateApp.Application.Interfaces.Repositories.PropertiesType;
 using RealEstateApp.Application.Interfaces.Repositories.SalesType;
@@ -25,6 +26,7 @@ using RealEstateApp.Infrastructure.Persistance.Repositories.Dashboard;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Developer;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Favory;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Improvements;
+using RealEstateApp.Infrastructure.Persistance.Repositories.Offer;
 using RealEstateApp.Infrastructure.Persistance.Repositories.Properties;
 using RealEstateApp.Infrastructure.Persistance.Repositories.PropertiesType;
 using RealEstateApp.Infrastructure.Persistance.Repositories.SalesType;
@@ -48,7 +50,7 @@ namespace RealEstateApp.Infrastructure.Persistance
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IDeveloperRepository,DeveloperRepository>();
             services.AddScoped<IChatRepository,ChatRepository>();
-
+            services.AddScoped<IOfferRepository, OfferRepository>();
             #region Api
 
             services.AddScoped<IPropertiesApiRepository, PropertiesApiRepository>();

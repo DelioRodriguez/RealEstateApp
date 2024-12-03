@@ -17,6 +17,7 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
+
     public async Task<AgentViewModel> GetUserByIdAsync(string id)
     {
         return _mapper.Map<AgentViewModel>(await _userRepository.GetUserByIdAsync(id));

@@ -1,0 +1,38 @@
+@model IEnumerable<RealEstateApp.Domain.Entities.Offer>
+@{
+    ViewBag.Title = "Offers by Client";
+}
+
+<h2>Offers by Client</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var offer in Model)
+    {
+        <tr>
+            <td>@offer.Date.ToShortDateString()</td>
+            <td>@offer.Amount.ToString("C")</td>
+            <td>@offer.Status</td>
+            <td>
+                @if (offer.Status == RealEstateApp.Domain.Enums.Status.Pending)
+                {
+                    <form method="post" action="@Url.Action("RespondToOffer", "Offer", new { offerId = offer.Id, isAccepted = true })" style="display:inline;">
+                        <button type="submit" class="btn btn-success">Accept</button>
+                    </form>
+                    <form method="post" action="@Url.Action("RespondToOffer", "Offer", new { offerId = offer.Id, isAccepted = false })" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

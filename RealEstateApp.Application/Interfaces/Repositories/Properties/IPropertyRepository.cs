@@ -13,4 +13,6 @@ public interface IPropertyRepository : IRepository<Property>
     Task<IEnumerable<Property?>> GetPropertyByUserIdAsync(string userId);
     Task<List<Property?>> GetAllPropertyByUserAsync(string? userId);        
 
+    Task SaveChangesAsync();
+
 }

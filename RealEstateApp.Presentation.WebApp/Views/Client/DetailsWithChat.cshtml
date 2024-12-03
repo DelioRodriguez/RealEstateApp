@@ -97,6 +97,9 @@
 
             <!-- Botón de volver -->
             <div class="mt-4">
+                <div class="mt-4">
+                    <a asp-controller="Offer" asp-action="ClientOffers" asp-route-propertyId="@Model.Id" class="btn btn-outline-success w-100">Ver Ofertas</a>
+                </div>
                 <a asp-controller="Agents" asp-action="PropertiesByAgent" asp-route-id="@Model.AgentId" class="btn btn-outline-primary w-100">Volver atrás</a>
             </div>
         </div>

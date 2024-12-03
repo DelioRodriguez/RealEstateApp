@@ -9,6 +9,7 @@ using RealEstateApp.Application.Interfaces.Services.Developer;
 using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Generic;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
+using RealEstateApp.Application.Interfaces.Services.Offer;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.PropertiesType;
 using RealEstateApp.Application.Interfaces.Services.SalesType;
@@ -23,6 +24,7 @@ using RealEstateApp.Application.Services.Developer;
 using RealEstateApp.Application.Services.Favory;
 using RealEstateApp.Application.Services.Generic;
 using RealEstateApp.Application.Services.Improvements;
+using RealEstateApp.Application.Services.Offer;
 using RealEstateApp.Application.Services.Properties;
 using RealEstateApp.Application.Services.PropertiesType;
 using RealEstateApp.Application.Services.SalesTypes;
@@ -45,6 +47,7 @@ namespace RealEstateApp.Application
             services.AddScoped<IAgentService, AgentService>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<iDeveloperService, DeveloperService>();
+            services.AddScoped<IOfferService, OfferService>();
 
             #region Api
 

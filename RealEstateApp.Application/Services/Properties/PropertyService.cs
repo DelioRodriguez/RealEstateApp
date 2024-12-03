@@ -73,7 +73,12 @@ public class PropertyService : Service<Property>, IPropertyService
         
         return _mapper.Map<List<PropertyListViewModel>>(properties);
     }
-    
+
+    public async Task<List<PropertyListViewModel>> GetAllPropertyByUserIdAsync(string userId)
+    {
+        return _mapper.Map<List<PropertyListViewModel>>(await _propertyRepository.GetAllPropertyByUserAsync(userId));
+    }
+
     public async Task<PropertyCreateViewModel> GetCreatePropertyViewModelAsync()
     {
         var propertyTypes = await _propertyTypeRepository.GetAllAsync();

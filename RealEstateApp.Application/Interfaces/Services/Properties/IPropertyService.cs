@@ -7,6 +7,7 @@ namespace RealEstateApp.Application.Interfaces.Services.Properties;
 
 public interface IPropertyService : IService<Property>
 {
+    Task<List<PropertyListViewModel>> GetAllPropertyByUserIdAsync(string userId);
     Task<PropertyCreateViewModel> GetCreatePropertyViewModelAsync();
     Task<List<PropertyListViewModel>> GetAvailablePropertiesAsync();
     Task<List<PropertyListViewModel>> GetAllPropertiesByUserAsync(string? userId);

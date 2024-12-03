@@ -14,7 +14,7 @@ public class ChatRepository : Repository<Chat>, IChatRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Chat>> GetChatsByPropertyIdAsync(int propertyId)
+    public async Task<IEnumerable<Chat>> GetChatsByPropertyIdAsync(int propertyId, string clientId)
     {
        return await _context.Chats
             .Where(c => c.PropertyId == propertyId)
@@ -40,5 +40,21 @@ public class ChatRepository : Repository<Chat>, IChatRepository
     {
         _context.Messages.Add(message);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<Chat?> GetChatByPropertyAndClientAsync(int propertyId, string clientId)
+    {
+        return await _context.Chats
+            .Include(c => c.Messages)
+            .Where(c => c.PropertyId == propertyId && c.ClientId == clientId)
+            .FirstOrDefaultAsync();
+    }
+    
+    public async Task<List<Message>> GetMessagesByChatIdAsync(int? chatId)
+    {
+        return await _context.Messages
+            .Where(m => m.ChatId == chatId)
+            .OrderBy(m => m.Timestamp)
+            .ToListAsync();  
     }
 }

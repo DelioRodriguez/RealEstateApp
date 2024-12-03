@@ -1,11 +1,22 @@
 @model RealEstateApp.Application.ViewModels.Chats.ChatViewModel
 
 <div class="container my-5">
-    <h2 class="mb-4">Chat con @Model.ClientName</h2>
+    <h2 class="mb-4">Chat con @Model.Fullname</h2>
+
     <div class="chat-box border p-3 mb-4" style="height: 400px; overflow-y: auto;">
         @foreach (var message in Model.Messages)
         {
-            <div class="mb-2 @(message.IsAgent ? "text-end" : "text-start")">
+            <div class="d-flex mb-2 @(message.IsAgent ? "justify-content-end" : "justify-content-start")">
+                <div class="d-flex align-items-center">
+                    <img src="@((message.IsAgent) ? Model.imagePathAgent : Model.imagePathClient)"
+                         alt="Foto del @(message.IsAgent ? "Agente" : "Cliente")"
+                         class="rounded-circle" width="40" height="40" style="object-fit: cover;"/>
+                    <span class="ms-2 font-weight-bold">
+                        @(message.IsAgent ? "Tú" : Model.ClientName)
+                    </span>
+                </div>
+
+                <!-- Contenido del mensaje -->
                 <p class="mb-1 @(message.IsAgent ? "bg-primary text-white" : "bg-light text-dark") rounded p-2">
                     @message.Content
                 </p>
@@ -14,13 +25,15 @@
         }
     </div>
 
-    <form asp-action="Message" method="post" class="d-flex">
+    <!-- Formulario para enviar mensaje -->
+    <form asp-action="SendMessage" method="post" class="d-flex">
+        <input type="hidden" name="propertyId" value="@Model.PropertyId" />
         <input type="hidden" name="chatId" value="@Model.ChatId" />
         <input type="text" name="content" class="form-control me-2" placeholder="Escribe tu mensaje..." required />
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 
     <div class="mt-4">
-        <a asp-action="Chats" class="btn btn-secondary">Volver a la lista de chats</a>
+        <a asp-action="DetailsByAgent" class="btn btn-secondary" asp-route-id="@Model.PropertyId">Volver a la propiedad</a>
     </div>
 </div>

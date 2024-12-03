@@ -5,9 +5,17 @@
     <ul class="list-group">
         @foreach (var chat in Model)
         {
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>@chat.ClientName</span>
-                <a asp-controller="Chat" asp-action="Message" asp-route-id="@chat.ChatId" class="btn btn-primary btn-sm">Abrir Chat</a>
+            <li class="list-group-item d-flex align-items-center">
+                <!-- Foto del cliente -->
+                <div class="d-flex align-items-center">
+                    <img src="@chat.imagePathClient" alt="Foto del Cliente" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                    <span class="ms-3">@chat.ClientName</span>
+                </div>
+
+                <!-- Botón para abrir el chat -->
+                <a asp-controller="Chat" asp-action="Message" asp-route-id="@chat.ChatId" class="btn btn-primary btn-sm ms-3">
+                    Abrir Chat
+                </a>
             </li>
         }
     </ul>

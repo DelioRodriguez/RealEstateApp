@@ -1,4 +1,5 @@
-﻿using RealEstateApp.Application.ViewModels.Improvements;
+﻿using RealEstateApp.Application.ViewModels.Chats.Client;
+using RealEstateApp.Application.ViewModels.Improvements;
 using RealEstateApp.Application.ViewModels.Users;
 
 namespace RealEstateApp.Application.ViewModels.Properties;
@@ -21,4 +22,9 @@ public class PropertyDetailViewModel
     public string? AgentPhone { get; set; }
     public string? AgentEmail { get; set; }
     public string? AgentImageUrl { get; set; }
+    public string? AgentUserName { get; set; }
+    public ChatClientViewModel? Chat { get; set; }
+    public int? ChatId { get; set; }
+    public bool? IsChatEnabled { get; set; }
+    public List<MessageClientViewModel?>? Message { get; set; }
 }

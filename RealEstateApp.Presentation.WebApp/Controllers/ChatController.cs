@@ -28,7 +28,7 @@ public class ChatController : Controller
 
     public async Task<IActionResult> Chats(int propertyId)
     {
-        var chats = await _chatService.GetChatsByPropertyAsync(propertyId);
+        var chats = await _chatService.GetChatsByPropertyAsync(propertyId, User.Identity!.Name!);
         return View(chats);
     }
 
@@ -43,15 +43,16 @@ public class ChatController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Messaje(int chatId, string content)
+    public async Task<IActionResult> SendMessage(int propertyId, int chatId, string content)
     {
         if (string.IsNullOrWhiteSpace(content))
         {
             ModelState.AddModelError(string.Empty, "El mensaje no puede estar vacío.");
             return RedirectToAction("Message", new { id = chatId });
         }
-
+        
         await _chatService.AddMessageAsync(chatId, content, true);
+        
         return RedirectToAction("Message", new { id = chatId });
     }
 }

@@ -11,4 +11,6 @@ public interface IPropertyRepository : IRepository<Property>
     Task<Property?> GetPropertyDetailsAsync(int id);
     Task<IEnumerable<Property?>> SearchPropertiesAsync(PropertyFilterViewModel? filter);
     Task<IEnumerable<Property?>> GetPropertyByUserIdAsync(string userId);
+    Task<List<Property?>> GetAllPropertyByUserAsync(string? userId);        
+
 }

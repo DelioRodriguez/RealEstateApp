@@ -6,7 +6,7 @@
         <div class="col-lg-6">
             <div id="carouselPropiedad" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach (var imageUrl in Model.ImageUrls)
+                    @foreach (var imageUrl in Model.ImageUrls ?? Enumerable.Empty<string>())
                     {
                         <div class="carousel-item @(imageUrl == Model.ImageUrls.First() ? "active" : "")">
                             <img src="@imageUrl" class="d-block w-100 rounded shadow-sm" alt="Imagen de la propiedad">
@@ -36,7 +36,7 @@
                 <li><strong>Tamaño:</strong> @Model.Size m²</li>
                 <li><strong>Descripción:</strong> @Model.Description</li>
                 <li><strong>Mejoras:</strong>
-                    @if (Model.Improvements.Any())
+                    @if (Model.Improvements != null && Model.Improvements.Any())
                     {
                         <ul>
                             @foreach (var improvement in Model.Improvements)
@@ -67,15 +67,35 @@
             <div class="mt-5">
                 <h5>Chat con el agente</h5>
                 <div id="chatMessages" class="border rounded p-3 mb-3" style="height: 200px; overflow-y: auto;">
-                    <!-- Aquí se mostrarán los mensajes -->
-                    <p class="text-muted text-center">No hay mensajes aún</p>
+                    @if (Model.Message != null && Model.Message.Any())
+                    {
+                        @foreach (var message in Model.Message)
+                        {
+                            <div class="message @(message!.IsAgent ? "agent-message" : "client-message")">
+                                <strong>@(message.IsAgent ? Model.AgentUserName : "Tú"):</strong>
+                                <p>@message.Content</p>
+                                <small>@message.DateCreated.ToString("g")</small>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center">No hay mensajes aún</p>
+                    }
                 </div>
-                <div class="d-flex">
-                    <input id="chatInput" type="text" class="form-control me-2" placeholder="Escribe un mensaje..." disabled>
-                    <button id="sendMessage" class="btn btn-primary" disabled>Enviar</button>
-                </div>
+
+                <!-- Formulario de mensaje -->
+                <form asp-action="SendMessage" method="post">
+                    <input type="hidden" name="propertyId" value="@Model.Id" />
+                    <input type="hidden" name="chatId" value="@Model.ChatId" />
+                    <div class="input-group">
+                        <input id="chatInput" type="text" class="form-control" name="content" placeholder="Escribe un mensaje...">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
             </div>
 
+            <!-- Botón de volver -->
             <div class="mt-4">
                 <a asp-controller="Agents" asp-action="PropertiesByAgent" asp-route-id="@Model.AgentId" class="btn btn-outline-primary w-100">Volver atrás</a>
             </div>

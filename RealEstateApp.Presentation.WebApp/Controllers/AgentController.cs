@@ -28,7 +28,7 @@ public class AgentController : Controller
 
     public async Task<IActionResult> MantenimientoPropiedades()
     {
-        return View(await _propertyService.GetAvailablePropertiesAsync());
+        return View(await _propertyService.GetAllPropertyByUserIdAsync(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value!));
     }
 
     public async Task<IActionResult> Profile()

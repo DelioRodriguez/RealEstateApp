@@ -9,6 +9,7 @@ public interface IUserRepository
     Task<UserUpdateDTO> GetUserByIdDtoAsync(string id);
     Task<IList<UserInfo>> GetUsersByRoleAsync(string roleName);
     Task<IEnumerable<UserInfo>> GetAgentsByNameAsync(string name);
+    Task<IEnumerable<UserInfo>> GetUsersByIdsAsync(IEnumerable<string> ids);
 
 
 

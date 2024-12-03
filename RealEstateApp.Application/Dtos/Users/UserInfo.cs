@@ -7,4 +7,5 @@ public class UserInfo
     public string? AgentImageUrl { get; set; }
     public string? AgentPhone { get; set; }
     public string? AgentEmail { get; set; }
+    public string? Username { get; set; }
 }

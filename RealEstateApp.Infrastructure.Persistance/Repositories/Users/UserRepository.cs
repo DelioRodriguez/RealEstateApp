@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.Users;
 using RealEstateApp.Application.Interfaces.Repositories.Users;
@@ -27,7 +28,8 @@ public class UserRepository : IUserRepository
             AgentPhone = user.PhoneNumber,
             AgentEmail = user.Email,
             AgentImageUrl = user.ImagenPath,
-            AgentId = user.Id
+            AgentId = user.Id,
+            Username = user.UserName
         };
     }
 
@@ -101,5 +103,21 @@ public class UserRepository : IUserRepository
 
         return result.Succeeded;
     }
+    
+    public async Task<IEnumerable<UserInfo>> GetUsersByIdsAsync(IEnumerable<string> ids)
+    {
+        var users = await _userManager.Users.Where(u => ids.Contains(u.Id)).ToListAsync();
+        
+        return users.Select(user => new UserInfo
+        {
+            AgentId = user.Id,
+            AgentImageUrl = user.ImagenPath,
+            AgentEmail = user.Email,
+            AgentName = user.FirstName + " " + user.LastName,
+            AgentPhone = user.PhoneNumber,
+            Username = user.UserName
+        }).ToList();
+    }
+
 
 }

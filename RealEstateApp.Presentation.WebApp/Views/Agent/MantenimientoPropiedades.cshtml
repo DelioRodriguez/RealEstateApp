@@ -9,7 +9,6 @@
 <div class="container my-5">
     <h1 class="text-center mb-4">Mantenimiento de Propiedades</h1>
     
-    <!-- Botón para crear nueva propiedad -->
     <div class="text-end mb-3">
         <a asp-action="CreateProperties" asp-controller="Properties" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Crear Nueva Propiedad
@@ -43,11 +42,9 @@
                                 <span class="badge bg-primary">Disponible</span>
                             </p>
                             <div class="d-flex justify-content-between">
-                                <!-- Botón para editar -->
-                                <a asp-action="Edit" asp-controller="Properties" asp-route-id="@property.Id" class="btn btn-warning">
+                                <a asp-action="Update" asp-controller="Properties" asp-route-id="@property.Id" class="btn btn-warning">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
-                                <!-- Botón para eliminar -->
                                 <form asp-action="Delete" asp-controller="Properties" asp-route-id="@property.Id" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta propiedad?');">
                                     <button type="submit" class="btn btn-danger">
                                         <i class="bi bi-trash"></i> Eliminar

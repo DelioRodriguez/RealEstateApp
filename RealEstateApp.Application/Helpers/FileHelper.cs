@@ -33,7 +33,6 @@ public static class FileHelper
 
         return propertyImages;
     }
-    
     public static async Task<string> SaveImageAsync(IFormFile image, string folderPath)
     {
         var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderPath);
@@ -54,5 +53,16 @@ public static class FileHelper
         return $"/{folderPath}/{fileName}";
     }
 
+    public static void DeleteImage(string imagePath)
+    {
+        if (string.IsNullOrEmpty(imagePath))
+            throw new ArgumentException("El path de la imagen no puede ser nulo o vacío.");
 
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imagePath.TrimStart('/'));
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
 }

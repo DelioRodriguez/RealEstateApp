@@ -16,4 +16,6 @@ public interface IPropertyService : IService<Property>
     Task<PropertyByAgentViewModel> GetPropertyByUserIdAsync(string userId);
     Task AddPropertyAsync(PropertyCreateViewModel property);
     Task<int> DeletePropertyAsync(int id);
+    Task UpdatePropertyAsync(PropertyUpdateViewModel model);
+    Task<PropertyUpdateViewModel> GetUpdatePropertyViewModelAsync(int id);
 }

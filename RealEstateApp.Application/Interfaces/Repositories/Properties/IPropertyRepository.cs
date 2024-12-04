@@ -12,7 +12,7 @@ public interface IPropertyRepository : IRepository<Property>
     Task<IEnumerable<Property?>> SearchPropertiesAsync(PropertyFilterViewModel? filter);
     Task<IEnumerable<Property?>> GetPropertyByUserIdAsync(string userId);
     Task<List<Property?>> GetAllPropertyByUserAsync(string? userId);        
-
     Task SaveChangesAsync();
-
+    Task UpdatePropertyAsync(Property property);
+    Task RemoveImages(IEnumerable<PropertyImage> images);
 }

@@ -5,7 +5,6 @@ using RealEstateApp.Application.Interfaces.Services.Account;
 
 namespace WebApplication1.Controllers;
 
-
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
@@ -63,18 +62,14 @@ public class AccountController : Controller
 
         if (!loginResult.IsSuccess)
         {
-            // Opcional: Podrías agregar un campo en el modelo para mostrar errores bajo el input si lo deseas.
             ModelState.AddModelError(string.Empty, "Credenciales inválidas.");
             return View(userDto);
         }
 
-        // Redirección basada en el rol del usuario.
         return loginResult.IsAdmin 
             ? RedirectToAction("Index", "Admin") 
             : RedirectToAction("Index", "Properties");
     }
-
-
 
     [AllowAnonymous]
     public async Task<IActionResult> Activate(string email, string token)
@@ -96,7 +91,6 @@ public class AccountController : Controller
         TempData["SuccessMessage"] = "¡Tu cuenta ha sido activada con éxito!";
         return View();
     }
-
 
       [Authorize]
       public async Task<IActionResult> Logout()

@@ -22,7 +22,7 @@ public class FavoriteService : Service<Favorite>, IFavoriteService
 
         if (favorite != null)
         {
-            await _favoriteRepository.RemoveFavoriteAsync(favorite); // Desmarcar favorito
+            await _favoriteRepository.RemoveFavoriteAsync(favorite);
         }
         else
         {
@@ -32,7 +32,7 @@ public class FavoriteService : Service<Favorite>, IFavoriteService
                 UserId = userId,
                 AddedOn = DateTime.UtcNow
             };
-            await _favoriteRepository.AddFavoriteAsync(newFavorite); // Marcar favorito
+            await _favoriteRepository.AddFavoriteAsync(newFavorite);
         }
 
         return await _favoriteRepository.SaveChangesAsync();

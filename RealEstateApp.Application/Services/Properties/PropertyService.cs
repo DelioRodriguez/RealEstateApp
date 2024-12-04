@@ -177,17 +177,108 @@ public class PropertyService : Service<Property>, IPropertyService
             throw new DatabaseOperationException($"Se produjo un error al agregar una nueva propiedad: {e.Message}");
         }
     }
-    
-    
-    public Task<bool> UpdatePropertyAsync(int id, PropertyUpdateViewModel updateDto)
-    {
-        return null;
-    }
-
-
 
     public async Task<int> DeletePropertyAsync(int id)
     {
         return await DeleteAsync(id);
+    }
+
+    public async Task UpdatePropertyAsync(PropertyUpdateViewModel model)
+    {
+        if (model == null)
+            throw new ValidationException("El modelo proporcionado es nulo.");
+
+        if (model.PropertyId == 0)
+            throw new ValidationException("El ID de la propiedad es inválido.");
+
+        var existingProperty = await _propertyRepository.GetPropertyDetailsAsync(model.PropertyId);
+
+        if (existingProperty == null) throw new KeyNotFoundException($"No se encontró la propiedad con ID {model.PropertyId}.");
+
+        existingProperty.PropertyTypeId = model.PropertyTypeId;
+        existingProperty.SaleTypeId = model.SaleTypeId;
+        existingProperty.Price = model.Price;
+        existingProperty.Size = model.Size;
+        existingProperty.Rooms = model.Rooms;
+        existingProperty.Bathrooms = model.Bathrooms;
+        existingProperty.Description = model.Description;
+
+        if (model.ImprovementIds != null && model.ImprovementIds.Any())
+        {
+            var selectedImprovements = new List<Improvement>();
+
+            foreach (var id in model.ImprovementIds)
+            {
+                var improvement = await _improvementRepository.GetByIdAsync(id);
+                if (improvement == null)
+                    throw new ValidationException($"La mejora con ID {id} no existe.");
+                selectedImprovements.Add(improvement);
+            }
+
+            existingProperty.Improvements = selectedImprovements;
+        }
+        else
+        {
+            existingProperty.Improvements.Clear();
+        }
+
+        if (model.Images != null && model.Images.Any())
+        {
+            if (existingProperty.Images != null && existingProperty.Images.Any())
+            {
+                foreach (var image in existingProperty.Images)
+                {
+                    FileHelper.DeleteImage(image.ImageUrl);
+                }
+                await _propertyRepository.RemoveImages(existingProperty.Images);
+            }
+
+            var newImages = await FileHelper.SaveImagesAsync(model.Images, "images/properties");
+            existingProperty.Images = newImages;
+        }
+        await _propertyRepository.UpdatePropertyAsync(existingProperty);
+    }
+
+    public async Task<PropertyUpdateViewModel> GetUpdatePropertyViewModelAsync(int id)
+    {
+        var property = await _propertyRepository.GetPropertyDetailsAsync(id);
+        if (property == null)
+            throw new KeyNotFoundException($"No se encontró la propiedad con ID {id}.");
+
+        var propertyTypes = await _propertyTypeRepository.GetAllAsync() ?? new List<PropertyType>();
+        var saleTypes = await _saleTypeRepository.GetAllAsync() ?? new List<SaleType>();
+        var improvements = await _improvementRepository.GetAllAsync() ?? new List<Improvement>();
+
+        return new PropertyUpdateViewModel
+        {
+            PropertyId = property.Id,
+            PropertyTypeId = property.PropertyTypeId,
+            SaleTypeId = property.SaleTypeId,
+            Price = property.Price,
+            Size = property.Size,
+            Rooms = property.Rooms,
+            Bathrooms = property.Bathrooms,
+            Description = property.Description,
+            SelectedImprovementIds = property.Improvements.Select(i => i.Id).ToList(),
+            CurrentImages = property.Images.Select(i => i.ImageUrl).ToList(),
+            PropertyTypes = propertyTypes.Select(pt => new SelectListItem
+            {
+                Value = pt.Id.ToString(),
+                Text = pt.Name,
+                Selected = pt.Id == property.PropertyTypeId
+            }).ToList(),
+            SaleTypes = saleTypes.Select(st => new SelectListItem
+            {
+                Value = st.Id.ToString(),
+                Text = st.Name,
+                Selected = st.Id == property.SaleTypeId
+            }).ToList(),
+            Improvements = improvements.Select(im => new SelectListItem
+            {
+                Value = im.Id.ToString(),
+                Text = im.Name,
+                Selected = property.Improvements.Any(pim => pim.Id == im.Id)
+            }).ToList()
+        };
     }
 }

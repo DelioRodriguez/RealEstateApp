@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
 @{
-    ViewData["Title"] = "Listado de Propiedades";
+ViewData["Title"] = "Listado de Propiedades";
 }
 
 <title>Listado de Propiedades</title>
 
 <div class="container my-5">
-    <h1 class="text-center mb-4">Listado de Propiedades</h1>
+  
 
     <!-- Muestra los errores de validación globales -->
     @if (!ViewData.ModelState.IsValid)
@@ -22,24 +22,25 @@
     }
 
     <!-- Formulario de Búsqueda -->
-    <div class="card p-3 mb-4">
+    <div class="card p-4 mb-4 shadow-sm border-0">
+        <h5 class="mb-3"><i class="bi bi-search text-secondary"></i> Buscar Propiedades</h5>
         <form method="post" asp-action="Index" asp-controller="Properties">
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="codigo" class="form-label">Código</label>
+                    <label for="codigo" class="form-label"><i class="bi bi-code"></i> Código</label>
                     <input type="text" id="codigo" name="Code" class="form-control" placeholder="Buscar por código" value="@Model.FirstOrDefault()?.Filter?.Code" />
                 </div>
                 <div class="col-md-4">
-                    <label for="tipo" class="form-label">Tipo de Propiedad</label>
+                    <label for="tipo" class="form-label"><i class="bi bi-building"></i> Tipo de Propiedad</label>
                     <select id="tipo" name="PropertyTypeId" class="form-select">
                         <option value="">Seleccione...</option>
-                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 1)
+                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 3)
                         {
-                            <option value="1" selected>Casa</option>
+                            <option value="3" selected>Casa</option>
                         }
                         else
                         {
-                            <option value="1">Casa</option>
+                            <option value="3">Casa</option>
                         }
                         @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 2)
                         {
@@ -52,23 +53,29 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label">Rango de Precio</label>
+                    <label class="form-label"><i class="bi bi-cash"></i> Rango de Precio</label>
                     <div class="input-group">
-                        <input type="number" name="MinPrice" class="form-control" placeholder="Mínimo" value="@Model.FirstOrDefault()?.Filter?.MinPrice" />
+                        <span class="input-group-text">RD$</span>
+                        <input type="number" name="MinPrice" class="form-control" placeholder="Mínimo"
+                               value="@Model.FirstOrDefault()?.Filter?.MinPrice"
+                               min="0" id="MinPrice" oninput="validatePrices()" />
                         <span class="input-group-text">-</span>
-                        <input type="number" name="MaxPrice" class="form-control" placeholder="Máximo" value="@Model.FirstOrDefault()?.Filter?.MaxPrice" />
+                        <input type="number" name="MaxPrice" class="form-control" placeholder="Máximo"
+                               value="@Model.FirstOrDefault()?.Filter?.MaxPrice"
+                               id="MaxPrice" oninput="validatePrices()" />
                     </div>
+
                 </div>
                 <div class="col-md-2">
-                    <label for="habitaciones" class="form-label">Habitaciones</label>
+                    <label for="habitaciones" class="form-label"><i class="bi bi-door-closed"></i> Habitaciones</label>
                     <input type="number" id="habitaciones" name="MinRooms" class="form-control" value="@Model.FirstOrDefault()?.Filter?.MinRooms" />
                 </div>
                 <div class="col-md-2">
-                    <label for="banos" class="form-label">Baños</label>
+                    <label for="banos" class="form-label"><i class="bi bi-water"></i> Baños</label>
                     <input type="number" id="banos" name="MinBathrooms" class="form-control" value="@Model.FirstOrDefault()?.Filter?.MinBathrooms" />
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Buscar</button>
                 </div>
             </div>
         </form>
@@ -77,30 +84,37 @@
     <!-- Verifica si no hay resultados -->
     @if (!Model.Any())
     {
-        <div class="alert alert-warning">
-            <strong>No se encontraron resultados.</strong>
+        <div class="alert alert-warning text-center">
+            <i class="bi bi-exclamation-circle-fill"></i> <strong>No se encontraron resultados.</strong>
         </div>
     }
     else
     {
         <!-- Listado de Propiedades -->
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach (var property in Model)
             {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">@property.PropertyTypeName</h5>
+                            <h5 class="card-title">
+                                <i class="bi bi-house-fill text-success"></i> @property.PropertyTypeName
+                            </h5>
                             <p class="card-text">
-                                <strong>Código:</strong> @property.Code<br>
-                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
-                                <strong>Precio:</strong> @property.Price.ToString()<br>
-                                <strong>Habitaciones:</strong> @property.Rooms<br>
-                                <strong>Baños:</strong> @property.Bathrooms<br>
-                                <strong>Tamaño:</strong> @property.Size m²
+                                <i class="bi bi-hash"></i> <strong>Código:</strong> @property.Code<br>
+                                <i class="bi bi-handbag"></i> <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                   
+                                <i class="bi bi-cash-stack"></i> <strong>Precio:</strong> @($"RD${property.Price:N0}")<br>
+
+                                <i class="bi bi-door-open-fill"></i> <strong>Habitaciones:</strong> @property.Rooms<br>
+                                <i class="bi bi-droplet"></i> <strong>Baños:</strong> @property.Bathrooms<br>
+                                <i class="bi bi-rulers"></i> <strong>Tamaño:</strong> @property.Size m²
                             </p>
-                            <a href="/Properties/Details/@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+
+                            <a href="/Properties/Details/@property.Id" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-info-circle"></i> Ver Detalle
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -108,3 +122,20 @@
         </div>
     }
 </div>
+<script>
+    function validatePrices() {
+        const minInput = document.getElementById("MinPrice");
+        const maxInput = document.getElementById("MaxPrice");
+
+        // Asegurarse de que el mínimo no baje de 0
+        if (minInput.value < 0) {
+            minInput.value = 0;
+        }
+
+        // Asegurarse de que el máximo no sea menor o igual al mínimo
+        if (maxInput.value !== "" && parseInt(maxInput.value) <= parseInt(minInput.value)) {
+            maxInput.value = parseInt(minInput.value) + 1;
+        }
+    }
+</script>
+

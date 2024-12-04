@@ -34,7 +34,7 @@ public class IdentitySeeder
                 PhoneNumberConfirmed = true
             };
             
-            await userManager.CreateAsync(adminUser, "123Pa$$word!");
+            await userManager.CreateAsync(adminUser, "          !");
             await userManager.AddToRoleAsync(adminUser, Role.Admin.ToString());
         }
         

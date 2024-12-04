@@ -4,70 +4,77 @@
 ViewData["Title"] = "Registro";
 }
 
-<div class="container my-5">
-    <div class="bg-primary p-4 rounded shadow-lg text-white">
-        <h2 class="text-center mb-4">Únete a la App</h2>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg border-0" style="width: 500px; border-radius: 15px;">
+        <div class="card-body p-5">
+            <h2 class="text-center mb-4" style="color: #4CAF50;">
+                <i class="fas fa-user-plus"></i> Crea tu Cuenta
+            </h2>
 
-        <form id="registrationForm" asp-action="Register" method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded bg-light">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label text-dark">Nombre</label>
-                    <input type="text" class="form-control" id="firstName" name="FirstName" value="@Model.FirstName" required placeholder="Ingresa tu nombre">
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label text-dark">Apellido</label>
-                    <input type="text" class="form-control" id="lastName" name="LastName" value="@Model.LastName" required placeholder="Ingresa tu apellido">
-                </div>
-            </div>
+            <form id="registrationForm" asp-action="Register" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
 
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="phone" class="form-label text-dark">Teléfono</label>
-                    <input type="tel" class="form-control" id="phone" name="PhoneNumber" value="@Model.PhoneNumber" required placeholder="Ingresa tu número de teléfono">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label fw-bold">Nombre</label>
+                    <input type="text" id="firstName" name="FirstName" class="form-control border-success" value="@Model.FirstName" required placeholder="Ingresa tu nombre">
                 </div>
-                <div class="col-md-6">
-                    <label for="photo" class="form-label text-dark">Foto de Usuario</label>
-                    <input type="file" class="form-control" id="photo" name="Photo" accept=".jpg, .png" required>
-                    <small class="text-muted">Solo se permiten archivos JPG o PNG</small>
-                </div>
-            </div>
 
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="username" class="form-label text-dark">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" name="Username" value="@Model.UserName" required placeholder="Elige tu nombre de usuario">
+                <div class="mb-3">
+                    <label for="lastName" class="form-label fw-bold">Apellido</label>
+                    <input type="text" id="lastName" name="LastName" class="form-control border-success" value="@Model.LastName" required placeholder="Ingresa tu apellido">
                 </div>
-                <div class="col-md-6">
-                    <label for="email" class="form-label text-dark">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" name="Email" value="@Model.Email" required placeholder="Ingresa tu correo electrónico">
-                </div>
-            </div>
 
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="password" class="form-label text-dark">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="Password" required placeholder="Ingresa tu contraseña">
+                <div class="mb-3">
+                    <label for="phone" class="form-label fw-bold">Teléfono</label>
+                    <input type="tel" id="phone" name="PhoneNumber" class="form-control border-success" value="@Model.PhoneNumber" required placeholder="Ingresa tu teléfono">
                 </div>
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label text-dark">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" required placeholder="Confirma tu contraseña">
+
+                <div class="mb-3">
+                    <label for="photo" class="form-label fw-bold">Foto de Usuario</label>
+                    <input type="file" id="photo" name="Photo" class="form-control border-success" accept=".jpg, .png" required>
+                    <small class="text-muted">Formatos permitidos: JPG o PNG</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label fw-bold">Nombre de Usuario</label>
+                    <input type="text" id="username" name="Username" class="form-control border-success" value="@Model.UserName" required placeholder="Elige tu nombre de usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-bold">Correo Electrónico</label>
+                    <input type="email" id="email" name="Email" class="form-control border-success" value="@Model.Email" required placeholder="Ingresa tu correo electrónico">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label fw-bold">Contraseña</label>
+                    <input type="password" id="password" name="Password" class="form-control border-success" required placeholder="Ingresa tu contraseña">
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label fw-bold">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" name="ConfirmPassword" class="form-control border-success" required placeholder="Confirma tu contraseña">
                     <small id="passwordError" class="text-danger d-none">Las contraseñas no coinciden.</small>
                 </div>
-            </div>
 
-            <div class="mb-3">
-                <label for="role" class="form-label text-dark">Tipo de Usuario</label>
-                <select class="form-select" id="role" name="Role" required>
-                    <option value="Client">Cliente</option>
-                    <option value="Agent">Agente</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label fw-bold">Tipo de Usuario</label>
+                    <select id="role" name="Role" class="form-select border-success" required>
+                        <option value="Client">Cliente</option>
+                        <option value="Agent">Agente</option>
+                    </select>
+                </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-                <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
-                <a href="/Account/Login" class="btn btn-link text-dark">¿Ya tienes cuenta? Iniciar sesión</a>
-            </div>
-        </form>
+                <button type="submit" class="btn btn-success w-100 btn-lg mt-3">
+                    <i class="fas fa-check-circle"></i> Registrarme
+                </button>
+
+                <div class="text-center mt-4">
+                    <p class="small text-muted">¿Ya tienes una cuenta?
+                        <a href="/Account/Login" class="text-success fw-bold">Inicia Sesión</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -79,14 +86,13 @@ ViewData["Title"] = "Registro";
 
     form.addEventListener("submit", function (event) {
         if (password.value !== confirmPassword.value) {
-            event.preventDefault(); // Evita el envío del formulario
-            passwordError.classList.remove("d-none"); // Muestra el mensaje de error
+            event.preventDefault();
+            passwordError.classList.remove("d-none");
         } else {
-            passwordError.classList.add("d-none"); // Oculta el mensaje de error si coinciden
+            passwordError.classList.add("d-none");
         }
     });
 
-    // Validación de archivo para la foto
     const photoInput = document.getElementById("photo");
     photoInput.addEventListener("change", function () {
         const file = this.files[0];
@@ -94,8 +100,37 @@ ViewData["Title"] = "Registro";
             const fileType = file.type;
             if (fileType !== "image/jpeg" && fileType !== "image/png") {
                 alert("Solo se permiten imágenes JPG o PNG.");
-                this.value = ""; // Limpia el input
+                this.value = "";
             }
         }
     });
 </script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+    body {
+        background-color: #f3f4f6;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+        background: #ffffff;
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #45a049;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+        font-size: 1rem;
+        padding: 10px;
+    }
+</style>

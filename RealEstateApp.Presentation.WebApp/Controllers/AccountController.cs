@@ -66,10 +66,17 @@ public class AccountController : Controller
             return View(userDto);
         }
 
+        if (loginResult.IsDeveloper) 
+        {
+            ModelState.AddModelError(string.Empty, "No tienes acceso a la app web.");
+            return View(userDto);
+        }
+
         return loginResult.IsAdmin 
             ? RedirectToAction("Index", "Admin") 
             : RedirectToAction("Index", "Properties");
     }
+
 
     [AllowAnonymous]
     public async Task<IActionResult> Activate(string email, string token)

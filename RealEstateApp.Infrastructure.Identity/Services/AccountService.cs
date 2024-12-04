@@ -99,6 +99,7 @@ public class AccountService : IAccountService
 
         return new LoginResult
         {
+            IsDeveloper = roles.Contains("Developer"),
             IsSuccess = true,
             IsAdmin = roles.Contains("Admin")
         };

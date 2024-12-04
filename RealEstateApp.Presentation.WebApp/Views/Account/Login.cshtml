@@ -1,36 +1,102 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model RealEstateApp.Application.Dtos.Account.UserLoginDTO
 
-<div class="container my-5">
-    <div class="bg-primary p-4 rounded shadow-lg text-white">
-        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg border-0" style="width: 400px; border-radius: 15px;">
+        <div class="card-body p-5">
+            <h2 class="text-center mb-4" style="color: #4CAF50;">Bienvenido de Nuevo</h2>
 
-        @if (TempData["ErrorMessage"] != null)
-        {
-        <div class="alert alert-danger">
-            @TempData["ErrorMessage"]
+            @if (TempData["ErrorMessage"] != null)
+            {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+            }
+
+            <form asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-4">
+                    <label for="Username" class="form-label fw-bold">Correo o Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-success">
+                            <i class="fas fa-user text-success"></i>
+                        </span>
+                        <input asp-for="Username" class="form-control border-success" placeholder="Ingresa tu correo o usuario" />
+                    </div>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label for="Password" class="form-label fw-bold">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-success">
+                            <i class="fas fa-lock text-success"></i>
+                        </span>
+                        <input asp-for="Password" type="password" class="form-control border-success" placeholder="Ingresa tu contraseña" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="#" class="small text-success">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i> Iniciar Sesión
+                </button>
+            </form>
+
+            <hr class="my-4">
+
+            <div class="text-center">
+                <p class="small text-muted">
+                    ¿No tienes cuenta?
+                    <a href="@Url.Action("Register", "Account")" class="text-success fw-bold">Regístrate</a>
+                </p>
+            </div>
         </div>
-        }
-
-        <form asp-action="Login" method="post" class="shadow-lg p-4 rounded bg-light">
-            @Html.AntiForgeryToken()
-
-            <div class="mb-3">
-                <label for="Username" class="form-label">Correo o Nombre de Usuario</label>
-                <input asp-for="Username" class="form-control" placeholder="Ingresa tu correo o nombre de usuario" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label for="Password" class="form-label">Contraseña</label>
-                <input asp-for="Password" type="password" class="form-control" placeholder="Ingresa tu contraseña" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-                <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
-                <a asp-action="Register" asp-controller="Account" class="btn btn-link">¿No tienes cuenta? Regístrate</a>
-            </div>
-        </form>
     </div>
 </div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+    body {
+        background-color: #f3f4f6;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+        background: #ffffff;
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #45a049;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .input-group-text {
+        border-radius: 10px 0 0 10px;
+        border-right: none;
+    }
+
+    .input-group .form-control {
+        border-left: none;
+    }
+
+    hr {
+        border-top: 1px solid #ddd;
+    }
+</style>

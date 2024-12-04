@@ -1,4 +1,6 @@
-﻿namespace RealEstateApp.Application.ViewModels.Properties;
+﻿using RealEstateApp.Application.ViewModels.PropertiesType;
+
+namespace RealEstateApp.Application.ViewModels.Properties;
 
 public class PropertyFilterViewModel
 {
@@ -10,4 +12,5 @@ public class PropertyFilterViewModel
     public int? MinRooms { get; set; }
     public int? MinBathrooms { get; set; } 
     public bool? IsAvailable { get; set; } 
+    
 }

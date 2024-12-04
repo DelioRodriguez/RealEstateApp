@@ -43,8 +43,18 @@ public class PropertyService : Service<Property>, IPropertyService
     {
         var properties = await _propertyRepository.GetAvailablePropertiesAsync();
         
-        return _mapper.Map<List<PropertyListViewModel>>(properties);
+        var propertiesList = _mapper.Map<List<PropertyListViewModel>>(properties);
+        
+        var propertyTypeList = await _propertyTypeRepository.GetAllAsync();
+        
+        foreach (var property in propertiesList)
+        {
+            property.PropertyTypeList = propertyTypeList;
+        }
+
+        return propertiesList;
     }
+
 
     public async Task<List<PropertyListViewModel>> GetAllPropertiesByUserAsync(string? userId)
     {
@@ -70,8 +80,16 @@ public class PropertyService : Service<Property>, IPropertyService
     {
         var properties = await _propertyRepository.SearchPropertiesAsync(filter);
         
+        var propertiesList = _mapper.Map<List<PropertyListViewModel>>(properties);
         
-        return _mapper.Map<List<PropertyListViewModel>>(properties);
+        var propertyTypeList = await _propertyTypeRepository.GetAllAsync();
+        
+        foreach (var property in propertiesList)
+        {
+            property.PropertyTypeList = propertyTypeList;
+        }
+        
+        return propertiesList;
     }
 
     public async Task<List<PropertyListViewModel>> GetAllPropertyByUserIdAsync(string userId)

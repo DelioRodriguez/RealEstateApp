@@ -44,12 +44,6 @@ public class PropertiesController : Controller
         var properties = await _propertyService.SearchPropertiesAsync(filter);
 
         properties = properties.OrderBy(x => x.Price).ToList();
-
-        foreach (var property in properties)
-        {
-            property.Filter = filter;
-        }
-
         return View(properties);
     }
 

@@ -34,21 +34,16 @@ ViewData["Title"] = "Listado de Propiedades";
                     <label for="tipo" class="form-label"><i class="bi bi-building"></i> Tipo de Propiedad</label>
                     <select id="tipo" name="PropertyTypeId" class="form-select">
                         <option value="">Seleccione...</option>
-                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 3)
-                        {
-                            <option value="3" selected>Casa</option>
+
+                        @{
+                            var propertyTypeList = Model.FirstOrDefault()?.PropertyTypeList;
                         }
-                        else
+                        @if (propertyTypeList != null)
                         {
-                            <option value="3">Casa</option>
-                        }
-                        @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 2)
-                        {
-                            <option value="2" selected>Apartamento</option>
-                        }
-                        else
-                        {
-                            <option value="2">Apartamento</option>
+                            foreach (var type in propertyTypeList)
+                            {
+                                <option value="@type.Id">@type.Name</option>
+                            }
                         }
                     </select>
                 </div>

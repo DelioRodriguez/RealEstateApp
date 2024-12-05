@@ -144,24 +144,25 @@ public class PropertyService : Service<Property>, IPropertyService
             if (model == null)
                 throw new ValidationException("El modelo proporcionado es nulo.");
 
-            if (model.ImprovementIds == null || !model.ImprovementIds.Any())
-                throw new ValidationException("Debe proporcionar al menos una mejora asociada.");
-
             if (model.AgentId == null)
                 throw new ValidationException("El ID del agente es obligatorio.");
             
             
             ICollection<Improvement> improvements = new List<Improvement>();
-            foreach (var id in model.ImprovementIds)
+
+            if (model.ImprovementIds != null)
             {
-                var improvement = await _improvementRepository.GetByIdAsync(id);
-                if (improvement != null)
+                foreach (var id in model.ImprovementIds)
                 {
-                    improvements.Add(improvement);
-                }
-                else
-                {
-                    throw new ValidationException($"La mejora con ID {id} no existe.");
+                    var improvement = await _improvementRepository.GetByIdAsync(id);
+                    if (improvement != null)
+                    {
+                        improvements.Add(improvement);
+                    }
+                    else
+                    {
+                        throw new ValidationException($"La mejora con ID {id} no existe.");
+                    }
                 }
             }
 

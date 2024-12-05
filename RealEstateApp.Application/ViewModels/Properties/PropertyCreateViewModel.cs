@@ -12,7 +12,7 @@ public class PropertyCreateViewModel
     public int Rooms { get; set; }
     public int Bathrooms { get; set; }
     public string Description { get; set; }
-    public List<int> ImprovementIds { get; set; }
+    public List<int>? ImprovementIds { get; set; }
     public List<IFormFile> Images { get; set; }
     public string? AgentId { get; set; }
 

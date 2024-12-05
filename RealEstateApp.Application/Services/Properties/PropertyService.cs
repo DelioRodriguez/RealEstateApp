@@ -240,13 +240,13 @@ public class PropertyService : Service<Property>, IPropertyService
             existingProperty.Improvements.Clear();
         }
 
-        if (model.Images != null && model.Images.Any())
+        if (model.Images.Any())
         {
             if (existingProperty.Images != null && existingProperty.Images.Any())
             {
                 foreach (var image in existingProperty.Images)
                 {
-                    FileHelper.DeleteImageAsync(image.ImageUrl);
+                    await FileHelper.DeleteImageAsync(image.ImageUrl);
                 }
                 await _propertyRepository.RemoveImages(existingProperty.Images);
             }

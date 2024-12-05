@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Helpers;
@@ -24,13 +25,26 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(UserRegisterDTO userDto)
     {
-        if (!ModelState.IsValid)
+        try
+        {
+            if (!ModelState.IsValid)
+                return View(userDto);
+
+            userDto.ImagenPath = await FileHelper.SaveImageAsync(userDto.Photo);
+
+            await _accountService.RegisterUserAsync(userDto);
+            return RedirectToAction("Login");
+        }
+        catch (ValidationException ex)
+        {
+            TempData["ErrorMessage"] = ex.Message;
             return View(userDto);
-
-        userDto.ImagenPath = await FileHelper.SaveImageAsync(userDto.Photo);
-
-        await _accountService.RegisterUserAsync(userDto);
-        return RedirectToAction("Login");
+        }
+        catch (Exception e)
+        {
+            TempData["ErrorMessage"] = e.Message;
+            return View(userDto);
+        }
     }
 
 

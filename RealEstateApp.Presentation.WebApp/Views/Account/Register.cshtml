@@ -140,3 +140,33 @@ ViewData["Title"] = "Registro";
         font-size: 1rem;
     }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <text>
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: '@Html.Encode(TempData["SuccessMessage"]!.ToString())',
+                showConfirmButton: true,
+                timer: 5000
+            });
+        </text>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: '@Html.Encode(TempData["ErrorMessage"]!.ToString())',
+                showConfirmButton: true,
+                timer: 5000
+            });
+        </text>
+    }
+</script>

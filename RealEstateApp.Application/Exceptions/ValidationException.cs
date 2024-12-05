@@ -2,5 +2,5 @@
 
 public class ValidationException : ApplicationExceptionBase
 {
-    public ValidationException(string message) : base($"Error de validación: {message}") { }
+    public ValidationException(string message) : base($"Error de validacion: {message}") { }
 }

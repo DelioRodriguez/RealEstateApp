@@ -1,5 +1,4 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -11,9 +10,9 @@ using Microsoft.IdentityModel.Tokens;
 using RealEstateApp.Application.Dtos.Account;
 using RealEstateApp.Application.Dtos.ApiAccount;
 using RealEstateApp.Application.Dtos.Login;
+using RealEstateApp.Application.Exceptions;
 using RealEstateApp.Application.Helpers;
 using RealEstateApp.Application.Interfaces.Services.Account;
-using RealEstateApp.Application.Interfaces.Services.Users;
 using RealEstateApp.Application.Settings;
 using RealEstateApp.Domain.Enums;
 using RealEstateApp.Infrastructure.Identity.Entities;
@@ -46,7 +45,15 @@ public class AccountService : IAccountService
     public async Task RegisterUserAsync(UserRegisterDTO userDto)
     {
         if (userDto.Password != userDto.ConfirmPassword)
-            throw new Exception("Passwords do not match."); 
+            throw new ValidationException("Passwords do not match.");
+        
+        var existingUserByEmail = await _userManager.FindByEmailAsync(userDto.Email!);
+        if (existingUserByEmail != null)
+            throw new ValidationException("Email is already taken.");
+        
+        var existingUserByUsername = await _userManager.FindByNameAsync(userDto.UserName);
+        if (existingUserByUsername != null)
+            throw new ValidationException("Username is already taken.");
 
         var user = _mapper.Map<ApplicationUser>(userDto);
         user.EmailConfirmed = false;
@@ -60,8 +67,8 @@ public class AccountService : IAccountService
         if (userDto.Role == Role.Client)
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var activationLink = GenerateActivationLink(user.Email, token);
-            await SendActivationEmailAsync(user.Email, activationLink);
+            var activationLink = GenerateActivationLink(user.Email!, token);
+            await SendActivationEmailAsync(user.Email!, activationLink);
         }
     }
 
@@ -91,7 +98,7 @@ public class AccountService : IAccountService
         if (user == null || !user.EmailConfirmed)
             return new LoginResult { IsSuccess = false }; // Retorno directo si hay errores.
 
-        var result = await _signInManager.PasswordSignInAsync(user.UserName, userDto.Password, isPersistent: false, lockoutOnFailure: false);
+        var result = await _signInManager.PasswordSignInAsync(user.UserName!, userDto.Password, isPersistent: false, lockoutOnFailure: false);
         if (!result.Succeeded)
             return new LoginResult { IsSuccess = false };
 
@@ -133,14 +140,14 @@ public class AccountService : IAccountService
         var claims = new List<Claim>
     {
         new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email!),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
     };
 
         var roles = _userManager.GetRolesAsync(user).Result;
         claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings!.Key!));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -188,8 +195,8 @@ public class AccountService : IAccountService
         {
             Success = true,
             UserId = user.Id,
-            UserName = user.UserName,
-            Email = user.Email,
+            UserName = user.UserName!,
+            Email = user.Email!,
             Role = roles.ToList(),
             Token = GenerateJwtToken(user)
         };

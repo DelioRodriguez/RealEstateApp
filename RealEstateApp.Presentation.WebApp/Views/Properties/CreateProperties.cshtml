@@ -1,119 +1,176 @@
 ﻿@model RealEstateApp.Application.ViewModels.Properties.PropertyCreateViewModel
 
 @{
-    ViewData["Title"] = "Crear Nueva Propiedad";
+ViewData["Title"] = "Crear Nueva Propiedad";
 }
 
-<title>Crear Nueva Propiedad</title>
-
 <div class="container my-5">
-    <h1 class="text-center mb-4">Crear Nueva Propiedad</h1>
+    <h1 class="text-center text-primary mb-4">Crear Nueva Propiedad</h1>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <!-- Mensaje de error si faltan datos clave -->
+         
             @if (!Model.PropertyTypes!.Any() || !Model.SaleTypes!.Any() || !Model.Improvements!.Any())
             {
-                <div class="alert alert-danger">
-                    <strong>No es posible crear propiedades.</strong> Asegúrate de que existan tipos de propiedades, tipos de ventas y mejoras configuradas en el sistema.
-                </div>
-                <a href="#" class="btn btn-primary mb-4">Volver</a>
+            <div class="alert alert-danger">
+                <strong>No es posible crear propiedades.</strong> Asegúrate de que existan tipos de propiedades, tipos de ventas y mejoras configuradas en el sistema.
+            </div>
+            <a href="#" class="btn btn-primary mb-4">Volver</a>
             }
             else
             {
-                <form asp-action="CreateProperties" asp-controller="Properties" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="PropertyTypeId">Tipo de Propiedad</label>
+            <form asp-action="CreateProperties" asp-controller="Properties" method="post" enctype="multipart/form-data" id="propertyForm">
+                @Html.AntiForgeryToken()
+
+                <div class="row g-3">
+                   
+                    <div class="col-md-6">
+                        <label for="PropertyTypeId" class="form-label fw-bold">Tipo de Propiedad</label>
                         <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes" class="form-control"></select>
                         <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="SaleTypeId">Tipo de Venta</label>
+                    <div class="col-md-6">
+                        <label for="SaleTypeId" class="form-label fw-bold">Tipo de Venta</label>
                         <select asp-for="SaleTypeId" asp-items="Model.SaleTypes" class="form-control"></select>
                         <span asp-validation-for="SaleTypeId" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Price">Precio</label>
-                        <input asp-for="Price" class="form-control" />
+                   
+                    <div class="col-md-6">
+                        <label for="Price" class="form-label fw-bold">Precio</label>
+                        <input asp-for="Price" class="form-control" type="number" min="0" step="1000"/>
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Size">Tamaño (m²)</label>
-                        <input asp-for="Size" class="form-control" />
+                    <div class="col-md-6">
+                        <label for="Size" class="form-label fw-bold">Tamaño (m²)</label>
+                        <input asp-for="Size" class="form-control" type="number" min="0"/>
                         <span asp-validation-for="Size" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Rooms">Habitaciones</label>
-                        <input asp-for="Rooms" class="form-control" />
+                    
+                    <div class="col-md-6">
+                        <label for="Rooms" class="form-label fw-bold">Habitaciones</label>
+                        <input asp-for="Rooms" class="form-control" type="number" min="0" />
                         <span asp-validation-for="Rooms" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Bathrooms">Baños</label>
-                        <input asp-for="Bathrooms" class="form-control" />
+                    <div class="col-md-6">
+                        <label for="Bathrooms" class="form-label fw-bold">Baños</label>
+                        <input asp-for="Bathrooms" class="form-control" type="number" min="0" />
                         <span asp-validation-for="Bathrooms" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Description">Descripción</label>
+                
+                    <div class="col-12">
+                        <label for="Description" class="form-label fw-bold">Descripción</label>
                         <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label>Mejoras Disponibles</label>
+                    
+                    <div class="col-12">
+                        <label class="form-label fw-bold">Mejoras Disponibles</label>
                         <div class="form-check">
                             @foreach (var improvement in Model.Improvements!)
                             {
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="ImprovementIds" value="@improvement.Value" id="improvement-@improvement.Value" />
-                                    <label class="form-check-label" for="improvement-@improvement.Value">
-                                        @improvement.Text
-                                    </label>
-                                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="ImprovementIds" value="@improvement.Value" id="improvement-@improvement.Value" />
+                                <label class="form-check-label" for="improvement-@improvement.Value">@improvement.Text</label>
+                            </div>
                             }
                         </div>
                         <span asp-validation-for="ImprovementIds" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="Images">Imágenes</label>
-                        <input asp-for="Images" type="file" class="form-control" multiple />
-                        <small class="form-text text-muted">Puedes subir varias imágenes.</small>
+                   
+                    <div class="col-12">
+                        <label for="Images" class="form-label fw-bold">Imágenes</label>
+                        <input asp-for="Images" type="file" class="form-control" id="imageUpload" multiple accept=".jpg, .png" />
+                        <small class="form-text text-muted">Formatos permitidos: JPG o PNG. Máximo: 4 imágenes.</small>
                         <span asp-validation-for="Images" class="text-danger"></span>
                     </div>
-
-                    <button type="submit" class="btn btn-primary btn-block mt-4">Guardar</button>
-                </form>
+                </div>
+             
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/Agent/MantenimientoPropiedades" class="btn btn-outline-secondary">Volver Atrás</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
             }
         </div>
     </div>
-    
-    
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <text>
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Éxito!',
-                    text: '@TempData["SuccessMessage"]',
-                    showConfirmButton: true,
-                    timer: 5000
-                });
-            </text>
-        }
-
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <text>
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Error!',
-                    text: '@TempData["ErrorMessage"]',
-                    showConfirmButton: true,
-                    timer: 5000
-                });
-            </text>
-        }
-    </script>
 </div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="errorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('propertyForm').addEventListener('submit', function (event) {
+        const imageInput = document.getElementById('imageUpload');
+        const files = imageInput.files;
+
+       
+        if (files.length > 4) {
+            event.preventDefault();
+            showModal("Solo puedes subir un máximo de 4 imágenes.");
+            return;
+        }
+
+        
+        for (const file of files) {
+            if (!["image/jpeg", "image/png"].includes(file.type)) {
+                event.preventDefault();
+                showModal("Solo se permiten imágenes en formato JPG o PNG.");
+                return;
+            }
+        }
+    });
+
+    function showModal(message) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+        const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+        errorModal.show();
+    }
+</script>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: #6c757d;
+    }
+
+    .modal-header {
+        background-color: #f8d7da;
+    }
+
+    .modal-title {
+        color: #721c24;
+    }
+</style>

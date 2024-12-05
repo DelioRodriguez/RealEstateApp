@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
@@ -7,6 +8,7 @@ using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
 
+[Authorize]
 public class AgentsController : Controller
 {
     private readonly IUserService _userService;

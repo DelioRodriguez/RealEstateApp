@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.Chats;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 
 namespace WebApplication1.Controllers;
 
+[Authorize]
 public class ChatController : Controller
 {
     private readonly IChatService _chatService;
@@ -18,6 +20,7 @@ public class ChatController : Controller
         _improvementService = improvementService;
     }
     
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> DetailsByAgent(int id)
     {
         var property = await _propertyService.GetPropertyDetailsAsync(id);
@@ -26,12 +29,14 @@ public class ChatController : Controller
         return View(property);
     }
 
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> Chats(int propertyId)
     {
         var chats = await _chatService.GetChatsByPropertyAsync(propertyId, User.Identity!.Name!);
         return View(chats);
     }
 
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> Message(int id)
     {
         var chat = await _chatService.GetChatWithMessagesAsync(id);
@@ -43,7 +48,7 @@ public class ChatController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> SendMessage(int propertyId, int chatId, string content)
+    public async Task<IActionResult> SendMessage(int chatId, string content)
     {
         if (string.IsNullOrWhiteSpace(content))
         {

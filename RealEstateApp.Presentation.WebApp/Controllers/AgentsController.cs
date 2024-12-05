@@ -8,7 +8,6 @@ using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
 
-[Authorize]
 public class AgentsController : Controller
 {
     private readonly IUserService _userService;

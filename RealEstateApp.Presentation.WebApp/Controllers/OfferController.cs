@@ -10,7 +10,7 @@ using RealEstateApp.Infrastructure.Identity.Entities;
 
 namespace WebApplication1.Controllers;
 
-[Authorize]
+
 public class OfferController : Controller
 {
     private readonly IOfferService _offerService;
@@ -22,7 +22,7 @@ public class OfferController : Controller
         _userManager = userManager;
     }
 
-    [Authorize(Roles = "Client")]
+    [Authorize(Policy = "ClientOnly")]
     public async Task<IActionResult> ClientOffers(int propertyId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -32,7 +32,7 @@ public class OfferController : Controller
         return View("ClientOffers", offers);
     }
     
-    [Authorize(Roles = "Client")]
+    [Authorize(Policy = "ClientOnly")]
     public async Task<IActionResult> CreateOffer(int propertyId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -49,7 +49,7 @@ public class OfferController : Controller
     }
     
     [HttpPost]
-    [Authorize(Roles = "Client")]
+    [Authorize(Policy = "ClientOnly")]
     public async Task<IActionResult> CreateOffer(int propertyId, decimal amount)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -74,7 +74,7 @@ public class OfferController : Controller
         return RedirectToAction(nameof(ClientOffers), new { propertyId });
     }
     
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
   public async Task<IActionResult> AgentOffers(int propertyId)
   {
 
@@ -103,8 +103,7 @@ public class OfferController : Controller
       return View("AgentOffers", clientsWithNames);
   }
 
-    
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> ClientOffersForAgent(int propertyId, string clientId)
     {
         var offers = await _offerService.GetOffersByUserAndPropertyAsync(clientId, propertyId);
@@ -115,7 +114,7 @@ public class OfferController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> RespondToOffer(int offerId, bool isAccepted)
     {
         try

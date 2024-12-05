@@ -62,12 +62,7 @@ public static class ServiceRegistrationAPI
             opt.TokenLifespan = TimeSpan.FromSeconds(300);
         });
 
-        services.ConfigureApplicationCookie(opt =>
-        {
-            opt.ExpireTimeSpan = TimeSpan.FromHours(24);
-            opt.LoginPath = "/User";
-            opt.AccessDeniedPath = "/User/AccessDenied";
-        });
+     
 
         services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
 
@@ -98,7 +93,7 @@ public static class ServiceRegistrationAPI
 
     public static void AddIdentityServiceApi(this IServiceCollection services)
     {
-        services.AddScoped<IEmailService, EmailService>(); //
+        services.AddScoped<IEmailService, EmailService>(); 
         services.AddScoped<IAccountService, AccountService>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddAutoMapper(typeof(GeneralProfile));

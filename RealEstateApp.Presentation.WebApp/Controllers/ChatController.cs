@@ -6,7 +6,6 @@ using RealEstateApp.Application.Interfaces.Services.Properties;
 
 namespace WebApplication1.Controllers;
 
-[Authorize]
 public class ChatController : Controller
 {
     private readonly IChatService _chatService;
@@ -20,7 +19,7 @@ public class ChatController : Controller
         _improvementService = improvementService;
     }
     
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> DetailsByAgent(int id)
     {
         var property = await _propertyService.GetPropertyDetailsAsync(id);
@@ -28,15 +27,13 @@ public class ChatController : Controller
         
         return View(property);
     }
-
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> Chats(int propertyId)
     {
         var chats = await _chatService.GetChatsByPropertyAsync(propertyId, User.Identity!.Name!);
         return View(chats);
     }
-
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> Message(int id)
     {
         var chat = await _chatService.GetChatWithMessagesAsync(id);
@@ -46,6 +43,8 @@ public class ChatController : Controller
         }
         return View(chat);
     }
+    
+    [Authorize(Policy = "ClientOnly")]
 
     [HttpPost]
     public async Task<IActionResult> SendMessage(int chatId, string content)

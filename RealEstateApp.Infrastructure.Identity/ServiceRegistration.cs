@@ -58,12 +58,7 @@ public static class ServiceRegistration
             opt.TokenLifespan = TimeSpan.FromSeconds(300);
         });
 
-        services.ConfigureApplicationCookie(opt =>
-        {
-            opt.ExpireTimeSpan = TimeSpan.FromHours(24);
-            opt.LoginPath = "/User";
-            opt.AccessDeniedPath = "/User/AccessDenied";
-        });
+       
 
     }
 

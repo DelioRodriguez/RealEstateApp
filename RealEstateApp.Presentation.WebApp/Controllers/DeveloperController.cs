@@ -5,7 +5,8 @@ using RealEstateApp.Application.Interfaces.Services.Developer;
 
 namespace WebApplication1.Controllers;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Policy = "AdminOnly")] 
+
 public class DeveloperController : Controller
 {
     private readonly iDeveloperService _developerService;

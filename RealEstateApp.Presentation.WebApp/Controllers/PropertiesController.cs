@@ -97,7 +97,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> CreateProperties(PropertyCreateViewModel model)
     {
         model.AgentId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -126,7 +126,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> Delete(int id)
     {
         var result = await _propertyService.DeletePropertyAsync(id);
@@ -141,7 +141,7 @@ public class PropertiesController : Controller
         return RedirectToAction("MantenimientoPropiedades", "Agent");
     }
 
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> Update(int id)
     {
         try
@@ -162,7 +162,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "Agent")]
+    [Authorize(Policy = "AgentOnly")]
     public async Task<IActionResult> Update(PropertyUpdateViewModel model)
     {
         if (model == null || model.PropertyId == 0)

@@ -6,7 +6,7 @@ using RealEstateApp.Application.Interfaces.Services.Agent;
 using RealEstateApp.Application.Interfaces.Services.Dashboard;
 
 namespace WebApplication1.Controllers;
-[Authorize(Roles = "Admin")]
+[Authorize(Policy = "AdminOnly")] 
 public class AdminController : Controller
 {
     private readonly IAdminService _adminService;

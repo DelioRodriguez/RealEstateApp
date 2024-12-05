@@ -10,8 +10,7 @@ using RealEstateApp.Application.ViewModels.Users;
 using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
-
-[Authorize]
+[Authorize(Policy = "ClientOnly")]
 public class ClientController : Controller
 {
     private readonly IPropertyService  _propertyService;
@@ -43,14 +42,13 @@ public class ClientController : Controller
 
         return View(users);
     }
-    
-    [Authorize(Roles = "Client")]
+   
     public async Task<IActionResult> PropertiesAgentsByClient(string id)
     {
         return View(await _propertyService.GetPropertyByUserIdAsync(id));
     }
     
-    [Authorize(Roles = "Client")]
+   
     public async Task<IActionResult> HomeClient()
     {
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -77,7 +75,6 @@ public class ClientController : Controller
     }
     
     
-    [Authorize(Roles = "Client")]
     public async Task<IActionResult> DetailsWithChat(int id)
     {
         var property = await _propertyService.GetPropertyDetailsAsync(id);
@@ -107,7 +104,6 @@ public class ClientController : Controller
     
     
     [HttpPost]
-    [Authorize(Roles = "Client")]
     public async Task<IActionResult> HomeClient(PropertyFilterViewModel? filter)
     {
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;

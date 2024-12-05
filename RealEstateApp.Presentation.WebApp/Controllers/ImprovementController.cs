@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.ViewModels.Improvements;
@@ -6,6 +7,8 @@ using RealEstateApp.Domain.Entities;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Policy = "AdminOnly")] 
+
     public class ImprovementController : Controller
     {
         private readonly IImprovementService _service;

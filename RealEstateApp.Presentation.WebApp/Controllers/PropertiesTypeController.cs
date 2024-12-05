@@ -8,7 +8,7 @@ using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Policy = "AdminOnly")] 
     public class PropertiesTypeController : Controller
     {
         private readonly IPropertiesTypeServices _propertyTypeService;

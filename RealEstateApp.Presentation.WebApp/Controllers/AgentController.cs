@@ -7,7 +7,7 @@ using RealEstateApp.Application.Interfaces.Services.Users;
 
 namespace WebApplication1.Controllers;
 
-[Authorize(Roles = "Agent")]
+[Authorize(Policy = "AgentOnly")] 
 public class AgentController : Controller
 {
     private readonly IPropertyService _propertyService;

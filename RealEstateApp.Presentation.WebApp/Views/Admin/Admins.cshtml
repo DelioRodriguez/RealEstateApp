@@ -1,4 +1,6 @@
+@using System.Security.Claims
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
 @model IEnumerable<RealEstateApp.Application.Dtos.Admin.AdminDto>
 
 <h2 class="text-center text-primary mb-4">
@@ -11,8 +13,19 @@
     <span>Crear Administrador</span>
 </a>
 
+@{
+// Obtener el valor del claim que identifica al usuario logueado
+var loggedUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+// Asegurarse de que loggedUserId no sea null
+loggedUserId ??= string.Empty;
+
+// Filtrar la lista de administradores para excluir al usuario logueado
+var filteredAdmins = Model.Where(admin => admin.Id != loggedUserId).ToList();
+}
+
 <div class="row g-3">
-    @foreach (var admin in Model)
+    @foreach (var admin in filteredAdmins)
     {
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card border-primary shadow-sm">
@@ -68,6 +81,7 @@
             </div>
         </div>
     </div>
+    }
     }
 </div>
 

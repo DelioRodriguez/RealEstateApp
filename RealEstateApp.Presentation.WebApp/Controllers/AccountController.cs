@@ -7,6 +7,7 @@ using RealEstateApp.Application.Interfaces.Services.Account;
 
 namespace WebApplication1.Controllers;
 
+
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
@@ -15,6 +16,13 @@ public class AccountController : Controller
     {
         _accountService = accountService;
     }
+   
+        
+        public IActionResult AccessDenied()
+        {
+            return View(); 
+        }
+    
     public IActionResult Register()
     {
         var model = new UserRegisterDTO();

@@ -36,6 +36,12 @@ ViewBag.Title = "Your Offers";
     </a>
 </div>
 
+<div class="mt-4 text-center">
+    <a asp-action="DetailsWithChat" asp-controller="Client" class="btn btn-outline-secondary w-100 shadow-sm" asp-route-id="@ViewBag.PropertyId">
+        <i class="bi bi-house-door"></i> Volver a la propiedad
+    </a>
+</div>
+
 @if (TempData["Error"] != null)
 {
 <div class="alert alert-danger mt-4 text-center">

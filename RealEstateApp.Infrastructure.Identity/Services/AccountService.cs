@@ -250,7 +250,7 @@ public class AccountService : IAccountService
         
         if (userDto.Photo != null)
         {
-            var photoPath = await FileHelper.SaveImageAsync(userDto.Photo!, "newPhotos");
+            var photoPath = await FileHelper.SaveImageAsync(userDto.Photo!);
             user.ImagenPath = photoPath;
         }
         

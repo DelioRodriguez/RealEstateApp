@@ -177,7 +177,7 @@ public class PropertyService : Service<Property>, IPropertyService
                 Bathrooms = model.Bathrooms,
                 Description = model.Description,
                 Improvements = improvements,
-                Images = await FileHelper.SaveImagesAsync(model.Images, "images/properties"),
+                Images = await FileHelper.SaveImagesAsync(model.Images),
             };
 
             await AddAsync(property);
@@ -246,12 +246,12 @@ public class PropertyService : Service<Property>, IPropertyService
             {
                 foreach (var image in existingProperty.Images)
                 {
-                    FileHelper.DeleteImage(image.ImageUrl);
+                    FileHelper.DeleteImageAsync(image.ImageUrl);
                 }
                 await _propertyRepository.RemoveImages(existingProperty.Images);
             }
 
-            var newImages = await FileHelper.SaveImagesAsync(model.Images, "images/properties");
+            var newImages = await FileHelper.SaveImagesAsync(model.Images);
             existingProperty.Images = newImages;
         }
         await _propertyRepository.UpdatePropertyAsync(existingProperty);

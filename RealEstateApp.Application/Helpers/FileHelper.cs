@@ -1,68 +1,72 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Storage.Blobs;
+using Microsoft.AspNetCore.Http;
 using RealEstateApp.Domain.Entities;
+using System.Text.RegularExpressions;
 
 namespace RealEstateApp.Application.Helpers;
 
 public static class FileHelper
 {
-    public static async Task<List<PropertyImage>> SaveImagesAsync(IEnumerable<IFormFile> images, string folderPath)
+    private const string ContainerName = "imagenes";
+    private const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=appimagenes;AccountKey=ORchHcBlJyCbp3iara78fP38RJdna+b9h9BTBjqpushi070UsV9Z2DU7Huic46ogVjloFdmTRwOH+AStZ91Skw==;EndpointSuffix=core.windows.net";
+    
+    public static async Task<List<PropertyImage>> SaveImagesAsync(IEnumerable<IFormFile> images)
     {
         var propertyImages = new List<PropertyImage>();
-        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderPath);
-        
-        if (!Directory.Exists(uploadPath))
-        {
-            Directory.CreateDirectory(uploadPath);
-        }
+        var blobServiceClient = new BlobServiceClient(ConnectionString);
+        var containerClient = blobServiceClient.GetBlobContainerClient(ContainerName);
 
         foreach (var image in images)
         {
-            var fileName = $"{Guid.NewGuid()}_{image.FileName}";
-            var filePath = Path.Combine(uploadPath, fileName);
-            
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            var sanitizedFileName = SanitizeFileName(image.FileName);
+            var fileName = $"{Guid.NewGuid()}_{sanitizedFileName}";
+            var blobClient = containerClient.GetBlobClient(fileName);
+
+            using (var stream = image.OpenReadStream())
             {
-                await image.CopyToAsync(stream);
+                await blobClient.UploadAsync(stream, overwrite: true);
             }
-            
+
             propertyImages.Add(new PropertyImage
             {
-                ImageUrl = $"/{folderPath}/{fileName}"
+                ImageUrl = blobClient.Uri.ToString()
             });
         }
 
         return propertyImages;
     }
-    public static async Task<string> SaveImageAsync(IFormFile image, string folderPath)
+
+    public static async Task<string> SaveImageAsync(IFormFile image)
     {
-        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderPath);
+        var blobServiceClient = new BlobServiceClient(ConnectionString);
+        var containerClient = blobServiceClient.GetBlobContainerClient(ContainerName);
 
-        if (!Directory.Exists(uploadPath))
+        var sanitizedFileName = SanitizeFileName(image.FileName);
+        var fileName = $"{Guid.NewGuid()}_{sanitizedFileName}";
+        var blobClient = containerClient.GetBlobClient(fileName);
+
+        using (var stream = image.OpenReadStream())
         {
-            Directory.CreateDirectory(uploadPath);
+            await blobClient.UploadAsync(stream, overwrite: true);
         }
 
-        var fileName = $"{Guid.NewGuid()}_{image.FileName}";
-        var filePath = Path.Combine(uploadPath, fileName);
+        return blobClient.Uri.ToString();
+    }
+    
+    public static async Task DeleteImageAsync(string imagePath)
+    {
+        var blobServiceClient = new BlobServiceClient(ConnectionString);
+        var containerClient = blobServiceClient.GetBlobContainerClient(ContainerName);
 
-        using (var stream = new FileStream(filePath, FileMode.Create))
-        {
-            await image.CopyToAsync(stream);
-        }
-        
-        return $"/{folderPath}/{fileName}";
+        var blobName = Path.GetFileName(new Uri(imagePath).LocalPath);
+        var blobClient = containerClient.GetBlobClient(blobName);
+
+        await blobClient.DeleteIfExistsAsync();
     }
 
-    public static void DeleteImage(string imagePath)
+
+    private static string SanitizeFileName(string fileName)
     {
-        if (string.IsNullOrEmpty(imagePath))
-            throw new ArgumentException("El path de la imagen no puede ser nulo o vacío.");
-
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imagePath.TrimStart('/'));
-
-        if (File.Exists(filePath))
-        {
-            File.Delete(filePath);
-        }
+        return Regex.Replace(fileName, @"[^a-zA-Z0-9_\-\.]", "_");
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Dtos.Account;
+using RealEstateApp.Application.Helpers;
 using RealEstateApp.Application.Interfaces.Services.Account;
 
 namespace WebApplication1.Controllers;
@@ -26,20 +27,7 @@ public class AccountController : Controller
         if (!ModelState.IsValid)
             return View(userDto);
 
-        if (userDto.Photo?.Length > 0)
-        {
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-            Directory.CreateDirectory(uploadsFolder);
-
-            var uniqueFileName = $"{Guid.NewGuid()}_{userDto.Photo.FileName}";
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await userDto.Photo.CopyToAsync(stream);
-            }
-            userDto.ImagenPath = $"/uploads/{uniqueFileName}";
-        }
+        userDto.ImagenPath = await FileHelper.SaveImageAsync(userDto.Photo);
 
         await _accountService.RegisterUserAsync(userDto);
         return RedirectToAction("Login");

@@ -3,12 +3,43 @@
   "WorkspaceRootPath": "C:\\ReaklEstateApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\views\\properties\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\views\\properties\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|c:\\reaklestateapp\\realestateapp.infrastructure.identity\\seeds\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|solutionrelative:realestateapp.infrastructure.identity\\seeds\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|c:\\reaklestateapp\\realestateapp.infrastructure.identity\\realestateapp.infrastructure.identity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|solutionrelative:realestateapp.infrastructure.identity\\realestateapp.infrastructure.identity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05AAFFAD-017F-4535-BA63-C3CB6E0E11CA}|RealEstateApp.Presentation.Api\\RealEstateApp.Presentation.Api.csproj|c:\\reaklestateapp\\realestateapp.presentation.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{05AAFFAD-017F-4535-BA63-C3CB6E0E11CA}|RealEstateApp.Presentation.Api\\RealEstateApp.Presentation.Api.csproj|solutionrelative:realestateapp.presentation.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|c:\\reaklestateapp\\realestateapp.infrastructure.identity\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEED56CD-9ED2-4F41-826D-7074C7FD0CA7}|RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj|solutionrelative:realestateapp.infrastructure.identity\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\views\\properties\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|solutionrelative:realestateapp.presentation.webapp\\views\\properties\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62D1B623-73F3-4464-B4A3-55D3BABB517E}|RealEstateApp.Presentation.WebApp\\RealEstateApp.Presentation.WebApp.csproj|c:\\reaklestateapp\\realestateapp.presentation.webapp\\views\\properties\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -30,7 +61,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,20 +77,122 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
-              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
-              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml*",
-              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAZAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-04T13:50:50.703Z",
+              "WhenOpened": "2024-12-05T16:53:35.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "PropertiesController.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T13:42:13.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IdentitySeeder.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\Seeds\\IdentitySeeder.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Identity\\Seeds\\IdentitySeeder.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\Seeds\\IdentitySeeder.cs",
+              "RelativeToolTip": "RealEstateApp.Infrastructure.Identity\\Seeds\\IdentitySeeder.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:10:39.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.Api\\appsettings.json",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.Api\\appsettings.json",
+              "RelativeToolTip": "RealEstateApp.Presentation.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-05T16:08:36.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ServiceRegistration.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\ServiceRegistration.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Identity\\ServiceRegistration.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\ServiceRegistration.cs",
+              "RelativeToolTip": "RealEstateApp.Infrastructure.Identity\\ServiceRegistration.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAwwBsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:04:49.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Program.cs",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Program.cs",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Program.cs",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:05:53.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAJETAAAAAAAAAAAqwKkTAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-12-05T16:01:41.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\appsettings.json",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\appsettings.json",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\appsettings.json",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-05T16:01:03.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
+              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
+              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\Index.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-04T13:50:50.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "details.cshtml",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\Properties\\details.cshtml",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\details.cshtml",
@@ -67,12 +200,24 @@
               "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\Properties\\details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-04T13:50:50.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T13:50:50.042Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "RealEstateApp.Infrastructure.Identity",
+              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
+              "RelativeDocumentMoniker": "RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
+              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
+              "RelativeToolTip": "RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-05T16:10:31.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "PropertiesTypeController.cs",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesTypeController.cs",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesTypeController.cs",
@@ -85,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Views\\PropertiesType\\Create.cshtml",
               "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Views\\PropertiesType\\Create.cshtml",
@@ -93,21 +238,7 @@
               "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Views\\PropertiesType\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-04T13:46:25.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PropertiesController.cs",
-              "DocumentMoniker": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
-              "RelativeDocumentMoniker": "RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
-              "ToolTip": "C:\\ReaklEstateApp\\RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
-              "RelativeToolTip": "RealEstateApp.Presentation.WebApp\\Controllers\\PropertiesController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAwCoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T13:42:13.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T13:46:25.508Z"
             }
           ]
         }

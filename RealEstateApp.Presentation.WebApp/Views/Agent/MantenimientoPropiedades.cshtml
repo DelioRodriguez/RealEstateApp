@@ -1,91 +1,98 @@
 ﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
 
 @{
-    ViewData["Title"] = "Mantenimiento de Propiedades";
+ViewData["Title"] = "Mantenimiento de Propiedades";
 }
 
 <title>Mantenimiento de Propiedades</title>
 
 <div class="container my-5">
-    <h1 class="text-center mb-4">Mantenimiento de Propiedades</h1>
-    
-    <div class="text-end mb-3">
+    <h1 class="text-center mb-4"><i class="bi bi-gear"></i> Mantenimiento de Propiedades</h1>
+
+    <!-- Botón para crear una nueva propiedad -->
+    <div class="d-flex justify-content-end mb-4">
         <a asp-action="CreateProperties" asp-controller="Properties" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Crear Nueva Propiedad
         </a>
     </div>
 
+    <!-- Mensaje si no hay propiedades -->
     @if (!Model.Any())
     {
-        <div class="alert alert-warning">
-            <strong>No tienes propiedades registradas.</strong>
-        </div>
+    <div class="alert alert-warning text-center">
+        <i class="bi bi-exclamation-circle-fill"></i> <strong>No tienes propiedades registradas.</strong>
+    </div>
     }
     else
     {
-        <div class="row">
-            @foreach (var property in Model.Where(p => p.IsAvailable))
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
-                        <div class="card-body">
-                            <h5 class="card-title">@property.PropertyTypeName</h5>
-                            <p class="card-text">
-                                <strong>Código:</strong> @property.Code<br>
-                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
-                                <strong>Precio:</strong> @property.Price.ToString()<br>
-                                <strong>Habitaciones:</strong> @property.Rooms<br>
-                                <strong>Baños:</strong> @property.Bathrooms<br>
-                                <strong>Tamaño:</strong> @property.Size m²<br>
-                                <strong>Estado:</strong>
-                                <span class="badge bg-primary">Disponible</span>
-                            </p>
-                            <div class="d-flex justify-content-between">
-                                <a asp-action="Update" asp-controller="Properties" asp-route-id="@property.Id" class="btn btn-warning">
-                                    <i class="bi bi-pencil"></i> Editar
-                                </a>
-                                <form asp-action="Delete" asp-controller="Properties" asp-route-id="@property.Id" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta propiedad?');">
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+    <!-- Listado de Propiedades -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var property in Model.Where(p => p.IsAvailable))
+        {
+        <div class="col">
+            <div class="card shadow-sm border-0">
+                <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-house-fill text-success"></i> @property.PropertyTypeName
+                    </h5>
+                    <p class="card-text">
+                        <i class="bi bi-hash"></i> <strong>Código:</strong> @property.Code<br>
+                        <i class="bi bi-handbag"></i> <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                        <i class="bi bi-cash-stack"></i> <strong>Precio:</strong> @($"RD${property.Price:N0}")<br>
+                        <i class="bi bi-door-open-fill"></i> <strong>Habitaciones:</strong> @property.Rooms<br>
+                        <i class="bi bi-droplet"></i> <strong>Baños:</strong> @property.Bathrooms<br>
+                        <i class="bi bi-rulers"></i> <strong>Tamaño:</strong> @property.Size m²
+                    </p>
+                    <p>
+                        <strong>Estado:</strong> <span class="badge bg-primary">Disponible</span>
+                    </p>
+                    <!-- Botones de acción -->
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Update" asp-controller="Properties" asp-route-id="@property.Id" class="btn btn-warning w-45">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <form asp-action="Delete" asp-controller="Properties" asp-route-id="@property.Id" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta propiedad?');">
+                            <button type="submit" class="btn btn-danger w-45">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </form>
                     </div>
                 </div>
-            }
+            </div>
         </div>
+        }
+    </div>
     }
 </div>
 
-
+<!-- SweetAlert para mostrar mensajes de éxito o error -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     @if (TempData["SuccessMessage"] != null)
     {
-        <text>
-            Swal.fire({
-                icon: 'success',
-                title: '¡Éxito!',
-                text: '@Html.Encode(TempData["SuccessMessage"]!.ToString())',
-                showConfirmButton: true,
-                timer: 5000
-            });
-        </text>
+    <text>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '@Html.Encode(TempData["SuccessMessage"]!.ToString())',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    </text>
     }
 
     @if (TempData["ErrorMessage"] != null)
     {
-        <text>
-            Swal.fire({
-                icon: 'error',
-                title: '¡Error!',
-                text: '@Html.Encode(TempData["ErrorMessage"]!.ToString())',
-                showConfirmButton: true,
-                timer: 5000
-            });
-        </text>
+    <text>
+    Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: '@Html.Encode(TempData["ErrorMessage"]!.ToString())',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    </text>
     }
 </script>

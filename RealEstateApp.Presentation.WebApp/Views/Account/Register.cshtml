@@ -11,52 +11,64 @@ ViewData["Title"] = "Registro";
                 <i class="fas fa-user-plus"></i> Crea tu Cuenta
             </h2>
 
+          
+
             <form id="registrationForm" asp-action="Register" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
+
+                <!-- Mensaje de validaciones generales -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label for="firstName" class="form-label fw-bold">Nombre</label>
-                        <input type="text" id="firstName" name="FirstName" class="form-control border-success" value="@Model.FirstName" required placeholder="Ingresa tu nombre">
+                        <input type="text" id="firstName" name="FirstName" class="form-control border-success" value="@Model.FirstName" placeholder="Ingresa tu nombre">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="lastName" class="form-label fw-bold">Apellido</label>
-                        <input type="text" id="lastName" name="LastName" class="form-control border-success" value="@Model.LastName" required placeholder="Ingresa tu apellido">
+                        <input type="text" id="lastName" name="LastName" class="form-control border-success" value="@Model.LastName" placeholder="Ingresa tu apellido">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label for="phone" class="form-label fw-bold">Teléfono</label>
-                        <input type="tel" id="phone" name="PhoneNumber" class="form-control border-success" value="@Model.PhoneNumber" required placeholder="Ingresa tu teléfono">
+                        <input type="tel" id="phone" name="PhoneNumber" class="form-control border-success" value="@Model.PhoneNumber" placeholder="Ingresa tu teléfono">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="photo" class="form-label fw-bold">Foto de Perfil</label>
-                        <input type="file" id="photo" name="Photo" class="form-control border-success" accept=".jpg, .png" required>
+                        <input type="file" id="photo" name="Photo" class="form-control border-success" accept=".jpg, .png">
                         <small class="text-muted">Solo formatos JPG o PNG. Tamaño máximo: 1 imagen.</small>
+                        <span asp-validation-for="Photo" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label for="username" class="form-label fw-bold">Nombre de Usuario</label>
-                        <input type="text" id="username" name="Username" class="form-control border-success" value="@Model.UserName" required placeholder="Elige tu nombre de usuario">
+                        <input type="text" id="username" name="Username" class="form-control border-success" value="@Model.UserName" placeholder="Elige tu nombre de usuario">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label fw-bold">Correo Electrónico</label>
-                        <input type="email" id="email" name="Email" class="form-control border-success" value="@Model.Email" required placeholder="Ingresa tu correo electrónico">
+                        <input type="email" id="email" name="Email" class="form-control border-success" value="@Model.Email" placeholder="Ingresa tu correo electrónico">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label for="password" class="form-label fw-bold">Contraseña</label>
-                        <input type="password" id="password" name="Password" class="form-control border-success" required placeholder="Ingresa tu contraseña">
+                        <input type="password" id="password" name="Password" class="form-control border-success" placeholder="Ingresa tu contraseña">
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="confirmPassword" class="form-label fw-bold">Confirmar Contraseña</label>
-                        <input type="password" id="confirmPassword" name="ConfirmPassword" class="form-control border-success" required placeholder="Confirma tu contraseña">
-                        <small id="passwordError" class="text-danger d-none">Las contraseñas no coinciden.</small>
+                        <input type="password" id="confirmPassword" name="ConfirmPassword" class="form-control border-success" placeholder="Confirma tu contraseña">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -66,6 +78,7 @@ ViewData["Title"] = "Registro";
                         <option value="Client">Cliente</option>
                         <option value="Agent">Agente</option>
                     </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
                 </div>
 
                 <button type="submit" class="btn btn-success w-100 btn-lg mt-3">
@@ -81,37 +94,6 @@ ViewData["Title"] = "Registro";
         </div>
     </div>
 </div>
-
-<script>
-    const form = document.getElementById("registrationForm");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
-    const passwordError = document.getElementById("passwordError");
-    const photoInput = document.getElementById("photo");
-
-    // Validación de contraseñas
-    form.addEventListener("submit", function (event) {
-        if (password.value !== confirmPassword.value) {
-            event.preventDefault();
-            passwordError.classList.remove("d-none");
-        } else {
-            passwordError.classList.add("d-none");
-        }
-    });
-
-    // Validación de la imagen
-    photoInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const fileType = file.type;
-            const fileCount = this.files.length;
-            if ((fileType !== "image/jpeg" && fileType !== "image/png") || fileCount > 1) {
-                alert("Solo puedes subir una imagen en formato JPG o PNG.");
-                this.value = "";
-            }
-        }
-    });
-</script>
 
 <style>
     body {
@@ -139,34 +121,8 @@ ViewData["Title"] = "Registro";
         padding: 10px;
         font-size: 1rem;
     }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <text>
-            Swal.fire({
-                icon: 'success',
-                title: '¡Éxito!',
-                text: '@Html.Encode(TempData["SuccessMessage"]!.ToString())',
-                showConfirmButton: true,
-                timer: 5000
-            });
-        </text>
-    }
-
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <text>
-            Swal.fire({
-                icon: 'error',
-                title: '¡Error!',
-                text: '@Html.Encode(TempData["ErrorMessage"]!.ToString())',
-                showConfirmButton: true,
-                timer: 5000
-            });
-        </text>
-    }
-</script>

@@ -1,50 +1,59 @@
 ﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
 
 @{
-    ViewData["Title"] = "Tus Propiedades";
+    ViewData["Title"] = "Mis Propiedades";
 }
 
-<title>Tus Propiedades</title>
+<title>Mis Propiedades</title>
 
 <div class="container my-5">
-    <h1 class="text-center mb-4">Tus Propiedades</h1>
-    
+    <h1 class="text-center mb-4"><i class="bi bi-buildings"></i> Mis Propiedades</h1>
+
+    <!-- Verifica si el modelo contiene propiedades -->
     @if (!Model.Any())
     {
-        <div class="alert alert-warning">
-            <strong>No tienes propiedades registradas.</strong>
+        <div class="alert alert-warning text-center">
+            <i class="bi bi-exclamation-triangle"></i> <strong>No tienes propiedades registradas.</strong>
         </div>
     }
     else
     {
-        <div class="row">
+        <!-- Listado de Propiedades -->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach (var property in Model)
             {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">
-                                @property.PropertyTypeName
+                                <i class="bi bi-house-fill text-success"></i> @property.PropertyTypeName
                             </h5>
                             <p class="card-text">
-                                <strong>Código:</strong> @property.Code<br>
-                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
-                                <strong>Precio:</strong> @property.Price.ToString()<br>
-                                <strong>Habitaciones:</strong> @property.Rooms<br>
-                                <strong>Baños:</strong> @property.Bathrooms<br>
-                                <strong>Tamaño:</strong> @property.Size m²<br>
-                                <strong>Estado:</strong> 
-                                                         @if ((bool)!property.IsAvailable)
-                                                         {
-                                                             <span class="badge bg-danger ms-2">Vendida</span>
-                                                         }
-                                                         @if ((bool)property.IsAvailable)
-                                                         {
-                                                            <span class="badge bg-primary ms-2">Disponible</span> 
-                                                         }                           
+                                <i class="bi bi-hash"></i> <strong>Código:</strong> @property.Code<br>
+                                <i class="bi bi-handbag"></i> <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
+                                <i class="bi bi-cash-stack"></i> <strong>Precio:</strong> @($"RD${property.Price:N0}")<br>
+                                <i class="bi bi-door-open-fill"></i> <strong>Habitaciones:</strong> @property.Rooms<br>
+                                <i class="bi bi-droplet"></i> <strong>Baños:</strong> @property.Bathrooms<br>
+                                <i class="bi bi-rulers"></i> <strong>Tamaño:</strong> @property.Size m²<br>
                             </p>
-                            <a asp-action="DetailsByAgent" asp-controller="Chat" asp-route-id="@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+                            <p>
+                                <strong>Estado:</strong> 
+                                @if (property.IsAvailable)
+                                {
+                                    <span class="badge bg-primary">Disponible</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">No Disponible</span>
+                                }
+                            </p>
+
+                            <div class="d-flex">
+                                <a asp-action="DetailsByAgent" asp-controller="Chat" asp-route-id="@property.Id" class="btn btn-outline-primary w-50">
+                                    <i class="bi bi-eye"></i> Detalles
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -45,22 +45,22 @@ public class AccountService : IAccountService
     public async Task RegisterUserAsync(UserRegisterDTO userDto)
     {
         if (userDto.Password != userDto.ConfirmPassword)
-            throw new ValidationException("Passwords do not match.");
-        
+            throw new ValidationException("Las contraseñas no coinciden.");
+
         var existingUserByEmail = await _userManager.FindByEmailAsync(userDto.Email!);
         if (existingUserByEmail != null)
-            throw new ValidationException("Email is already taken.");
-        
+            throw new ValidationException("El correo electrónico ya está registrado.");
+
         var existingUserByUsername = await _userManager.FindByNameAsync(userDto.UserName);
         if (existingUserByUsername != null)
-            throw new ValidationException("Username is already taken.");
+            throw new ValidationException("El nombre de usuario ya está en uso.");
 
         var user = _mapper.Map<ApplicationUser>(userDto);
         user.EmailConfirmed = false;
 
         var result = await _userManager.CreateAsync(user, userDto.Password);
         if (!result.Succeeded)
-            throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+            throw new ValidationException(string.Join(", ", result.Errors.Select(e => e.Description)));
 
         await _userManager.AddToRoleAsync(user, userDto.Role.ToString());
 
@@ -71,6 +71,7 @@ public class AccountService : IAccountService
             await SendActivationEmailAsync(user.Email!, activationLink);
         }
     }
+
 
     
 
@@ -89,26 +90,50 @@ public class AccountService : IAccountService
         string body = $"<h1>{subject}</h1><p>Click <a href='{activationLink}'>here</a> to activate your account.</p>";
         await _emailService.SendEmailAsync(email, subject, body);
     }
-    
     public async Task<LoginResult> LoginUserAsync(UserLoginDTO userDto)
     {
         var user = await _userManager.FindByEmailAsync(userDto.Username)
                    ?? await _userManager.FindByNameAsync(userDto.Username);
 
-        if (user == null || !user.EmailConfirmed)
-            return new LoginResult { IsSuccess = false }; // Retorno directo si hay errores.
+        if (user == null)
+        {
+      
+            return new LoginResult 
+            { 
+                IsSuccess = false, 
+                Message = "Usuario o contraseña incorrectos." 
+            };
+        }
+
+        if (!user.EmailConfirmed)
+        {
+            return new LoginResult 
+            { 
+                IsSuccess = false, 
+                Message = "Cuenta inactiva si eres Cliente revise su correo si no comuniquese con el administrador." 
+            };
+        }
+
+     
 
         var result = await _signInManager.PasswordSignInAsync(user.UserName!, userDto.Password, isPersistent: false, lockoutOnFailure: false);
+
         if (!result.Succeeded)
-            return new LoginResult { IsSuccess = false };
+        {
+            return new LoginResult 
+            { 
+                IsSuccess = false, 
+                Message = "Usuario o contraseña incorrectos." 
+            };
+        }
 
         var roles = await _userManager.GetRolesAsync(user);
 
         return new LoginResult
         {
             IsDeveloper = roles.Contains("Developer"),
-            IsSuccess = true,
-            IsAdmin = roles.Contains("Admin")
+            IsAdmin = roles.Contains("Admin"),
+            IsSuccess = true
         };
     }
 

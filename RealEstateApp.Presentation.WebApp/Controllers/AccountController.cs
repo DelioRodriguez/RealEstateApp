@@ -20,7 +20,6 @@ public class AccountController : Controller
         var model = new UserRegisterDTO();
         return View(model);
     }
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(UserRegisterDTO userDto)
@@ -30,22 +29,35 @@ public class AccountController : Controller
             if (!ModelState.IsValid)
                 return View(userDto);
 
-            userDto.ImagenPath = await FileHelper.SaveImageAsync(userDto.Photo);
+            if (userDto.Photo != null)
+                userDto.ImagenPath = await FileHelper.SaveImageAsync(userDto.Photo);
+            else
+                ModelState.AddModelError("Photo", "Debe subir una imagen de perfil.");
+            
+            if (!ModelState.IsValid)
+                return View(userDto);
 
             await _accountService.RegisterUserAsync(userDto);
+
+         
+            TempData["SuccessMessage"] = "Registro exitoso.";
             return RedirectToAction("Login");
         }
-        catch (ValidationException ex)
+        catch (Exception ex)
         {
-            TempData["ErrorMessage"] = ex.Message;
+      
+            if (ex.Message.Contains("El correo electrónico ya está registrado"))
+                ModelState.AddModelError("Email", ex.Message);
+            else if (ex.Message.Contains("El nombre de usuario ya está en uso."))
+                ModelState.AddModelError("UserName", ex.Message);
+            else
+                ModelState.AddModelError(string.Empty, ex.Message);
             return View(userDto);
         }
-        catch (Exception e)
-        {
-            TempData["ErrorMessage"] = e.Message;
-            return View(userDto);
-        }
+      
     }
+
+
 
 
     public IActionResult Login()
@@ -64,7 +76,7 @@ public class AccountController : Controller
 
         if (!loginResult.IsSuccess)
         {
-            ModelState.AddModelError(string.Empty, "Credenciales inválidas.");
+            ViewBag.ErrorMessage = loginResult.Message;
             return View(userDto);
         }
 

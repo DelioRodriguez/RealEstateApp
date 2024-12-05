@@ -1,39 +1,107 @@
 @model RealEstateApp.Application.ViewModels.Chats.ChatViewModel
 
 <div class="container my-5">
-    <h2 class="mb-4">Chat con @Model.Fullname</h2>
+    <h2 class="mb-4 text-center text-primary">
+        <i class="bi bi-chat-dots-fill"></i> Chat con @Model.Fullname
+    </h2>
 
-    <div class="chat-box border p-3 mb-4" style="height: 400px; overflow-y: auto;">
+    <div class="chat-box border p-3 mb-4" style="height: 400px; overflow-y: auto; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
         @foreach (var message in Model.Messages)
         {
-            <div class="d-flex mb-2 @(message.IsAgent ? "justify-content-end" : "justify-content-start")">
-                <div class="d-flex align-items-center">
-                    <img src="@((message.IsAgent) ? Model.imagePathAgent : Model.imagePathClient)"
-                         alt="Foto del @(message.IsAgent ? "Agente" : "Cliente")"
-                         class="rounded-circle" width="40" height="40" style="object-fit: cover;"/>
-                    <span class="ms-2 font-weight-bold">
-                        @(message.IsAgent ? "Tú" : Model.ClientName)
-                    </span>
-                </div>
-
-                <!-- Contenido del mensaje -->
-                <p class="mb-1 @(message.IsAgent ? "bg-primary text-white" : "bg-light text-dark") rounded p-2">
+        <div class="d-flex mb-2 @(message.IsAgent ? "justify-content-end" : "justify-content-start")">
+         
+            <div class="message-container">
+                <p class="mb-1 @(message.IsAgent ? "bg-primary text-white" : "bg-light text-dark") rounded p-3"
+                   style="max-width: 70%; word-wrap: break-word; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                     @message.Content
                 </p>
-                <small class="text-muted">@message.Timestamp.ToString("g")</small>
+                <small class="text-muted"><i class="bi bi-clock"></i> @message.Timestamp.ToString("g")</small>
             </div>
+
+            <div class="d-flex align-items-center">
+           
+                <img src="@((message.IsAgent) ? Model.imagePathAgent : Model.imagePathClient)"
+                     alt="Foto del @(message.IsAgent ? "Agente" : "Cliente")"
+                     class="rounded-circle border border-secondary" width="50" height="50" style="object-fit: cover;"/>
+                <span class="ms-2 font-weight-bold text-muted">
+                    @(message.IsAgent ? "Tú" : Model.ClientName)
+                </span>
+            </div>
+        </div>
         }
     </div>
 
-    <!-- Formulario para enviar mensaje -->
-    <form asp-action="SendMessage" method="post" class="d-flex">
+   
+    <form asp-action="SendMessage" method="post" class="d-flex align-items-center border-top pt-3">
         <input type="hidden" name="propertyId" value="@Model.PropertyId" />
         <input type="hidden" name="chatId" value="@Model.ChatId" />
-        <input type="text" name="content" class="form-control me-2" placeholder="Escribe tu mensaje..." required />
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="input-group w-100">
+            <input type="text" name="content" class="form-control shadow-sm" placeholder="Escribe tu mensaje..." required />
+            <button type="submit" class="btn btn-primary ms-2 shadow-sm">
+                <i class="bi bi-send-fill"></i> Enviar
+            </button>
+        </div>
     </form>
 
-    <div class="mt-4">
-        <a asp-action="DetailsByAgent" class="btn btn-secondary" asp-route-id="@Model.PropertyId">Volver a la propiedad</a>
+  
+    <div class="mt-4 text-center">
+        <a asp-action="DetailsByAgent" class="btn btn-outline-secondary w-100 shadow-sm" asp-route-id="@Model.PropertyId">
+            <i class="bi bi-house-door"></i> Volver a la propiedad
+        </a>
     </div>
 </div>
+
+<style>
+    .chat-box {
+        background-color: #fafafa;
+        border-radius: 15px;
+    }
+
+    .message-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control {
+        border-radius: 25px;
+        padding-left: 20px;
+    }
+
+    .btn-primary {
+        border-radius: 50px;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .message-container p {
+        animation: slideIn 0.5s ease-out;
+    }
+
+ 
+
+    .chat-box {
+        background-color: #f7f7f7;
+        border-radius: 15px;
+    }
+
+    
+    .input-group {
+        border-radius: 25px;
+        overflow: hidden;
+    }
+
+    .input-group .form-control {
+        border-radius: 25px;
+    }
+    
+
+    .btn-primary, .btn-outline-secondary {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+

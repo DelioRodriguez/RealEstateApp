@@ -1,22 +1,37 @@
 @model IEnumerable<RealEstateApp.Application.ViewModels.Chats.ChatViewModel>
 
 <div class="container my-5">
-    <h2 class="mb-4">Chats con Clientes</h2>
-    <ul class="list-group">
-        @foreach (var chat in Model)
-        {
-            <li class="list-group-item d-flex align-items-center">
-                <!-- Foto del cliente -->
-                <div class="d-flex align-items-center">
-                    <img src="@chat.imagePathClient" alt="Foto del Cliente" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
-                    <span class="ms-3">@chat.ClientName</span>
-                </div>
+    <h2 class="mb-4"><i class="bi bi-chat-dots-fill"></i> Chats con Clientes</h2>
 
-                <!-- Botón para abrir el chat -->
-                <a asp-controller="Chat" asp-action="Message" asp-route-id="@chat.ChatId" class="btn btn-primary btn-sm ms-3">
-                    Abrir Chat
-                </a>
-            </li>
-        }
-    </ul>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            <i class="bi bi-exclamation-circle-fill"></i> <strong>No tienes chats disponibles.</strong>
+        </div>
+    }
+    else
+    {
+        <ul class="list-group shadow-sm">
+            @foreach (var chat in Model)
+            {
+                <li class="list-group-item d-flex align-items-center justify-content-between">
+                    <!-- Información del cliente -->
+                    <div class="d-flex align-items-center">
+                        <img src="@chat.imagePathClient" alt="Foto del Cliente" class="rounded-circle border border-secondary" width="50" height="50" style="object-fit: cover;">
+                        <div class="ms-3">
+                            <h6 class="mb-1">
+                                <i class="bi bi-person-circle text-primary"></i> @chat.ClientName
+                            </h6>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Botón para abrir el chat -->
+                    <a asp-controller="Chat" asp-action="Message" asp-route-id="@chat.ChatId" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-chat-right-dots"></i> Abrir Chat
+                    </a>
+                </li>
+            }
+        </ul>
+    }
 </div>

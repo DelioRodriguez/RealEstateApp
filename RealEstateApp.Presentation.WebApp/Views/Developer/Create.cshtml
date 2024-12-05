@@ -6,32 +6,38 @@
 <form asp-action="Create" method="post">
     <div class="form-group mb-3">
         <label for="FirstName"><i class="fas fa-user"></i> Nombre</label>
-        <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
+        <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName"  />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
         <label for="LastName"><i class="fas fa-user-tag"></i> Apellido</label>
-        <input type="text" class="form-control" id="LastName" name="LastName" asp-for="LastName" required />
+        <input type="text" class="form-control" id="LastName" name="LastName" asp-for="LastName"  />
+        <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
         <label for="Email"><i class="fas fa-envelope"></i> Correo</label>
-        <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
+        <input type="email" class="form-control" id="Email" name="Email" asp-for="Email"  />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
         <label for="UserName"><i class="fas fa-user-lock"></i> Nombre de Usuario</label>
-        <input type="text" class="form-control" id="UserName" name="UserName" asp-for="UserName" required />
+        <input type="text" class="form-control" id="UserName" name="UserName" asp-for="UserName"  />
+        <span asp-validation-for="UserName" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
         <label for="Password"><i class="fas fa-key"></i> Contraseña</label>
-        <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required />
+        <input type="password" class="form-control" id="Password" name="Password" asp-for="Password"  />
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
         <label for="ConfirmPassword"><i class="fas fa-check-circle"></i> Confirmar Contraseña</label>
-        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" required />
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword"  />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
 
     <div class="d-flex justify-content-between">

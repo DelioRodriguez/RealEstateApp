@@ -14,14 +14,14 @@ ViewData["Title"] = "Crear Tipo de Propiedad";
             <!-- Nombre -->
             <div class="form-group mb-3">
                 <label for="Name" class="form-label">Nombre</label>
-                <input asp-for="Name" class="form-control" id="Name" placeholder="Ingresa el nombre del tipo de propiedad" required />
+                <input asp-for="Name" class="form-control" id="Name" placeholder="Ingresa el nombre del tipo de propiedad" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <!-- Descripción -->
             <div class="form-group mb-3">
                 <label for="Description" class="form-label">Descripción</label>
-                <textarea asp-for="Description" class="form-control" id="Description" placeholder="Ingresa una descripción del tipo de propiedad" required></textarea>
+                <textarea asp-for="Description" class="form-control" id="Description" placeholder="Ingresa una descripción del tipo de propiedad"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 

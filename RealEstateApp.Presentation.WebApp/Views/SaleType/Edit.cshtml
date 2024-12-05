@@ -4,21 +4,38 @@
     ViewData["Title"] = "Editar Tipo de Venta";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center text-primary mb-4">
+    <i class="fas fa-edit"></i> @ViewData["Title"]
+</h1>
 
 <form asp-action="Edit" method="post">
-    <div class="form-group">
-        <label for="Name">Nombre</label>
-        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required maxlength="50">
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <!-- Nombre -->
+            <div class="form-group mb-3">
+                <label for="Name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required maxlength="50" placeholder="Ingresa el nombre del tipo de venta" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-    <div class="form-group">
-        <label for="Description">Descripción</label>
-        <textarea class="form-control" id="Description" name="Description" required maxlength="200">@Model.Description</textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+            <!-- Descripción -->
+            <div class="form-group mb-3">
+                <label for="Description" class="form-label">Descripción</label>
+                <textarea class="form-control" id="Description" name="Description" required maxlength="200" placeholder="Ingresa una descripción del tipo de venta">@Model.Description</textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
 
-    <button type="submit" class="btn btn-success">Guardar Cambios</button>
-    <a href="@Url.Action("Index", "SaleType")" class="btn btn-secondary">Volver</a>
+            <div class="d-flex justify-content-between">
+                <!-- Botón Volver -->
+                <a href="@Url.Action("Index", "SaleType")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </a>
+
+                <!-- Botón Guardar -->
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </div>
+    </div>
 </form>

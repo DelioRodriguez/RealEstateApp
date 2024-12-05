@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<RealEstateApp.Application.ViewModels.Properties.PropertyListViewModel>
 
 @{
-    ViewData["Title"] = "Listado de Propiedades";
-    var esCliente = User.IsInRole("Cliente");
+ViewData["Title"] = "Listado de Propiedades";
+var esCliente = User.IsInRole("Cliente");
 }
 
 <title>Listado de Propiedades</title>
@@ -13,19 +13,19 @@
     <!-- Muestra los errores de validación globales -->
     @if (!ViewData.ModelState.IsValid)
     {
-        <div class="alert alert-danger">
-            <ul>
-                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    <li>@error.ErrorMessage</li>
-                }
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+            <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
     }
 
     <!-- Formulario de Búsqueda -->
     <div class="card p-3 mb-4">
-        <form method="post" asp-action="HomeClient" asp-controller="Client" >
+        <form method="post" asp-action="HomeClient" asp-controller="Client">
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="codigo" class="form-label">Código</label>
@@ -37,19 +37,19 @@
                         <option value="">Seleccione...</option>
                         @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 1)
                         {
-                            <option value="1" selected>Casa</option>
+                        <option value="1" selected>Casa</option>
                         }
                         else
                         {
-                            <option value="1">Casa</option>
+                        <option value="1">Casa</option>
                         }
                         @if (Model.FirstOrDefault()?.Filter?.PropertyTypeId == 2)
                         {
-                            <option value="2" selected>Apartamento</option>
+                        <option value="2" selected>Apartamento</option>
                         }
                         else
                         {
-                            <option value="2">Apartamento</option>
+                        <option value="2">Apartamento</option>
                         }
                     </select>
                 </div>
@@ -79,57 +79,58 @@
     <!-- Verifica si no hay resultados -->
     @if (!Model.Any())
     {
-        <div class="alert alert-warning">
-            <strong>No se encontraron resultados.</strong>
-        </div>
+    <div class="alert alert-warning">
+        <strong>No se encontraron resultados.</strong>
+    </div>
     }
     else
     {
-        <!-- Listado de Propiedades -->
-        <div class="row">
-            @foreach (var property in Model)
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
-                        <div class="card-body">
-                            <form method="post" asp-action="ToggleFavorite" asp-controller="Properties" class="d-flex justify-content-end">
-                                <input type="hidden" name="PropertyId" value="@property.Id" />
+    <!-- Listado de Propiedades -->
+    <div class="row">
+        @foreach (var property in Model)
+        {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="@property.MainImageUrl" class="card-img-top" alt="Imagen de propiedad">
+                <div class="card-body">
+                    <form method="post" asp-action="ToggleFavorite" asp-controller="Properties" class="d-flex justify-content-end">
+                        <input type="hidden" name="PropertyId" value="@property.Id" />
 
-                                @if (property.IsFavorite)
-                                {
-                                    <!-- Estrella llena, color dorado, propiedad favorita -->
-                                    <button type="submit" class="btn btn-link text-warning p-0">
-                                        <i class="bi bi-star-fill" style="font-size: 1.5rem;"></i>
-                                    </button>
-                                }
-                                else
-                                {
-                                    <!-- Estrella vacía, color gris, propiedad no favorita -->
-                                    <button type="submit" class="btn btn-link text-muted p-0">
-                                        <i class="bi bi-star" style="font-size: 1.5rem;"></i>
-                                    </button>
-                                }
-                            </form>
+                        @if (property.IsFavorite)
+                        {
+                        <!-- Estrella llena, color dorado, propiedad favorita -->
+                        <button type="submit" class="btn btn-link text-warning p-0">
+                            <i class="bi bi-star-fill" style="font-size: 1.5rem;"></i>
+                        </button>
+                        }
+                        else
+                        {
+                        <!-- Estrella vacía, color gris, propiedad no favorita -->
+                        <button type="submit" class="btn btn-link text-muted p-0">
+                            <i class="bi bi-star" style="font-size: 1.5rem;"></i>
+                        </button>
+                        }
+                    </form>
 
-                            <h5 class="card-title">@property.PropertyTypeName</h5>
-                            <p class="card-text">
-                                <strong>Código:</strong> @property.Code<br>
-                                <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
-                                <strong>Precio:</strong> @property.Price.ToString()<br>
-                                <strong>Habitaciones:</strong> @property.Rooms<br>
-                                <strong>Baños:</strong> @property.Bathrooms<br>
-                                <strong>Tamaño:</strong> @property.Size m²
-                            </p>
-                            <a asp-action="DetailsWithChat" asp-controller="Client" asp-route-id="@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+                    <h5 class="card-title">@property.PropertyTypeName</h5>
+                    <p class="card-text">
+                        <i class="bi bi-hash"></i> <strong>Código:</strong> @property.Code<br>
+                        <i class="bi bi-handbag"></i> <strong>Tipo de Venta:</strong> @property.SaleTypeName<br>
 
-                        </div>
-                    </div>
+                        <i class="bi bi-cash-stack"></i> <strong>Precio:</strong> @($"RD${property.Price:N0}")<br>
+
+                        <i class="bi bi-door-open-fill"></i> <strong>Habitaciones:</strong> @property.Rooms<br>
+                        <i class="bi bi-droplet"></i> <strong>Baños:</strong> @property.Bathrooms<br>
+                        <i class="bi bi-rulers"></i> <strong>Tamaño:</strong> @property.Size m²
+                    </p>
+                    <a asp-action="DetailsWithChat" asp-controller="Client" asp-route-id="@property.Id" class="btn btn-outline-primary w-100">Ver Detalle</a>
+
                 </div>
-            }
+            </div>
         </div>
+        }
+    </div>
     }
 </div>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 

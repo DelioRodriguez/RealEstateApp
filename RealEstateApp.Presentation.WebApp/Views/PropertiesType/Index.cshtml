@@ -1,34 +1,48 @@
 ﻿@model IEnumerable<RealEstateApp.Application.ViewModels.PropertiesType.PropertyTypeListViewModel>
 
 @{
-    ViewData["Title"] = "Mantenimiento de Tipos de Propiedades";
+ViewData["Title"] = "Mantenimiento de Tipos de Propiedades";
 }
 
-<h1>Mantenimiento de Tipos de Propiedades</h1>
+<h1 class="text-center text-primary mb-4">
+    <i class="fas fa-home"></i>
+    Mantenimiento de Tipos de Propiedades
+</h1>
 
-<a class="btn btn-primary mb-3" asp-action="Create">Crear Tipo de Propiedad</a>
+<a class="btn btn-primary mb-3" asp-action="Create">
+    <i class="fas fa-plus-circle"></i> Crear Tipo de Propiedad
+</a>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Cantidad de Propiedades</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Description</td>
-                <td>@item.PropertiesCount</td>
-                <td>
-                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row g-3">
+    @foreach (var item in Model)
+    {
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card border-primary shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-tag"></i> @item.Name
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <i class="fas fa-align-left"></i> <strong>Descripción:</strong> @item.Description
+                </p>
+                <p class="card-text">
+                    <i class="fas fa-building"></i> <strong>Cantidad de Propiedades:</strong> @item.PropertiesCount
+                </p>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <!-- Botón Editar -->
+                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+
+                <!-- Botón Eliminar -->
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">
+                    <i class="fas fa-trash"></i> Eliminar
+                </a>
+            </div>
+        </div>
+    </div>
+    }
+</div>

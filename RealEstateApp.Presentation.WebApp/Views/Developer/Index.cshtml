@@ -11,74 +11,86 @@
     <span>Crear Desarrollador</span>
 </a>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
-        <thead class="bg-primary text-white">
-            <tr>
-                <th><i class="fas fa-user"></i> <span>Nombre</span></th>
-                <th><i class="fas fa-user-tag"></i> <span>Apellido</span></th>
-                <th><i class="fas fa-user-lock"></i> <span>Nombre de Usuario</span></th>
-                <th><i class="fas fa-envelope"></i> <span>Correo</span></th>
-                <th><i class="fas fa-toggle-on"></i> <span>Estado</span></th>
-                <th><i class="fas fa-cogs"></i> <span>Acciones</span></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var developer in Model)
-            {
-                <tr>
-                    <td><i class="fas fa-user"></i> <span>@developer.FirstName</span></td>
-                    <td><i class="fas fa-user-tag"></i> <span>@developer.LastName</span></td>
-                    <td><i class="fas fa-user-lock"></i> <span>@developer.UserName</span></td>
-                    <td><i class="fas fa-envelope"></i> <span>@developer.Email</span></td>
-                    <td>
-                        @if (developer.IsActive)
-                        {
-                            <span class="badge bg-success">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Activo</span>
+<div class="row g-3">
+    @foreach (var developer in Model)
+    {
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card border-primary shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-user"></i>
+                    @developer.FirstName @developer.LastName
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <i class="fas fa-user-lock"></i> <strong>Usuario:</strong> @developer.UserName
+                </p>
+                <p class="card-text">
+                    <i class="fas fa-envelope"></i> <strong>Correo:</strong> @developer.Email
+                </p>
+                <p class="card-text">
+                    <i class="fas fa-toggle-on"></i> <strong>Estado:</strong>
+                    @if (developer.IsActive)
+                    {
+                    <span class="badge bg-success">
+                                <i class="fas fa-check-circle"></i> Activo
                             </span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-danger">
-                                <i class="fas fa-times-circle"></i>
-                                <span>Inactivo</span>
+                    }
+                    else
+                    {
+                    <span class="badge bg-danger">
+                                <i class="fas fa-times-circle"></i> Inactivo
                             </span>
-                        }
-                    </td>
-                    <td>
-                        <div class="d-flex">
-                            <!-- Activar/Inactivar -->
-                            @using (Html.BeginForm("ToggleStatus", "Developer", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                <input type="hidden" name="id" value="@developer.Id" />
-                                <input type="hidden" name="status" value="@(developer.IsActive ? "false" : "true")" />
-                                
-                                <button type="submit" class="btn @(developer.IsActive ? "btn-warning" : "btn-success") btn-sm">
-                                    @if (developer.IsActive)
-                                    {
-                                        <i class="fas fa-ban"></i>
-                                        <span>Inactivar</span>
-                                    }
-                                    else
-                                    {
-                                        <i class="fas fa-check"></i>
-                                        <span>Activar</span>
-                                    }
-                                </button>
-                            }
+                    }
+                </p>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <!-- Botón Activar/Inactivar -->
+                @using (Html.BeginForm("ToggleStatus", "Developer", FormMethod.Post))
+                {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@developer.Id" />
+                <input type="hidden" name="status" value="@(developer.IsActive ? "false" : "true")" />
 
-                            <!-- Editar -->
-                            <a class="btn btn-info btn-sm ms-2" asp-action="Edit" asp-route-id="@developer.Id">
-                                <i class="fas fa-edit"></i>
-                                <span>Editar</span>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                <button type="submit" class="btn @(developer.IsActive ? "btn-warning" : "btn-success") btn-sm">
+                    @if (developer.IsActive)
+                    {
+                    <i class="fas fa-ban"></i>
+                   <span>Inactivar</span> 
+                    }
+                    else
+                    {
+                    <i class="fas fa-check"></i>
+                    <span>Activar</span>
+                    }
+                </button>
+                }
+
+                <!-- Botón Editar -->
+                <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@developer.Id">
+                    <i class="fas fa-edit"></i>
+                    Editar
+                </a>
+            </div>
+        </div>
+    </div>
+    }
 </div>
+
+<!-- Mensajes de éxito y error -->
+@if (TempData["Success"] != null)
+{
+<div class="alert alert-success mt-3">
+    <i class="fas fa-check-circle"></i>
+    <span>@TempData["Success"]</span>
+</div>
+}
+
+@if (TempData["Error"] != null)
+{
+<div class="alert alert-danger mt-3">
+    <i class="fas fa-exclamation-circle"></i>
+    <span>@TempData["Error"]</span>
+</div>
+}

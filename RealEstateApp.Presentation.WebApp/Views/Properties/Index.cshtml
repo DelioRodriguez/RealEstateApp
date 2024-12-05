@@ -122,12 +122,10 @@ ViewData["Title"] = "Listado de Propiedades";
         const minInput = document.getElementById("MinPrice");
         const maxInput = document.getElementById("MaxPrice");
 
-        // Asegurarse de que el mínimo no baje de 0
         if (minInput.value < 0) {
             minInput.value = 0;
         }
 
-        // Asegurarse de que el máximo no sea menor o igual al mínimo
         if (maxInput.value !== "" && parseInt(maxInput.value) <= parseInt(minInput.value)) {
             maxInput.value = parseInt(minInput.value) + 1;
         }

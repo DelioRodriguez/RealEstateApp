@@ -1,24 +1,42 @@
 ﻿@model RealEstateApp.Application.ViewModels.PropertiesType.CreatePropertyTypeViewModel
 
 @{
-    ViewData["Title"] = "Crear Tipo de Propiedad";
+ViewData["Title"] = "Crear Tipo de Propiedad";
 }
 
-<h1>Crear Tipo de Propiedad</h1>
+<h1 class="text-center text-primary mb-4">
+    <i class="fas fa-plus-circle"></i> @ViewData["Title"]
+</h1>
 
 <form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-    <div class="form-group mt-3">
-        <a class="btn btn-secondary" asp-action="Index">Volver</a>
-        <button type="submit" class="btn btn-primary">Crear</button>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <!-- Nombre -->
+            <div class="form-group mb-3">
+                <label for="Name" class="form-label">Nombre</label>
+                <input asp-for="Name" class="form-control" id="Name" placeholder="Ingresa el nombre del tipo de propiedad" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group mb-3">
+                <label for="Description" class="form-label">Descripción</label>
+                <textarea asp-for="Description" class="form-control" id="Description" placeholder="Ingresa una descripción del tipo de propiedad" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+                <!-- Botón Volver -->
+                <a href="@Url.Action("Index", "PropertiesType")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </a>
+
+                <!-- Botón Crear -->
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Crear
+                </button>
+            </div>
+        </div>
     </div>
 </form>

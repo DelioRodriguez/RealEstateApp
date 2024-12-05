@@ -14,58 +14,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment="">
+    <list default="true" id="6d5c0dd2-0c49-42a3-81ce-c4cc26963921" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealEstateApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.futdcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/RealEstateApp/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/NotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/NotFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/UnauthorizedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/UnauthorizedException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/ValidationException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Exceptions/ValidationException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Application/Services/Properties/PropertyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Application/Services/Properties/PropertyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Seeds/IdentitySeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Seeds/IdentitySeeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Infrastructure.Identity/Services/AccountService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/RealEstateApp.Presentation.WebApp.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/02c30a02-6fd8-4f77-a64e-3fc3e24e179b_Screenshot 2024-09-06 184756.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/04a84ae1-380a-4bfd-a88d-29cdbe6c7dc8_Screenshot (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/0f08a30c-ad9e-4fcc-91bc-c598e59996b2_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/29178c29-762c-4e89-9488-6c834b4c5cbe_Sasuke.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/2d4df5af-4b73-46fe-8ebf-7ab7cdeaf050_Screenshot 2024-09-05 233227.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/3c1db9e8-2281-4052-ba43-054d2a328df5_Screenshot 2024-09-05 233227.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/4da0e7f4-f2a4-41c6-897e-166f5f924d41_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/7170736b-ae13-4b81-80de-6c48c66b2732_Screenshot 2024-09-03 225833.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/7764fe23-02c9-4af5-8282-3f468313f00c_Screenshot (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/7979bad7-c17d-4638-b390-2771f148bc54_Sasuke.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/839e2587-1233-4dd3-abf4-1ee3cd764278_Screenshot 2024-09-05 233227.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/83b3ce3a-60a0-4e33-ba86-3e835919f771_wallpaperflare.com_wallpaper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/89d8cc5b-0a74-485e-aecd-8543a038cf6b_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/89f3561f-1029-4efc-b14b-d9daeaf4ea92_Screenshot 2024-09-03 225833.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/979233c0-cf40-48f7-b451-8588e0a02929_Guts.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/a41e09db-945b-4b0a-955f-d140292fbc3c_Screenshot 2024-11-17 154801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/b55ecf78-5326-442f-b4b7-c7e5f8bcc81e_Sasuke.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/b70d1f10-4e6f-4aaa-b194-05064c5c3171_Screenshot 2024-09-06 190339.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/b941d686-4420-4162-b520-abcdcceeee8b_Screenshot 2024-09-06 184756.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/bdf0b046-1c13-4d7a-aeed-bc884f10b7e4_Guts.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/eed47982-4ca2-4353-96a3-dd62a6da6a6e_Guts.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/fb60bd9c-41c2-4715-b852-e1d65713775c_Screenshot 2024-09-03 225833.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/images/properties/fc6a8ce6-09c2-4f1b-b6dc-3c27c7d5a83f_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/0a9e1c79-b2ad-4b21-afba-d4acd0e1e87f_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/19c4fa7d-d2cc-4d9e-8b57-4b18b15a04e4_791100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/5dc5cb23-fbbc-4f9b-bc28-33da07500eda_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/701760f8-5436-4f2a-bc57-7a255b07671f_791100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/787a1cd7-2d05-470d-bcbd-6dce58265f32_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/7fe0b547-b213-420c-849f-25377bc8e22e_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/895cae9c-686b-4140-9736-f31ec02bc9c4_791100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/922b0ea5-d1d7-4eee-94c4-23f239772f04_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/a21c48b6-30c9-4912-8c0c-14e52254fa10_WIN_20241120_16_05_03_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/bfc5ff30-f6a5-403f-a3ec-a2b64a7192f2_Sasuke.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/c645d98d-213e-46a2-99ad-58883bbbcfdb_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/wwwroot/uploads/e5211a11-5671-40f3-be75-63dccc11c815_WhatsApp Image 2024-08-16 at 21.31.37_c25ee49a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AgentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/AgentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/ChatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/ChatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/ClientController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/ClientController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesTypeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Controllers/PropertiesTypeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Properties/CreateProperties.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateApp.Presentation.WebApp/Views/Properties/CreateProperties.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +247,7 @@
       <workItem from="1733284839151" duration="646000" />
       <workItem from="1733323506694" duration="2574000" />
       <workItem from="1733413783765" duration="265000" />
-      <workItem from="1733414478472" duration="2361000" />
+      <workItem from="1733414478472" duration="7637000" />
     </task>
     <task id="LOCAL-00001" summary="Login y register, Controlador de propiedades, controlador de agentes Listos.">
       <option name="closed" value="true" />
@@ -339,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733413296734</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1733418639159</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733418639159</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,10 +318,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Login y register, Controlador de propiedades, controlador de agentes Listos." />
     <MESSAGE value="Mantenimiendo de tipo de propiedades, tipos de ventas, Mant de mejoras Listos." />
-    <MESSAGE value="." />
     <MESSAGE value="dame banda." />
     <MESSAGE value="Almacenamiento para imagenes completo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almacenamiento para imagenes completo" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

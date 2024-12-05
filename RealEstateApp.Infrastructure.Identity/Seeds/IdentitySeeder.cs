@@ -34,7 +34,7 @@ public class IdentitySeeder
                 PhoneNumberConfirmed = true
             };
             
-            await userManager.CreateAsync(adminUser, " Agent12345!");
+            await userManager.CreateAsync(adminUser, "Agent12345!");
             await userManager.AddToRoleAsync(adminUser, Role.Admin.ToString());
         }
         

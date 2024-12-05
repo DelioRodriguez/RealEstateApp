@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Exceptions;
 using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.ViewModels.Properties;
+
 
 namespace WebApplication1.Controllers;
 
@@ -96,6 +97,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> CreateProperties(PropertyCreateViewModel model)
     {
         model.AgentId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -124,6 +126,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> Delete(int id)
     {
         var result = await _propertyService.DeletePropertyAsync(id);
@@ -138,6 +141,7 @@ public class PropertiesController : Controller
         return RedirectToAction("MantenimientoPropiedades", "Agent");
     }
 
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> Update(int id)
     {
         try
@@ -158,6 +162,7 @@ public class PropertiesController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Agent")]
     public async Task<IActionResult> Update(PropertyUpdateViewModel model)
     {
         if (model == null || model.PropertyId == 0)

@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.PropertiesType;
 using RealEstateApp.Application.ViewModels.PropertiesType;
 using RealEstateApp.Domain.Entities;
+using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PropertiesTypeController : Controller
     {
         private readonly IPropertiesTypeServices _propertyTypeService;

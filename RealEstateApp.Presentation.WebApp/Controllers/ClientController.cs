@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Application.Interfaces.Services.Chats;
 using RealEstateApp.Application.Interfaces.Services.Favory;
 using RealEstateApp.Application.Interfaces.Services.Improvements;
 using RealEstateApp.Application.Interfaces.Services.Properties;
 using RealEstateApp.Application.Interfaces.Services.Users;
-using RealEstateApp.Application.ViewModels.Chats;
-using RealEstateApp.Application.ViewModels.Chats.Client;
 using RealEstateApp.Application.ViewModels.Properties;
 using RealEstateApp.Application.ViewModels.Users;
 using RealEstateApp.Domain.Enums;
 
 namespace WebApplication1.Controllers;
 
+[Authorize]
 public class ClientController : Controller
 {
     private readonly IPropertyService  _propertyService;
@@ -44,12 +44,13 @@ public class ClientController : Controller
         return View(users);
     }
     
+    [Authorize(Roles = "Client")]
     public async Task<IActionResult> PropertiesAgentsByClient(string id)
     {
         return View(await _propertyService.GetPropertyByUserIdAsync(id));
     }
     
-    
+    [Authorize(Roles = "Client")]
     public async Task<IActionResult> HomeClient()
     {
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -76,6 +77,7 @@ public class ClientController : Controller
     }
     
     
+    [Authorize(Roles = "Client")]
     public async Task<IActionResult> DetailsWithChat(int id)
     {
         var property = await _propertyService.GetPropertyDetailsAsync(id);
@@ -105,6 +107,7 @@ public class ClientController : Controller
     
     
     [HttpPost]
+    [Authorize(Roles = "Client")]
     public async Task<IActionResult> HomeClient(PropertyFilterViewModel? filter)
     {
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -165,7 +168,5 @@ public class ClientController : Controller
         
         return RedirectToAction("DetailsWithChat", new { id = propertyId });
     }
-
-
-
+    
 }

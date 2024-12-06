@@ -44,7 +44,6 @@ public class ChatController : Controller
         return View(chat);
     }
     
-    [Authorize(Policy = "ClientOnly")]
 
     [HttpPost]
     public async Task<IActionResult> SendMessage(int chatId, string content)

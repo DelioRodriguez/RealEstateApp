@@ -86,8 +86,18 @@ public class AccountService : IAccountService
     }
     private async Task SendActivationEmailAsync(string email, string activationLink)
     {
-        string subject = "Activa tu cuenta";
-        string body = $"<h1>{subject}</h1><p>Click <a href='{activationLink}'>here</a> to activate your account.</p>";
+        string subject = "¡Bienvenido a Keynest!";
+        string body = $@"
+        <div style='font-family: Arial, sans-serif; text-align: center;'>
+            <h1 style='color: #4CAF50;'>{subject}</h1>
+            <p style='font-size: 16px;'>Haz clic en la imagen a continuación para activar tu cuenta.</p>
+            <a href='{activationLink}' style='text-decoration: none;'>
+                <img src='https://appimagenes.blob.core.windows.net/imagenes/WhatsApp%20Image%202024-12-05%20at%2019.48.19_13409e92.jpg' 
+                     alt='Activa tu cuenta' 
+                     style='width: 100%; max-width: 600px; height: auto; border: 0;'>
+            </a>
+            <p style='margin-top: 20px; font-size: 14px; color: #555;'>Creado por Delio Rodríguez, Ivo Rodríguez y Dayner García.</p>
+        </div>";
         await _emailService.SendEmailAsync(email, subject, body);
     }
     public async Task<LoginResult> LoginUserAsync(UserLoginDTO userDto)

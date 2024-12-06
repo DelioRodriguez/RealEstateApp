@@ -72,7 +72,7 @@
                         @foreach (var message in Model.Message)
                         {
                             <div class="message @(message!.IsAgent ? "agent-message" : "client-message")">
-                                <strong>@(message.IsAgent ? Model.AgentUserName : "Tú"):</strong>
+                                <strong>@(message.IsAgent ? Model.AgentName : "Tú"):</strong>
                                 <p>@message.Content</p>
                                 <small>@message.DateCreated.ToString("g")</small>
                             </div>
